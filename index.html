@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuming Su（苏禹铭） - 学术主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .main-content {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .profile-info .affiliation {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: #2980b9;
+        }
+
+        .profile-image {
+            text-align: center;
+        }
+
+        .profile-image .placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .section {
+            margin: 3rem 0;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .education-item, .work-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .education-item h3, .work-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .year {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .research-interests {
+            background: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .research-interests ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .research-interests li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .research-interests li:before {
+            content: "🔬";
+            position: absolute;
+            left: 0;
+        }
+
+        .collaboration-section {
+            background: #e8f4f8;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #3498db;
+        }
+
+        .collaboration-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #34495e;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .profile-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Yuming Su</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <section id="home" class="profile-section">
+                <div class="profile-info">
+                    <h1>Yuming Su / 苏禹铭</h1>
+                    <p class="subtitle">Assistant Researcher in Computational Chemistry</p>
+                    <p class="affiliation">
+                        📍 Xiamen, China<br>
+                        🏛️ AI4EC Lab, Tan Kah Kee Innovation Laboratory (IKKEM)
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:your.email@ikkem.com">Email</a>
+                        <a href="#" target="_blank">Google Scholar</a>
+                        <a href="#" target="_blank">ORCID</a>
+                        <a href="#" target="_blank">GitHub</a>
+                        <a href="#" target="_blank">ResearchGate</a>
+                    </div>
+                </div>
+                <div class="profile-image">
+                    <div class="placeholder">YS</div>
+                </div>
+            </section>
+
+            <section id="education" class="section">
+                <h2>🎓 Education</h2>
+                <div class="education-item">
+                    <h3>Ph.D. in Chemistry</h3>
+                    <p class="institution">Xiamen University, College of Chemistry and Chemical Engineering</p>
+                    <p class="year">2018 - 2024</p>
+                </div>
+                <div class="education-item">
+                    <h3>B.S. in Chemistry</h3>
+                    <p class="institution">Shanxi University, College of Chemistry & Chemical Engineering</p>
+                    <p class="year">2014 - 2018</p>
+                </div>
+            </section>
+
+            <section id="work" class="section">
+                <h2>💼 Work Experience</h2>
+                <div class="work-item">
+                    <h3>Assistant Researcher</h3>
+                    <p class="institution">AI4EC Lab, Tan Kah Kee Innovation Laboratory (IKKEM)</p>
+                    <p class="year">2024 - Present</p>
+                </div>
+            </section>
+
+            <section id="research" class="section">
+                <h2>🚀 Research Interests</h2>
+                <div class="research-interests">
+                    <p>I am deeply engaged in the following research areas:</p>
+                    <ul>
+                        <li><strong>Structure-Activity Relationships (SAR)</strong> - Investigating the relationship between molecular structure and biological activity</li>
+                        <li><strong>Two-Photon Absorption (TPA)</strong> - Advanced optical properties and applications in materials science</li>
+                        <li><strong>Machine Learning Applications in Chemistry</strong> - Developing AI-driven approaches for chemical discovery</li>
+                        <li><strong>Theoretical Calculations</strong> - Computational methods for understanding molecular properties</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="collaboration" class="section">
+                <h2>👯 Collaboration</h2>
+                <div class="collaboration-section">
+                    <p><strong>I'm looking to collaborate on:</strong></p>
+                    <p>• Projects that integrate AI into material science and chemistry</p>
+                    <p>• Research initiatives that aim to develop sustainable technologies</p>
+                    <p>Feel free to reach out if you're interested in potential collaborations or have exciting research opportunities!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">ORCID</a>
+            </div>
+            <p>© 2025 Yuming Su / 苏禹铭</p>
+            <p>Last updated: June 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动导航
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 移动端导航
+        function createMobileMenu() {
+            if (window.innerWidth <= 768) {
+                const nav = document.querySelector('.nav-links');
+                const navContainer = document.querySelector('nav');
+                
+                if (!document.querySelector('.mobile-toggle')) {
+                    const toggleButton = document.createElement('button');
+                    toggleButton.innerHTML = '☰';
+                    toggleButton.className = 'mobile-toggle';
+                    toggleButton.style.cssText = `
+                        background: none;
+                        border: none;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                        color: #2c3e50;
+                        display: block;
+                    `;
+                    
+                    navContainer.appendChild(toggleButton);
+                    nav.style.display = 'none';
+                    
+                    toggleButton.addEventListener('click', () => {
+                        nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+                    });
+                }
+            }
+        }
+
+        createMobileMenu();
+        window.addEventListener('resize', createMobileMenu);
+    </script>
+</body>
+</html>
