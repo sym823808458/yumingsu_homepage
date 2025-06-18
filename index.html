@@ -119,20 +119,6 @@
             text-align: center;
         }
 
-        .profile-image .placeholder {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
-        }
-
         .section {
             margin: 3rem 0;
         }
@@ -204,6 +190,72 @@
             margin-bottom: 1rem;
         }
 
+        .publications-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .publication-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            border-left: 3px solid #27ae60;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .publication-item .year-badge {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-item p {
+            margin-bottom: 0.5rem;
+            text-align: justify;
+        }
+
+        .publication-item .doi-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .publication-item .doi-link:hover {
+            text-decoration: underline;
+        }
+
+        .statistics-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
         footer {
             background: #34495e;
             color: white;
@@ -247,6 +299,16 @@
             .contact-links {
                 justify-content: center;
             }
+
+            .statistics-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 高亮我的名字 */
+        .highlight-name {
+            font-weight: bold;
+            color: #2980b9;
         }
     </style>
 </head>
@@ -259,6 +321,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
+                <li><a href="#software">Software</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -269,21 +332,41 @@
             <section id="home" class="profile-section">
                 <div class="profile-info">
                     <h1>Yuming Su / 苏禹铭</h1>
-                    <p class="subtitle">Assistant Researcher in Computational Chemistry</p>
+                    <p class="subtitle">Assistant Researcher</p>
                     <p class="affiliation">
                         📍 Xiamen, China<br>
                         🏛️ AI4EC Lab, Tan Kah Kee Innovation Laboratory (IKKEM)
                     </p>
                     <div class="contact-links">
-                        <a href="mailto:your.email@ikkem.com">Email</a>
-                        <a href="#" target="_blank">Google Scholar</a>
-                        <a href="#" target="_blank">ORCID</a>
-                        <a href="#" target="_blank">GitHub</a>
+                        <a href="mailto:yumingsu@xmy.edu.cn">Email</a>
+                        <a href="https://scholar.google.com/citations?hl=zh-CN&user=SL8pQfEAAAAJ" target="_blank">Google Scholar</a>
+                        <a href="https://orcid.org/0009-0001-9510-4173" target="_blank">ORCID</a>
+                        <a href="https://github.com/sym823808458" target="_blank">GitHub</a>
                         <a href="#" target="_blank">ResearchGate</a>
                     </div>
                 </div>
                 <div class="profile-image">
-                    <div class="placeholder">YS</div>
+                    <img src="images/profile.jpg" alt="Yuming Su" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+                </div>
+            </section>
+
+            <!-- 学术统计 -->
+            <section class="statistics-section">
+                <div class="stat-card">
+                    <h3>379</h3>
+                    <p>Total Citations</p>
+                </div>
+                <div class="stat-card">
+                    <h3>10</h3>
+                    <p>h-index</p>
+                </div>
+                <div class="stat-card">
+                    <h3>11</h3>
+                    <p>i10-index</p>
+                </div>
+                <div class="stat-card">
+                    <h3>21</h3>
+                    <p>Publications</p>
                 </div>
             </section>
 
@@ -323,12 +406,82 @@
                 </div>
             </section>
 
+            <section id="publications" class="section">
+                <h2>📚 Selected Publications</h2>
+                <div class="publications-section">
+                    <div class="publication-item">
+                        <div class="year-badge">2025</div>
+                        <p>Shen, Y.; Fang, N.; Liu, X.; Ling, Y.; <span class="highlight-name">Su, Y.</span>; Tan, T.; Chen, F.; Lin, H.; Zhao, B.; Wang, J.; Si, D.; Xie, S.; Wang, Y.; Zhou, D.; Zhang, T.; Cao, R.; Wang, C. Observation of Metal-Organic Interphase in Cu-Based Electrochemical CO₂-to-Ethanol Conversion. <em>Nat. Commun.</em> <strong>2025</strong>, <em>16</em> (1), 2073.</p>
+                        <a href="https://doi.org/10.1038/s41467-025-57221-x" class="doi-link" target="_blank">https://doi.org/10.1038/s41467-025-57221-x</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="year-badge">2025</div>
+                        <p>Zhang, M.; <span class="highlight-name">Su, Y.</span>; Du, T.; Ding, S.; Dai, J.; Wang, C.; Liu, Y. Revealing Transition State Stabilization in Organocatalytic Ring-Opening Polymerization Using Data Science. <em>Angew. Chem. Int. Ed.</em> <strong>2025</strong>, n/a (n/a), e202502090.</p>
+                        <a href="https://doi.org/10.1002/anie.202502090" class="doi-link" target="_blank">https://doi.org/10.1002/anie.202502090</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="year-badge">2024</div>
+                        <p><span class="highlight-name">Su, Y.</span>; Wang, X.; Ye, Y.; Xie, Y.; Xu, Y.; Jiang, Y.; Wang, C. Automation and Machine Learning Augmented by Large Language Models in a Catalysis Study. <em>Chem. Sci.</em> <strong>2024</strong>, <em>15</em> (31), 12200-12233.</p>
+                        <a href="https://doi.org/10.1039/d3sc07012c" class="doi-link" target="_blank">https://doi.org/10.1039/d3sc07012c</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="year-badge">2024</div>
+                        <p>Dral, P. O.; Ge, F.; Hou, Y. F.; Zheng, P.; Chen, Y.; Barbatti, M.; Isayev, O.; Wang, C.; Xue, B. X.; Pinheiro, M.; <span class="highlight-name">Su, Y.</span>; Dai, Y.; Chen, Y.; Zhang, L.; Zhang, S.; Ullah, A.; Zhang, Q.; Ou, Y. MLatom 3: A Platform for Machine Learning-Enhanced Computational Chemistry Simulations and Workflows. <em>J. Chem. Theory Comput.</em> <strong>2024</strong>, <em>20</em> (3), 1193-1213.</p>
+                        <a href="https://doi.org/10.1021/acs.jctc.3c01203" class="doi-link" target="_blank">https://doi.org/10.1021/acs.jctc.3c01203</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="year-badge">2024</div>
+                        <p>Fan, X.; Wang, X.; Ye, Y.; Ye, Y.; <span class="highlight-name">Su, Y.</span>; Zhang, Y.; Wang, C. Printing 3D Metallic Structures in Porous Matrix. <em>Small</em> <strong>2024</strong>, <em>20</em> (31), 2312071.</p>
+                        <a href="https://doi.org/10.1002/smll.202312071" class="doi-link" target="_blank">https://doi.org/10.1002/smll.202312071</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="year-badge">2023</div>
+                        <p>Du, M.-H.; Dai, Y.; Jiang, L.-P.; <span class="highlight-name">Su, Y.-M.</span>; Qi, M.-Q.; Wang, C.; Long, L.-S.; Zheng, L.-S.; Kong, X.-J. Exploration and Insights on Topology Adjustment of Giant Heterometallic Cages Featuring Inorganic Skeletons Assisted by Machine Learning. <em>J. Am. Chem. Soc.</em> <strong>2023</strong>, <em>145</em> (42), 23188-23195.</p>
+                        <a href="https://doi.org/10.1021/jacs.3c07635" class="doi-link" target="_blank">https://doi.org/10.1021/jacs.3c07635</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="year-badge">2023</div>
+                        <p>Zhao, X.; Ju, Y.; <span class="highlight-name">Su, Y.</span>; Tang, C.; Zeng, Q.; Feng, L.; Wang, C.; Müllen, K.; Tan, Y. Hexa-Branched Nanographenes with Large Two-Photon Absorption. <em>J. Am. Chem. Soc.</em> <strong>2023</strong>, <em>145</em> (35), 19333-19337.</p>
+                        <a href="https://doi.org/10.1021/jacs.3c05662" class="doi-link" target="_blank">https://doi.org/10.1021/jacs.3c05662</a>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="year-badge">2023</div>
+                        <p><span class="highlight-name">Su, Y.</span>; Dai, Y.; Zeng, Y.; Wei, C.; Chen, Y.; Ge, F.; Zheng, P.; Zhou, D.; Dral, P. O.; Wang, C. Interpretable Machine Learning of Two-Photon Absorption. <em>Adv. Sci.</em> <strong>2023</strong>, <em>10</em> (8), 2204902.</p>
+                        <a href="https://doi.org/10.1002/advs.202204902" class="doi-link" target="_blank">https://doi.org/10.1002/advs.202204902</a>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 2rem; color: #7f8c8d;">
+                        <em>For a complete list of publications, please visit my <a href="https://scholar.google.com/citations?hl=zh-CN&user=SL8pQfEAAAAJ" target="_blank" style="color: #3498db;">Google Scholar profile</a>.</em>
+                    </p>
+                </div>
+            </section>
+
+            <section id="software" class="section">
+                <h2>💻 Software & Tools</h2>
+                <div class="research-interests">
+                    <p>I contribute to the development of computational chemistry software:</p>
+                    <ul>
+                        <li><strong>MLatom 3</strong> - A platform for machine learning-enhanced computational chemistry simulations and workflows</li>
+                        <li><strong>Machine Learning Models</strong> - Development of AI-driven approaches for chemical property prediction</li>
+                        <li><strong>Data Analysis Tools</strong> - Custom scripts and algorithms for chemical data processing</li>
+                    </ul>
+                </div>
+            </section>
+
             <section id="collaboration" class="section">
                 <h2>👯 Collaboration</h2>
                 <div class="collaboration-section">
                     <p><strong>I'm looking to collaborate on:</strong></p>
                     <p>• Projects that integrate AI into material science and chemistry</p>
                     <p>• Research initiatives that aim to develop sustainable technologies</p>
+                    <p>• Machine learning applications in catalysis and materials discovery</p>
                     <p>Feel free to reach out if you're interested in potential collaborations or have exciting research opportunities!</p>
                 </div>
             </section>
@@ -338,9 +491,9 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="#" target="_blank">GitHub</a>
-                <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">ORCID</a>
+                <a href="https://github.com/sym823808458" target="_blank">GitHub</a>
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=SL8pQfEAAAAJ" target="_blank">Google Scholar</a>
+                <a href="https://orcid.org/0009-0001-9510-4173" target="_blank">ORCID</a>
             </div>
             <p>© 2025 Yuming Su / 苏禹铭</p>
             <p>Last updated: June 2025</p>
@@ -392,6 +545,20 @@
 
         createMobileMenu();
         window.addEventListener('resize', createMobileMenu);
+
+        // 添加加载动画效果
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.publication-item, .stat-card, .education-item, .work-item').forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
     </script>
 </body>
 </html>
