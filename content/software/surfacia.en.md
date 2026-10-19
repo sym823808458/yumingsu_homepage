@@ -1,13 +1,12 @@
 ## Molecular representations with chemical meaning
 
-Surfacia converts molecular surface properties into hierarchical descriptors and connects feature selection, machine learning, SHAP interpretation and candidate prioritization. It is intended for researchers who want to relate predictions to chemical structures.
+Surfacia converts molecular surface properties into hierarchical descriptors and connects feature selection, machine learning and SHAP interpretation. It is intended for researchers who want to relate predictions to chemical structures.
 
 ## Workflow
 
 - Prepare molecular structures from SMILES and organize quantum-chemical and surface-analysis tasks.
 - Extract electrostatic potentials, local ionization energies and related surface descriptors.
 - Select features, build models and interpret predictions.
-- Use modules such as SPES for candidate prioritization, keeping ranking scores distinct from the original regression predictions.
 
 ## Installation and use
 

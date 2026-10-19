@@ -7,8 +7,8 @@
       "en": "Molecular representations · Interpretable ML"
     },
     "summary": {
-      "zh": "从分子结构与表面性质出发，构建化学可解释的描述符、预测模型和候选优先级。",
-      "en": "A workflow connecting molecular structures and surface properties with interpretable descriptors, predictive models and candidate prioritization."
+      "zh": "从分子结构与表面性质出发，构建化学可解释的描述符，连接特征筛选、预测建模与模型解释。",
+      "en": "A workflow connecting molecular structures and surface properties with chemically interpretable descriptors, feature selection, predictive modeling and model interpretation."
     },
     "repository": "https://github.com/sym823808458/Surfacia",
     "docs": "https://surfacia.readthedocs.io/zh-cn/latest/",
