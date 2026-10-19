@@ -46,6 +46,11 @@
         "Surfacia",
         "LoFFi",
         "Structure–property relationships"
+      ],
+      "tags_zh": [
+        "Surfacia",
+        "LoFFi",
+        "构效关系"
       ]
     },
     {
@@ -62,6 +67,11 @@
         "Electroplating",
         "Electrochemistry",
         "AI agents"
+      ],
+      "tags_zh": [
+        "电镀",
+        "电化学",
+        "智能体"
       ]
     },
     {
@@ -78,6 +88,11 @@
         "Two-photon absorption",
         "Quantum chemistry",
         "Catalysis"
+      ],
+      "tags_zh": [
+        "双光子吸收",
+        "量子化学",
+        "催化"
       ]
     }
   ],

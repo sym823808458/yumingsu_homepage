@@ -6,6 +6,7 @@ This repository is Yuming Su's existing public academic website on GitHub Pages.
 - The user-authorized scope is personal biography, academic background, research software and scholarly publications.
 - Edit Markdown and JSON content sources. Never patch generated `index.html` pages directly.
 - Keep Chinese and English content aligned. Reuse the standard-library Python build and shared templates; avoid adding a framework or backend for routine changes.
+- English is the default at the site root and `/software/<slug>/`. Chinese lives under `/zh/` with a visible language switch. Preserve `/en/` compatibility redirects. Keep paper titles, authors, journal names and DOI in their original language; the user explicitly does not want Chinese paper-title translations.
 - Run `python tools/build.py`, `python tools/build.py --check`, and `python tools/check_site.py`. Check desktop and mobile layouts for visual changes, and test publication controls if touched.
 - Citation metrics and per-paper counts are dated snapshots. Do not invent a total publication count from an incomplete list. Separate journal articles, preprints and software resources.
 - Do not publish internal experiment data, unreleased findings, credentials, equipment control interfaces or manuscript files without an explicit request covering them.

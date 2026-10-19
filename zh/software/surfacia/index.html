@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="从分子结构与表面性质出发，构建化学可解释的描述符、预测模型和候选优先级。">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="Surfacia · Yuming Su">
+  <meta property="og:description" content="从分子结构与表面性质出发，构建化学可解释的描述符、预测模型和候选优先级。">
+  <meta property="og:type" content="website">
+  <title>Surfacia · Yuming Su</title>
+  <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../assets/site.css?v=d73d6ffc7a40">
+  <script src="../../../assets/site.js?v=d73d6ffc7a40" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至正文</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="wordmark" href="../../../zh/"><span class="monogram">YS<span>.</span></span><span>Yuming Su <span class="wordmark-zh">苏禹铭</span></span></a>
+    <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#contact">联系</a></nav>
+    <a class="language-link" href="../../../software/surfacia/" lang="en" hreflang="en">English</a>
+  </div></header>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / Surfacia</div><div class="eyebrow">分子表示 · 可解释建模</div><h1>Surfacia</h1><p class="project-lead">从分子结构与表面性质出发，构建化学可解释的描述符、预测模型和候选优先级。</p><div class="tags"><span class="tag">Python</span><span class="tag">命令行</span><span class="tag">量子化学</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/Surfacia">源码仓库 ↗</a><a class="button secondary" href="https://surfacia.readthedocs.io/zh-cn/latest/">使用手册 ↗</a></div></section>
+      <div class="project-layout"><article class="prose project-prose"><h2>让分子表示保留化学意义</h2>
+<p>Surfacia 将分子表面性质转化为多层级描述符，并连接特征筛选、机器学习、SHAP 解释与候选优先级分析。它面向希望将预测结果与化学结构联系起来的研究者。</p>
+<h2>工作流程</h2>
+<ul>
+<li>从 SMILES 与分子结构准备开始，组织量子化学与表面分析任务。</li>
+<li>提取静电势、局部离子化能等表面性质及相关描述符。</li>
+<li>进行特征筛选、建模与模型解释。</li>
+<li>使用 SPES 等分析模块辅助候选排序；排序结果与原始回归预测分别理解。</li>
+</ul>
+<h2>安装与使用</h2>
+<p>Python 包可通过 <code>pip install surfacia</code> 安装。运行 <code>surfacia --help</code> 查看命令；已有描述符表时，可以单独进行机器学习分析。</p>
+<p>完整量子化学流程还依赖 xTB、Gaussian 和 Multiwfn 等外部软件，需要自行安装并满足相应许可要求。环境与版本要求请以当前手册为准。</p>
+<h2>深入了解</h2>
+<p><a href="https://surfacia.readthedocs.io/zh-cn/latest/">阅读完整中文手册</a>或访问<a href="https://github.com/sym823808458/Surfacia">源码仓库</a>，查看命令、示例、依赖与问题反馈入口。</p></article><aside class="project-aside"><h2>项目信息</h2><p>软件在用户自己的环境中运行。本页提供介绍、手册与代码入口。</p><p class="workflow-label">快速安装</p><p><code>pip install surfacia</code></p><h2>相关研究</h2><a class="pub-title" lang="en" href="../../../zh/#tpa-ml-2023">Interpretable Machine Learning of Two-Photon Absorption (2023) ↗</a></aside></div></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-19 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+</body>
+</html>

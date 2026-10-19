@@ -21,6 +21,13 @@
     ],
     "related_publications": [
       "tpa-ml-2023"
+    ],
+    "name_en": "Surfacia",
+    "name_zh": "Surfacia",
+    "tags_zh": [
+      "Python",
+      "命令行",
+      "量子化学"
     ]
   },
   {
@@ -31,7 +38,7 @@
       "en": "Literature research · Knowledge workflows"
     },
     "summary": {
-      "zh": "围绕科学问题，将网页阅读、LLM 分析、引用扩展与本地文献整理连接起来。",
+      "zh": "围绕科学问题，将网页阅读、大语言模型分析、引用扩展与本地文献整理连接起来。",
       "en": "A local literature research tool connecting page reading, LLM analysis, citation expansion and local research records."
     },
     "repository": "https://github.com/sym823808458/handle_candle",
@@ -40,7 +47,14 @@
       "Windows",
       "Zotero"
     ],
-    "related_publications": []
+    "related_publications": [],
+    "name_en": "handle_candle",
+    "name_zh": "秉烛夜读",
+    "tags_zh": [
+      "Python",
+      "Windows",
+      "Zotero"
+    ]
   },
   {
     "slug": "pka-ml-education",
@@ -60,7 +74,14 @@
       "GUI",
       "Teaching"
     ],
-    "related_publications": []
+    "related_publications": [],
+    "name_en": "pKa-ML Education",
+    "name_zh": "pKa 机器学习教学工具",
+    "tags_zh": [
+      "Python",
+      "图形界面",
+      "教学"
+    ]
   },
   {
     "slug": "tpa-calculation",
@@ -83,6 +104,13 @@
       "tpa-ml-2023",
       "nanographenes-2023",
       "mol-tpa-2021"
+    ],
+    "name_en": "TPA Calculation",
+    "name_zh": "双光子吸收计算工具",
+    "tags_zh": [
+      "MATLAB",
+      "Gaussian",
+      "Multiwfn"
     ]
   },
   {
@@ -102,6 +130,13 @@
       "Multiwfn",
       "Descriptors"
     ],
-    "related_publications": []
+    "related_publications": [],
+    "name_en": "MultiwfnMLhelper",
+    "name_zh": "MultiwfnMLhelper",
+    "tags_zh": [
+      "Python",
+      "Multiwfn",
+      "描述符"
+    ]
   }
 ]

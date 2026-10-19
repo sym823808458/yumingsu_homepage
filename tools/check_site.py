@@ -31,7 +31,7 @@ class Page(HTMLParser):
 
 def main():
     pages={}
-    for path in [ROOT/'index.html',*(ROOT/'en').rglob('*.html'),*(ROOT/'software').rglob('*.html')]:
+    for path in [ROOT/'index.html',*(ROOT/'en').rglob('*.html'),*(ROOT/'zh').rglob('*.html'),*(ROOT/'software').rglob('*.html')]:
         parser=Page(path)
         parser.feed(path.read_text(encoding='utf-8'))
         pages[path.resolve()]=parser
@@ -51,7 +51,7 @@ def main():
                 page.errors.append('missing fragment: '+link)
         errors.extend(f'{path.relative_to(ROOT)}: {e}' for e in page.errors)
     papers=json.loads((ROOT/'data/publications.json').read_text(encoding='utf-8'))
-    for path in (ROOT/'index.html',ROOT/'en/index.html'):
+    for path in (ROOT/'index.html',ROOT/'zh/index.html'):
         if pages[path.resolve()].publications!=len(papers): errors.append('incomplete publication rendering: '+str(path))
     if errors: raise SystemExit('\n'.join(errors))
     print(f'PASS: {len(pages)} pages, all local links/fragments, image alt text and {len(papers)} scholarly records in both languages.')

@@ -1,4 +1,12 @@
 (() => {
+  const languageSwitch = document.querySelector('.language-link');
+  if (languageSwitch) languageSwitch.addEventListener('click', event => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const target = new URL(languageSwitch.href);
+    target.hash = location.hash;
+    location.assign(target.href);
+  });
   const list = document.querySelector('[data-publications]');
   if (!list) return;
   const search = document.getElementById('publication-search');

@@ -129,9 +129,15 @@ nav a,.language-link {
   text-decoration:none;
 }
 .language-link {
-  border-left:1px solid var(--line);
-  padding-left:23px;
+  border:1px solid var(--green);
+  border-radius:20px;
+  padding:5px 15px;
+  color:var(--green);
   white-space:nowrap;
+}
+.language-link:hover {
+  background:var(--green);
+  color:var(--white);
 }
 .container {
   max-width:1160px;
@@ -765,7 +771,7 @@ code {
   }
   .language-link {
     margin-left:auto;
-    padding-left:12px;
+    padding:4px 12px;
     font-size:12px;
   }
   nav {

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="批量处理 Gaussian 格式化检查点文件，调用 Multiwfn 提取分子描述符并整理为 CSV。">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="MultiwfnMLhelper · Yuming Su">
+  <meta property="og:description" content="批量处理 Gaussian 格式化检查点文件，调用 Multiwfn 提取分子描述符并整理为 CSV。">
+  <meta property="og:type" content="website">
+  <title>MultiwfnMLhelper · Yuming Su</title>
+  <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../assets/site.css?v=d73d6ffc7a40">
+  <script src="../../../assets/site.js?v=d73d6ffc7a40" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至正文</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="wordmark" href="../../../zh/"><span class="monogram">YS<span>.</span></span><span>Yuming Su <span class="wordmark-zh">苏禹铭</span></span></a>
+    <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#contact">联系</a></nav>
+    <a class="language-link" href="../../../software/multiwfn-ml-helper/" lang="en" hreflang="en">English</a>
+  </div></header>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / MultiwfnMLhelper</div><div class="eyebrow">量子化学 · 描述符提取</div><h1>MultiwfnMLhelper</h1><p class="project-lead">批量处理 Gaussian 格式化检查点文件，调用 Multiwfn 提取分子描述符并整理为 CSV。</p><div class="tags"><span class="tag">Python</span><span class="tag">Multiwfn</span><span class="tag">描述符</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/MultiwfnMLhelper">源码仓库 ↗</a></div></section>
+      <div class="project-layout"><article class="prose project-prose"><h2>把量子化学结果整理成特征矩阵</h2>
+<p>MultiwfnMLhelper 是一个 Python 辅助工具，用于批量调用 Multiwfn 提取分子描述符，并将结果整理为可用于机器学习的 CSV 表格。</p>
+<h2>输入与输出</h2>
+<ul>
+<li>输入：一组 Gaussian 格式化检查点文件（<code>.fchk</code>）。</li>
+<li>分析：通过 Python 与批处理参数组织 Multiwfn 分析。</li>
+<li>输出：分子描述符 CSV 特征矩阵。</li>
+</ul>
+<h2>使用方式</h2>
+<p>从<a href="https://github.com/sym823808458/MultiwfnMLhelper">仓库</a>获取 <code>MultiwfnMLhelper.py</code>、批处理脚本和参数文件。安装所需 Python 依赖，并单独准备 Multiwfn，按说明配置后运行。</p>
+<h2>适用范围</h2>
+<p>适合从已有波函数计算结果中批量生成描述符。它是数据准备辅助程序，不替代量子化学计算，也不代表 Multiwfn 本体；描述符定义与分析方法应同时参考 Multiwfn 原始说明。</p></article><aside class="project-aside"><h2>项目信息</h2><p>软件在用户自己的环境中运行。本页提供介绍、手册与代码入口。</p></aside></div></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-19 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+</body>
+</html>

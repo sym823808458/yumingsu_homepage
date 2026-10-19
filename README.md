@@ -1,6 +1,8 @@
 # Yuming Su / 苏禹铭 — Academic Website
 
-个人学术主页，托管于 GitHub Pages。中文入口为 `index.html`，英文入口为 `en/index.html`，每个软件均有中英文介绍页。
+个人学术主页，托管于 GitHub Pages。**默认入口为英文**（`index.html`），中文入口为 `zh/index.html`。页首的“中文 / English”按钮切换当前页面的语言。
+
+英文软件页位于 `software/<slug>/`，中文软件页位于 `zh/software/<slug>/`。旧的 `en/` 地址保留为跳转入口。论文标题、作者、期刊名和 DOI 在两种语言下均保留原文，不添加论文标题译名。
 
 当前地址：https://sym823808458.github.io/yumingsu_homepage/
 
