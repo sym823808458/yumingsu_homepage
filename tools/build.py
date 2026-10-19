@@ -252,8 +252,21 @@ def validate(profile, papers, software):
     if not (ROOT/'images/profile.jpg').exists():
         raise ValueError('Missing portrait')
 
+def unlisted_redirect(target, lang):
+    label = '查看软件列表' if lang == 'zh' else 'View software projects'
+    return f'''<!doctype html>
+<html lang="{'zh-CN' if lang == 'zh' else 'en'}"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>{label} · Yuming Su</title>
+<meta http-equiv="refresh" content="0;url={E(target)}">
+<script>location.replace({json.dumps(target)});</script></head>
+<body><p><a href="{E(target)}">{label}</a></p></body></html>
+'''
+
+
 def build(check=False):
     profile, papers, software = load('profile'), load('publications'), load('software')
+    visible_software = [project for project in software if project.get('visible', True)]
     analytics = load('analytics')
     endpoint = analytics['endpoint'].rstrip('/')
     if analytics['provider'] != 'goatcounter':
@@ -275,10 +288,13 @@ def build(check=False):
             depth = len(path.parts)-1
             prefix = '../'*depth if depth else './'
             home = prefix + language_root(lang)
+            if project and not project.get('visible', True):
+                outputs[path] = unlisted_redirect(home + '#software', lang)
+                continue
             other = 'zh' if lang=='en' else 'en'
             language_url = prefix + language_root(other) + ('software/'+project['slug']+'/' if project else '')
             nav = ''.join(f'<a href="{home}#{section}">{t[section]}</a>' for section in ['about','research','software','publications','contact'])
-            body = project_body(project,papers,lang,home,prefix,profile['email']) if project else home_body(profile,papers,software,lang,prefix)
+            body = project_body(project,papers,lang,home,prefix,profile['email']) if project else home_body(profile,papers,visible_software,lang,prefix)
             if project:
                 if analytics['enabled']:
                     label = '累计访问' if lang == 'zh' else 'Recorded visits'
@@ -292,7 +308,7 @@ def build(check=False):
                 body = body.replace('</aside>',stats+'</aside>')
             elif analytics['enabled']:
                 label = '累计访问' if lang=='zh' else 'Recorded visits'
-                for item in software:
+                for item in visible_software:
                     anchor = f'<div class="software-category">{E(item["category"][lang])}</div>'
                     counter = f'<div class="software-visits">{label} <span data-visit-count="/software/{E(item["slug"])}/">…</span></div>'
                     body = body.replace(anchor,anchor+counter)
@@ -307,6 +323,9 @@ def build(check=False):
     for project in [None] + software:
         path = Path('en') / ('software/'+project['slug'] if project else '') / 'index.html'
         prefix = '../' * (len(path.parts)-1)
+        if project and not project.get('visible', True):
+            outputs[path] = unlisted_redirect(prefix + '#software', 'en')
+            continue
         target = prefix + ('software/'+project['slug']+'/' if project else '')
         outputs[path] = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -327,7 +346,7 @@ def build(check=False):
             target.write_text(content,encoding='utf-8',newline='\n')
     if differences:
         raise SystemExit('Generated files are out of date: '+', '.join(differences))
-    print(f'{"Checked" if check else "Built"} {len(outputs)-1} HTML pages; {len(papers)} scholarly records; {len(software)} software projects.')
+    print(f'{"Checked" if check else "Built"} {len(outputs)-1} HTML pages; {len(papers)} scholarly records; {len(visible_software)} visible software projects.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)

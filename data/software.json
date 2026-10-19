@@ -115,6 +115,7 @@
   },
   {
     "slug": "multiwfn-ml-helper",
+    "visible": false,
     "name": "MultiwfnMLhelper",
     "category": {
       "zh": "量子化学 · 描述符提取",

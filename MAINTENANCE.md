@@ -36,6 +36,8 @@
 
 对于尚未公开发布源码的软件，可以不填 `repository`，设置 `contact: true`，页面会使用个人邮箱作为联系入口。可用 `status`、`availability` 的中英文字段注明开发阶段和获取方式，不要创建虚假的仓库或下载链接。
 
+不再展示的软件设置 `visible: false`。条目与 Markdown 保留归档，主页不再列出或读取其计数，中英文详情页与旧英文地址转到对应语言主页的软件列表并标记 noindex。恢复展示时移除该字段或改为 `true` 后重新构建。
+
 项目条目可添加 `media` 数组展示图片或动画。每项包含 `type`（`image` / `animation`）、`src`（相对资源路径，或按 `en` / `zh` 区分的路径）、`width`、`height`，以及中英文 `alt`、`caption`；动画另需中英文 `label`，默认收起，由访客主动展开。只添加已确认适合公开的演示资源，并注明示意图、模型输出与实测结果的区别。
 
 横向流程图可另设 `mobile_src`、`mobile_width`、`mobile_height`，在手机上显示竖向版本，避免把整张图缩成无法阅读的小字。
@@ -76,7 +78,7 @@ GoatCounter 接入代码已准备，配置集中在 `data/analytics.json`。当�
 3. 把公开站点地址（例如 `https://your-code.goatcounter.com`，不包含 `/count`）填入 `endpoint`，将 `started_on` 填为实际启用日期，`enabled` 改为 `true`。不需要 API token、密码或服务器。
 4. 构建并发布，检查 `/software/<slug>/` 的真实计数、中文对应页和 GoatCounter 后台。第一次没有统计或被拦截时可显示“暂时无法读取”；服务响应可能缓存数小时，不应靠反复刷新验收。
 
-英文和中文软件页都记录到 `/software/<slug>/`；域名、旧项目路径、`index.html`、参数和锚点不会拆散同一软件。主页展示六个软件各自的累计访问，但仅打开主页不会增加六个软件的计数。`allowed_hosts` 防止本地预览采集。
+英文和中文软件页都记录到 `/software/<slug>/`；域名、旧项目路径、`index.html`、参数和锚点不会拆散同一软件。主页展示当前可见软件各自的累计访问，但仅打开主页不会增加这些软件的计数。`allowed_hosts` 防止本地预览采集。
 
 这是启用后的**会话访问次数**，不是历史独立人数；同一人跨会话可能重复计数，语言切换在同一会话合并。启用前没有记录的访问无法补回。源码仓库 Traffic、手册访问、PyPI 安装和 Release 下载不计入个人主页软件页访问。广告拦截器、脚本禁用等也可能造成漏计。禁止从 localStorage、随机数或示意数字生成所谓访问量。
 

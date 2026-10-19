@@ -40,6 +40,8 @@ On 2026-10-19 the author supplied a new 886 × 1067 speaking photo and explicitl
 
 Software descriptions reflect the public README/documentation reviewed in this conversation. This update does not certify a fresh execution test of each software package.
 
+The author subsequently requested that MultiwfnMLhelper no longer be displayed. Its entry is retained with `visible: false`; bilingual homepages omit it and former project URLs redirect to the corresponding software list. The upstream repository and software itself are unchanged.
+
 On 2026-10-19 the author requested per-software historical visit counts and selected GoatCounter preparation. The integration follows the provider's official path override, counter JSON and session documentation. It remains disabled pending an owner-created site address. No historical visits, counts or account configuration have been invented; English/Chinese project pages share a stable per-project path.
 
 On 2026-10-19 the author requested that the Surfacia introduction exclude the former Go Beyond extension. The local revision plan `D:/YumingSu/Papers/Surfacia/New_version_Surfacia_260826/00_project_control/05_完整研究计划_模型横向对比与数据划分.md` and the revision-scope statement in `06_manuscript/Surfacia_interpretability_SI_v7_structure_corrected.md` confirm that candidate acquisition, SPES and SHAP-cliff are outside the revised article. The website summary and bilingual project descriptions therefore focus on descriptors, modeling and interpretation. Local manuscripts, archived analyses and the separate Surfacia software/documentation repositories are not changed or uploaded by this website edit.
