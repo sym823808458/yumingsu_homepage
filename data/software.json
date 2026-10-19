@@ -13,7 +13,7 @@
     "repository": "https://github.com/sym823808458/Surfacia",
     "docs": "https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html",
     "docs_en": "https://surfacia.readthedocs.io/zh-cn/latest/",
-    "command": "pip install surfacia",
+    "command": "pip install \"surfacia[viz] @ git+https://github.com/sym823808458/Surfacia.git\"",
     "tags": [
       "Python",
       "CLI",

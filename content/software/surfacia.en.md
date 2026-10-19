@@ -10,9 +10,9 @@ Surfacia converts molecular surface properties into hierarchical descriptors and
 
 ## Installation and use
 
-Install the Python package with `pip install surfacia` and run `surfacia --help`. Machine-learning analysis can also run separately on an existing descriptor table.
+Install the current version from GitHub using the command above, then run `surfacia --help`. Machine-learning analysis can also run separately on an existing descriptor table.
 
-The current source revision focuses on descriptors, modeling and interpretation. Check the installed version and the manual's migration notes: older pip releases retain their earlier behavior until upgraded. The manual includes downloadable inputs, actual ML/SHAP outputs and a separate structure-to-surface workflow example.
+The current 4.0.0 source revision focuses on descriptors, modeling and interpretation. Its PyPI upload is pending; a plain `pip install surfacia` currently installs the older 3.0.3 release. Check the manual's installation and migration notes. The manual includes downloadable inputs, actual ML/SHAP outputs and a separate structure-to-surface workflow example.
 
 The full quantum-chemistry workflow additionally requires external tools such as xTB, Gaussian and Multiwfn, installed under their respective licenses. Consult the current documentation for environment and version requirements.
 
