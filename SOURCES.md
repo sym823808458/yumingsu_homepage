@@ -42,6 +42,8 @@ On 2026-10-19 the author requested that the Surfacia introduction exclude the fo
 
 The subsequent authorized Surfacia repository/manual update is recorded separately in `sym823808458/Surfacia` at commit `16114d9007eb360728d1345aabb21105cf358fa8`. This homepage follow-up links its paired manual pages and distinguishes source revision from PyPI availability. Public examples use listed SMILES and RDKit-computed properties; they are not presented as unpublished catalytic results or a quantum-surface benchmark.
 
+Surfacia 4.0.0 was published to [PyPI](https://pypi.org/project/surfacia/4.0.0/) on 2026-10-19. The version-specific PyPI JSON endpoint confirmed both wheel and source distribution, with SHA-256 hashes matching the locally checked release artifacts. Installation from the official PyPI index succeeded. The bilingual homepage installation text now directs users to the published release and explicitly upgrades older installations.
+
 ## Publication metadata
 
 The supplied titles, citation counts and years are the primary record of this update. DOI and bibliographic metadata were supplemented using existing public links, publisher records and Crossref. Successful Crossref checks are recorded per item with `metadata_source`, `metadata_checked` and `authors_verified`; HTTP 429 or other errors are not marked verified. User-supplied truncated author lists remain where no complete list has been confirmed. Preprint status is retained as supplied rather than inferring a later acceptance.
