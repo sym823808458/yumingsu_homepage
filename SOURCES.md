@@ -12,6 +12,8 @@ Yuming Su supplied a Google Scholar profile text in the website-maintenance conv
 
 The supplied list contains 20 scholarly records, not a confirmed total publication count. It includes 18 journal records, one arXiv preprint record and one MLatom software/resource record. Per-record citation counts come from that same supplied snapshot. No live Scholar synchronization is configured.
 
+The 2026-10-19 display revision follows the author's preference for a ten-most-cited default and an optional chronological view. The paper section includes the 18 journal records and one preprint; the software/resource record remains in the data archive and is not ranked as a paper. No citation numbers, publication titles or dates were changed for this presentation update.
+
 Scholar's account-management prompts, unverified-email notices, coauthor suggestions and open-access dashboard notices are not biography content and are excluded from the website.
 
 The 2013 date of the MLatom resource is retained from the supplied record; it is not represented as a 2013 journal publication or as evidence of the author's employment in 2013.

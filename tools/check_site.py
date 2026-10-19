@@ -54,7 +54,7 @@ def main():
         errors.extend(f'{path.relative_to(ROOT)}: {e}' for e in page.errors)
     papers=json.loads((ROOT/'data/publications.json').read_text(encoding='utf-8'))
     for path in (ROOT/'index.html',ROOT/'zh/index.html'):
-        if pages[path.resolve()].publications!=len(papers): errors.append('incomplete publication rendering: '+str(path))
+        if pages[path.resolve()].publications!=sum(p['type']!='resource' for p in papers): errors.append('incomplete publication rendering: '+str(path))
     if errors: raise SystemExit('\n'.join(errors))
     print(f'PASS: {len(pages)} pages, all local links/fragments, image alt text and {len(papers)} scholarly records in both languages.')
 

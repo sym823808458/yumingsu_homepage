@@ -34,9 +34,10 @@ TEXT = {
         'research_title': '研究方向', 'research_kicker': '研究 · 问题与方法',
         'software_title': '让方法成为可用的工具', 'software_kicker': '软件 · 科研工具', 'software_view': '了解项目 ↗',
         'pub_title': '论文与学术成果', 'pub_kicker': '学术论文 · 研究成果', 'full_list': '完整学术列表 ↗',
-        'pub_intro': '收录部分期刊论文、预印本与软件资源。引用次数采用 {date} 的 Google Scholar 快照；本页记录数不代表全部论文数。',
-        'search': '搜索标题、作者或期刊', 'all_years': '全部年份', 'newest': '按年份排序', 'most_cited': '按引用排序',
-        'all': '全部记录', 'selected': '代表作', 'results': '显示 {count} / {total} 条记录', 'empty': '没有匹配的记录，请调整搜索或筛选条件。',
+        'pub_intro': '默认展示引用最高的 10 篇论文，也可按时间查看收录的期刊论文与预印本。引用次数截至 {date}，完整列表见 Google Scholar。',
+        'top_ten': '引用最高的 10 篇', 'by_time': '按时间查看', 'pub_views': '论文展示方式',
+        'results_top': '引用最高的 {count} 篇论文', 'results_time': '按时间展示 {count} 篇论文 · 最新在前',
+        'static_papers': '当前展示引用最高的 10 篇，完整列表请访问 Google Scholar。',
         'cited': '次引用', 'featured': '代表作', 'journal': '期刊论文', 'preprint': '预印本', 'resource': '软件资源', 'paper_link': '查看论文 ↗',
         'contact_title': '欢迎交流与合作', 'contact_text': '围绕可解释机器学习、化学材料与自动化实验，探索共同感兴趣的问题。',
         'updated': '更新于', 'source': '网站源码', 'home': '首页', 'code': '源码仓库 ↗', 'docs': '使用手册 ↗', 'download': '下载软件 ↗',
@@ -53,9 +54,10 @@ TEXT = {
         'research_title': 'Research interests', 'research_kicker': 'RESEARCH / QUESTIONS & METHODS',
         'software_title': 'From methods to usable tools', 'software_kicker': 'SOFTWARE / RESEARCH TOOLS', 'software_view': 'Explore ↗',
         'pub_title': 'Publications & scholarly work', 'pub_kicker': 'PUBLICATIONS / RESEARCH OUTPUTS', 'full_list': 'Full list on Scholar ↗',
-        'pub_intro': 'A selection of journal articles, preprints and software resources. Citation counts are a Google Scholar snapshot dated {date}; listed records are not the total publication count.',
-        'search': 'Search titles, authors or journals', 'all_years': 'All years', 'newest': 'Newest first', 'most_cited': 'Most cited',
-        'all': 'All records', 'selected': 'Selected work', 'results': 'Showing {count} of {total} records', 'empty': 'No matching records. Try another search or filter.',
+        'pub_intro': 'The 10 most cited papers, with a chronological view of the listed journal articles and preprints. Citation snapshot: {date}. See Google Scholar for the full list.',
+        'top_ten': '10 most cited', 'by_time': 'By date', 'pub_views': 'Publication view',
+        'results_top': '{count} most cited papers', 'results_time': '{count} papers · newest first',
+        'static_papers': 'The 10 most cited papers are shown. Visit Google Scholar for the full list.',
         'cited': 'citations', 'featured': 'Selected', 'journal': 'Journal article', 'preprint': 'Preprint', 'resource': 'Software resource', 'paper_link': 'Read paper ↗',
         'contact_title': 'Let’s explore a question together.', 'contact_text': 'Open to conversations on interpretable machine learning, chemistry, materials and automated experiments.',
         'updated': 'Updated', 'source': 'Website source', 'home': 'Home', 'code': 'Source code ↗', 'docs': 'Documentation ↗', 'download': 'Download ↗',
@@ -127,21 +129,19 @@ def authors(paper):
     text = E(text)
     return re.sub(r'(?<![\w])(?:Yuming Su|Y\. M\. Su|Y\. Su)(?![\w])', r'<span class="author-self">\g<0></span>', text)
 
-def publication(paper, t, lang):
+def publication(paper, t, lang, hidden=False):
     link = 'https://doi.org/' + paper['doi'] if paper.get('doi') else paper.get('url', '')
     if not link:
         link = 'https://scholar.google.com/scholar?q=' + __import__('urllib.parse', fromlist=['quote']).quote(paper['title'])
-    search = E(' '.join([paper['title'], paper['authors'], ' '.join(paper.get('authors_verified', [])), paper['venue'], paper.get('doi','')]).lower(), quote=True)
     venue = paper.get('venue_zh', paper['venue']) if lang == 'zh' else paper['venue']
     details = paper.get('details_zh', paper['details']) if lang == 'zh' else paper['details']
-    selected = f'<span class="pub-featured">{t["featured"]}</span>' if paper.get('featured') else ''
     link_label = 'DOI ↗' if paper.get('doi') else t['paper_link']
-    return f'''<li class="publication" id="{E(paper['id'])}" data-publication data-year="{paper['year']}" data-citations="{paper['citations']}" data-featured="{str(paper.get('featured',False)).lower()}" data-search="{search}">
+    return f'''<li class="publication" id="{E(paper['id'])}" data-publication data-year="{paper['year']}" data-citations="{paper['citations']}"{' hidden' if hidden else ''}>
       <div class="pub-year">{paper['year']}</div><div>
       <a class="pub-title" href="{E(link)}" lang="en">{E(paper['title'])}</a>
       <p class="pub-authors">{authors(paper)}</p>
       <p class="pub-venue"><em>{E(venue)}</em> · {E(details)}</p>
-      <div class="pub-links"><span class="pub-type">{t[paper['type']]}</span><a href="{E(link)}">{link_label}</a>{selected}</div></div>
+      <div class="pub-links"><span class="pub-type">{t[paper['type']]}</span><a href="{E(link)}">{link_label}</a></div></div>
       <div class="pub-citations"><strong>{paper['citations']}</strong>{t['cited']}</div></li>'''
 
 def home_body(profile, papers, software, lang, prefix):
@@ -154,18 +154,17 @@ def home_body(profile, papers, software, lang, prefix):
     timeline = ''.join(f'<div class="timeline-item" id="{["work","education","education-bachelors"][i]}"><div class="timeline-period">{E(x["period"])}</div><div class="timeline-title">{E(x["title"][lang])}</div><div class="timeline-place">{E(x["institution"][lang])}</div></div>' for i,x in enumerate(profile['experience']))
     research = ''.join(f'<article class="research-item"><div class="research-number">{x["number"]}</div><h3>{E(x["title"][lang])}</h3><p>{E(x["text"][lang])}</p>{localized_tags(x,lang)}</article>' for x in profile['research'])
     rows = ''.join(f'<article class="software-row"><span class="software-index">{i:02d}</span><div><a class="software-name" href="software/{s["slug"]}/">{E(software_name(s,lang))}</a><div class="software-category">{E(s["category"][lang])}</div></div><p class="software-summary">{E(s["summary"][lang])}</p><a class="text-link" href="software/{s["slug"]}/">{t["software_view"]}<span class="sr-only"> {E(software_name(s,lang))}</span></a></article>' for i,s in enumerate(software,1))
-    ordered = sorted(papers, key=lambda p:(p['year'],p['citations']), reverse=True)
-    pub_rows = ''.join(publication(p,t,lang) for p in ordered)
-    years = ''.join(f'<option value="{y}">{y}</option>' for y in sorted({p['year'] for p in papers}, reverse=True))
-    # 2013 is retained only as the date of the supplied software-resource record.
-    count = t['results'].format(count=len(papers),total=len(papers))
+    # Software-resource records stay in the data archive, not the paper display.
+    ordered = sorted((p for p in papers if p['type'] != 'resource'), key=lambda p:(p['citations'],p['year']), reverse=True)
+    pub_rows = ''.join(publication(p,t,lang,hidden=i>=10) for i,p in enumerate(ordered))
+    count = t['results_top'].format(count=min(10,len(ordered)))
     return f'''<div class="container">
       <section id="home" class="hero" aria-label="Yuming Su">
         <div class="hero-main"><div class="hero-intro"><div class="eyebrow">{t['eyebrow']}</div>
           <h1>Yuming Su<span class="chinese-name">苏禹铭</span></h1><p class="role">{E(profile['position'][lang])}</p>
           <p class="affiliation">{E(profile['affiliation'][lang])}<br>{E(profile['location'][lang])}</p></div>
           <p class="hero-description">{t['hero']}</p><div class="contact-links">{contact_links}</div></div>
-        <div class="portrait-wrap"><img class="profile-photo" src="{prefix}images/profile.jpg" alt="Yuming Su / 苏禹铭" width="240" height="278"><p class="portrait-caption">{t['portrait_caption']}</p></div>
+        <figure class="portrait-wrap"><div class="portrait-frame"><img class="profile-photo" src="{prefix}images/profile.jpg" alt="Yuming Su / 苏禹铭" width="658" height="640"></div></figure>
       </section>
       <div class="metrics-band" aria-label="{t['snapshot']}">{metrics}<div class="metrics-note"><a href="{E(links['scholar'])}">{t['snapshot']} ↗</a><br>{E(t['snapshot_note'].format(date=snapshot['date']))}</div></div>
       <section class="section" id="about">{heading(t['about_kicker'],t['about_title'])}<div class="about-layout"><div class="prose">{markdown(ROOT/'content'/f'about.{lang}.md')}</div><div class="timeline">{timeline}</div></div></section>
@@ -173,12 +172,9 @@ def home_body(profile, papers, software, lang, prefix):
       <section class="section" id="software">{heading(t['software_kicker'],t['software_title'],f'<a class="section-link" href="{E(links["github"])}">GitHub ↗</a>')}<div class="software-list">{rows}</div></section>
       <section class="section" id="publications">{heading(t['pub_kicker'],t['pub_title'],f'<a class="section-link" href="{E(links["scholar"])}">{t["full_list"]}</a>')}
         <p class="publication-intro">{E(t['pub_intro'].format(date=snapshot['date']))}</p>
-        <div class="publication-toolbar"><div class="search-wrap"><label class="sr-only" for="publication-search">{t['search']}</label><input type="search" id="publication-search" placeholder="{t['search']}" autocomplete="off"></div>
-        <label class="sr-only" for="publication-year">{t['all_years']}</label><select id="publication-year" class="filter-select"><option value="">{t['all_years']}</option>{years}</select>
-        <label class="sr-only" for="publication-sort">{t['newest']}</label><select id="publication-sort" class="filter-select"><option value="year">{t['newest']}</option><option value="citations">{t['most_cited']}</option></select>
-        <div class="pub-tabs"><button type="button" data-publication-mode="all" aria-pressed="true">{t['all']}</button><button type="button" data-publication-mode="selected" aria-pressed="false">{t['selected']}</button></div></div>
-        <p class="result-count" id="publication-count" aria-live="polite" data-template="{E(t['results'])}">{count}</p>
-        <ol class="publication-list" data-publications>{pub_rows}</ol><p id="publication-empty" class="empty-state" hidden>{t['empty']}</p>
+        <div class="publication-toolbar"><div class="pub-tabs" role="group" aria-label="{t['pub_views']}"><button type="button" data-publication-view="citations" aria-pressed="true" disabled>{t['top_ten']}</button><button type="button" data-publication-view="year" aria-pressed="false" disabled>{t['by_time']}</button></div></div>
+        <p class="result-count" id="publication-count" aria-live="polite" data-template-top="{E(t['results_top'])}" data-template-time="{E(t['results_time'])}">{count}</p>
+        <ol class="publication-list" data-publications>{pub_rows}</ol><noscript><p class="result-count">{t['static_papers']}</p></noscript>
       </section>
       <section class="contact-section" id="contact"><div><p class="section-kicker">{t['contact']}</p><h2>{t['contact_title']}</h2><p>{t['contact_text']}</p></div><a class="button" href="mailto:{E(profile['email'])}">{E(profile['email'])} <span aria-hidden="true">↗</span></a></section>
     </div>'''
