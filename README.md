@@ -15,6 +15,7 @@
 | 论文、引用快照、DOI、代表作标记 | `data/publications.json` |
 | 软件目录、链接、简介 | `data/software.json` |
 | 软件详细介绍 | `content/software/<slug>.zh.md`、`<slug>.en.md` |
+| 各软件累计访问（GoatCounter） | `data/analytics.json`，启用方法见 `MAINTENANCE.md` |
 | 页面框架、视觉、交互 | `templates/base.html`、`assets/site.css`、`assets/site.js` |
 
 修改内容后，用 Python 3.10+ 运行（无需安装依赖）：

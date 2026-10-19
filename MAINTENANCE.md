@@ -67,4 +67,17 @@
 
 ## 访问量与下载量
 
-本次没有接入第三方网站统计。仓库 Traffic、Pages 网站访问和 Releases 附件下载属于不同统计口径。今后接入真实统计服务时，记录服务名称、账户归属、接入位置和统计口径；不要把客户端公开页面中的数值误当作真实用户数。
+GoatCounter 接入代码已准备，配置集中在 `data/analytics.json`。当前 `enabled: false`，尚未开始采集；没有配置时软件详情页显示“尚未启用”，不会显示假的零值。
+
+启用步骤：
+
+1. 作者在 https://www.goatcounter.com/signup 创建本人账号和站点，域名填 `yumingsu.top`。保留默认 Sessions 会话统计。
+2. 在站点设置启用 **Allow adding visitor counts on your website**，允许读取公开计数；管理后台不必公开。
+3. 把公开站点地址（例如 `https://your-code.goatcounter.com`，不包含 `/count`）填入 `endpoint`，将 `started_on` 填为实际启用日期，`enabled` 改为 `true`。不需要 API token、密码或服务器。
+4. 构建并发布，检查 `/software/<slug>/` 的真实计数、中文对应页和 GoatCounter 后台。第一次没有统计或被拦截时可显示“暂时无法读取”；服务响应可能缓存数小时，不应靠反复刷新验收。
+
+英文和中文软件页都记录到 `/software/<slug>/`；域名、旧项目路径、`index.html`、参数和锚点不会拆散同一软件。主页展示六个软件各自的累计访问，但仅打开主页不会增加六个软件的计数。`allowed_hosts` 防止本地预览采集。
+
+这是启用后的**会话访问次数**，不是历史独立人数；同一人跨会话可能重复计数，语言切换在同一会话合并。启用前没有记录的访问无法补回。源码仓库 Traffic、手册访问、PyPI 安装和 Release 下载不计入个人主页软件页访问。广告拦截器、脚本禁用等也可能造成漏计。禁止从 localStorage、随机数或示意数字生成所谓访问量。
+
+官方接入与口径：https://www.goatcounter.com/help/start 、https://www.goatcounter.com/help/visitor-counter 、https://www.goatcounter.com/help/sessions 。需要保存长期历史时，可在作者后台导出 CSV，不能把访问量冒充下载量。

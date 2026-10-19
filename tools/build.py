@@ -253,9 +253,18 @@ def validate(profile, papers, software):
 
 def build(check=False):
     profile, papers, software = load('profile'), load('publications'), load('software')
+    analytics = load('analytics')
+    endpoint = analytics['endpoint'].rstrip('/')
+    if analytics['provider'] != 'goatcounter':
+        raise ValueError('Unsupported analytics provider')
+    if analytics['enabled']:
+        if not re.fullmatch(r'https://[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.goatcounter\.com', endpoint):
+            raise ValueError('Use the public GoatCounter site URL, never an API token')
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', analytics['started_on']):
+            raise ValueError('Record the real analytics activation date')
     validate(profile,papers,software)
     template = Template((ROOT/'templates/base.html').read_text(encoding='utf-8'))
-    asset_text = (ROOT/'assets/site.css').read_text(encoding='utf-8') + (ROOT/'assets/site.js').read_text(encoding='utf-8')
+    asset_text = ''.join((ROOT/'assets'/name).read_text(encoding='utf-8') for name in ['site.css','site.js','analytics.js'])
     asset_version = hashlib.sha256(asset_text.encode('utf-8')).hexdigest()[:12]
     outputs = {}
     for lang,t in TEXT.items():
@@ -269,7 +278,26 @@ def build(check=False):
             language_url = prefix + language_root(other) + ('software/'+project['slug']+'/' if project else '')
             nav = ''.join(f'<a href="{home}#{section}">{t[section]}</a>' for section in ['about','research','software','publications','contact'])
             body = project_body(project,papers,lang,home,prefix,profile['email']) if project else home_body(profile,papers,software,lang,prefix)
+            if project:
+                if analytics['enabled']:
+                    label = '累计访问' if lang == 'zh' else 'Recorded visits'
+                    status = f'<strong data-visit-count="/software/{E(project["slug"])}/">…</strong>'
+                    note = ('自 '+analytics['started_on']+' 起，中英文合并；按会话计次，并非历史独立人数。' if lang=='zh' else 'Since '+analytics['started_on']+'; English and Chinese combined. Session-based visits, not lifetime unique people.')
+                else:
+                    label = '访问统计' if lang == 'zh' else 'Visit statistics'
+                    status = '尚未启用' if lang == 'zh' else 'Not enabled'
+                    note = '启用后开始累计，无法补回此前访问。' if lang=='zh' else 'Counts begin on activation; earlier visits cannot be recovered.'
+                stats = f'<section class="visit-statistics"><h2>{label}</h2><p>{status}</p><p class="stats-note">{E(note)}</p></section>'
+                body = body.replace('</aside>',stats+'</aside>')
+            elif analytics['enabled']:
+                label = '累计访问' if lang=='zh' else 'Recorded visits'
+                for item in software:
+                    anchor = f'<div class="software-category">{E(item["category"][lang])}</div>'
+                    counter = f'<div class="software-visits">{label} <span data-visit-count="/software/{E(item["slug"])}/">…</span></div>'
+                    body = body.replace(anchor,anchor+counter)
             outputs[path] = template.substitute(
+                analytics_endpoint=E(endpoint if analytics['enabled'] else ''),analytics_hosts=E(','.join(analytics['allowed_hosts'])),
+                analytics_path='/software/'+E(project['slug'])+'/' if project else '/',analytics_title=E(project['name'] if project else 'Yuming Su'),
                 html_lang='zh-CN' if lang=='zh' else 'en',title=E(software_name(project,lang)+' · Yuming Su' if project else t['title']),
                 description=E(project['summary'][lang] if project else t['description']),prefix=prefix,asset_version=asset_version,skip=t['skip'],navigation=t['navigation'],home=home,nav=nav,
                 language_url=language_url,other_lang='en' if other=='en' else 'zh-CN',language_label='English' if lang=='zh' else '中文',body=body,

@@ -1,0 +1,11 @@
+{
+  "provider": "goatcounter",
+  "enabled": false,
+  "endpoint": "",
+  "started_on": "",
+  "allowed_hosts": [
+    "yumingsu.top",
+    "www.yumingsu.top",
+    "sym823808458.github.io"
+  ]
+}

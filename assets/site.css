@@ -1063,3 +1063,6 @@ code {
     font-size:12px;
   }
 }
+/* Counters use real provider data; missing configuration never becomes zero. */
+.visit-statistics {margin-top:1.8rem; padding-top:1rem; border-top:1px solid var(--line, #ddd);}
+.stats-note, .software-visits {font-size:.86rem; color:#666; line-height:1.5;}
