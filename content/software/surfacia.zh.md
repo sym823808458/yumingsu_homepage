@@ -12,8 +12,10 @@ Surfacia 将分子表面性质转化为多层级描述符，并连接特征筛�
 
 Python 包可通过 `pip install surfacia` 安装。运行 `surfacia --help` 查看命令；已有描述符表时，可以单独进行机器学习分析。
 
+当前源码聚焦描述符、建模与解释。请核对安装版本和手册中的迁移说明：旧 pip 版本需升级后才会改变原有行为。新手册提供可下载输入、实际 ML/SHAP 输出，以及单独的结构到表面流程案例。
+
 完整量子化学流程还依赖 xTB、Gaussian 和 Multiwfn 等外部软件，需要自行安装并满足相应许可要求。环境与版本要求请以当前手册为准。
 
 ## 深入了解
 
-[阅读完整中文手册](https://surfacia.readthedocs.io/zh-cn/latest/)或访问[源码仓库](https://github.com/sym823808458/Surfacia)，查看命令、示例、依赖与问题反馈入口。
+[阅读完整中文手册](https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html)或访问[源码仓库](https://github.com/sym823808458/Surfacia)，查看命令、示例、依赖与问题反馈入口。

@@ -11,8 +11,8 @@
       "en": "A workflow connecting molecular structures and surface properties with chemically interpretable descriptors, feature selection, predictive modeling and model interpretation."
     },
     "repository": "https://github.com/sym823808458/Surfacia",
-    "docs": "https://surfacia.readthedocs.io/zh-cn/latest/",
-    "docs_en": "https://surfacia.readthedocs.io/en/latest/",
+    "docs": "https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html",
+    "docs_en": "https://surfacia.readthedocs.io/zh-cn/latest/",
     "command": "pip install surfacia",
     "tags": [
       "Python",
