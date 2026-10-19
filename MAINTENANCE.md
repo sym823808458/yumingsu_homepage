@@ -53,7 +53,9 @@
 
 现有项目地址为 `https://sym823808458.github.io/yumingsu_homepage/`。所有本地资源采用相对路径，以兼容项目路径和将来的独立域名。
 
-绑定域名时，在注册商配置 DNS，在 GitHub 验证域名所有权，再配置 Pages 自定义域名和 HTTPS。只在确认可用后添加对应 `CNAME`。不要把域名注册截图当作 DNS 已生效的证据。
+自定义域名配置为 `yumingsu.top`，由仓库根目录的 `CNAME` 文件维护。2026-10-19 已通过实时 DNS 查询确认四条 GitHub Pages A 记录与 GitHub 所有权验证 TXT 记录；内容更新时保留 `CNAME`，不要重新添加或购买服务器。注册截图不能替代 DNS 查询。
+
+发布后检查 `https://yumingsu.top/` 和软件子页，再到仓库 Settings → Pages 确认自定义域名和 Enforce HTTPS 状态。域名所有权 TXT 验证、仓库自定义域名绑定、HTTPS 证书签发是不同步骤；只完成 TXT 验证不会让网站自动使用域名。若启用 `www.yumingsu.top`，需在注册商另加 `www` CNAME 指向 `sym823808458.github.io`（不包含协议或仓库路径）。
 
 ## 回滚
 

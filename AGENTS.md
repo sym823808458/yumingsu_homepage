@@ -11,7 +11,7 @@ This repository is Yuming Su's existing public academic website on GitHub Pages.
 - Citation metrics and per-paper counts are dated snapshots. Do not invent a total publication count from an incomplete list. Separate journal articles, preprints and software resources.
 - Do not publish internal experiment data, unreleased findings, credentials, equipment control interfaces or manuscript files without an explicit request covering them.
 - Preserve project URLs and software slugs. Before removing a page, add a migration or redirect plan.
-- Domain ownership and DNS must be verified before adding or changing `CNAME`; no domain has been bound as part of the 2026-10-19 update.
+- Domain ownership and DNS must be verified before adding or changing `CNAME`. The configured custom domain is `yumingsu.top`; preserve the root `CNAME` file during content updates. Its four GitHub Pages A records and GitHub ownership-challenge TXT record were confirmed live on 2026-10-19.
 - Keep updates reviewable in Git. For an authorized publication, commit content sources and generated HTML together and verify the deployed site.
 - Do not overwrite unrelated remote changes. Refresh the branch head before publishing and use a fast-forward or an expected-head lease.
 - Do not add visitor counters or downloads badges with invented numbers. Analytics needs a real configured source.
