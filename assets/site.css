@@ -201,8 +201,6 @@ nav a,.language-link {
   width:100%;
   object-fit:cover;
   object-position:center;
-  transform:scale(1.7);
-  transform-origin:53% 6%;
 }
 .portrait-wrap {
   margin:35px 0 0;

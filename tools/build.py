@@ -146,6 +146,7 @@ def publication(paper, t, lang, hidden=False):
 
 def home_body(profile, papers, software, lang, prefix):
     t = TEXT[lang]
+    portrait_version = hashlib.sha256((ROOT/'images/profile.jpg').read_bytes()).hexdigest()[:12]
     links = profile['links']
     snapshot = profile['scholar_snapshot']
     contacts = [(t['email'], 'mailto:' + profile['email']), ('Google Scholar', links['scholar']), ('GitHub', links['github']), ('ORCID', links['orcid'])]
@@ -164,7 +165,7 @@ def home_body(profile, papers, software, lang, prefix):
           <h1>Yuming Su<span class="chinese-name">苏禹铭</span></h1><p class="role">{E(profile['position'][lang])}</p>
           <p class="affiliation">{E(profile['affiliation'][lang])}<br>{E(profile['location'][lang])}</p></div>
           <p class="hero-description">{t['hero']}</p><div class="contact-links">{contact_links}</div></div>
-        <figure class="portrait-wrap"><div class="portrait-frame"><img class="profile-photo" src="{prefix}images/profile.jpg" alt="Yuming Su / 苏禹铭" width="658" height="640"></div></figure>
+        <figure class="portrait-wrap"><div class="portrait-frame"><img class="profile-photo" src="{prefix}images/profile.jpg?v={portrait_version}" alt="Yuming Su / 苏禹铭" width="886" height="1067"></div></figure>
       </section>
       <div class="metrics-band" aria-label="{t['snapshot']}">{metrics}<div class="metrics-note"><a href="{E(links['scholar'])}">{t['snapshot']} ↗</a><br>{E(t['snapshot_note'].format(date=snapshot['date']))}</div></div>
       <section class="section" id="about">{heading(t['about_kicker'],t['about_title'])}<div class="about-layout"><div class="prose">{markdown(ROOT/'content'/f'about.{lang}.md')}</div><div class="timeline">{timeline}</div></div></section>

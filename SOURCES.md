@@ -26,6 +26,8 @@ The 2013 date of the MLatom resource is retained from the supplied record; it is
 
 The website does not claim unverified grant totals, current publication totals, author-contribution roles, unreleased performance numbers or completion of planned experiments.
 
+On 2026-10-19 the author supplied a new 886 × 1067 speaking photo and explicitly requested its use on the homepage. The supplied JPEG is copied unchanged to `images/profile.jpg`; the old portrait's magnification is removed. Both language versions share the same image with a content-hash query for cache invalidation. No retouching or generated replacement was applied.
+
 ## Public software sources
 
 - https://github.com/sym823808458/Surfacia
