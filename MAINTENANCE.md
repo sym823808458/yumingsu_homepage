@@ -32,6 +32,12 @@
 4. 运行构建。英文页面自动生成到 `software/my-tool/`，中文页面生成到 `zh/software/my-tool/`。旧 `en/software/my-tool/` 自动跳转到英文入口。
 5. 实际实现与计划功能分开表述；下载、文档和源码链接均需可用。
 
+对于尚未公开发布源码的软件，可以不填 `repository`，设置 `contact: true`，页面会使用个人邮箱作为联系入口。可用 `status`、`availability` 的中英文字段注明开发阶段和获取方式，不要创建虚假的仓库或下载链接。
+
+项目条目可添加 `media` 数组展示图片或动画。每项包含 `type`（`image` / `animation`）、`src`（相对资源路径，或按 `en` / `zh` 区分的路径）、`width`、`height`，以及中英文 `alt`、`caption`；动画另需中英文 `label`，默认收起，由访客主动展开。只添加已确认适合公开的演示资源，并注明示意图、模型输出与实测结果的区别。
+
+横向流程图可另设 `mobile_src`、`mobile_width`、`mobile_height`，在手机上显示竖向版本，避免把整张图缩成无法阅读的小字。
+
 当前 Markdown 支持段落、`##`/`###` 标题、`-` 列表、`**粗体**`、行内代码和 HTTPS 链接；不支持任意 HTML、表格或复杂 Markdown 扩展。需要扩展语法时，修改构建器并检查所有页面。
 
 ## 语言与入口约定

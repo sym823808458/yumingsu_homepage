@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A local desktop prototype that connects building annotation, wind-direction scenarios and facade/floor-band visualizations for exploratory inspection planning.">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="Building Wind Screening · Yuming Su">
+  <meta property="og:description" content="A local desktop prototype that connects building annotation, wind-direction scenarios and facade/floor-band visualizations for exploratory inspection planning.">
+  <meta property="og:type" content="website">
+  <title>Building Wind Screening · Yuming Su</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/site.css?v=ed726471a461">
+  <script src="../../assets/site.js?v=ed726471a461" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="wordmark" href="../../"><span class="monogram">YS<span>.</span></span><span>Yuming Su <span class="wordmark-zh">苏禹铭</span></span></a>
+    <nav aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#research">Research</a><a href="../../#software">Software</a><a href="../../#publications">Publications</a><a href="../../#contact">Contact</a></nav>
+    <a class="language-link" href="../../zh/software/building-wind-screening/" lang="zh-CN" hreflang="zh-CN">中文</a>
+  </div></header>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / Building Wind Screening</div><div class="eyebrow">Building exposure · Inspection planning</div><h1>Building Wind Screening</h1><p class="project-status">Development prototype</p><p class="project-lead">A local desktop prototype that connects building annotation, wind-direction scenarios and facade/floor-band visualizations for exploratory inspection planning.</p><div class="tags"><span class="tag">Python</span><span class="tag">Desktop GUI</span><span class="tag">Wind scenarios</span></div><div class="project-buttons"><a class="button" href="mailto:yumingsu@xmu.edu.cn">Discuss this software ↗</a></div></section>
+      <section class="project-showcase"><figure class="project-media"><div class="project-media-image"><picture><source media="(max-width:700px)" srcset="../../images/software/building-wind-screening/workflow-mobile.en.svg" width="480" height="1100"><img src="../../images/software/building-wind-screening/workflow.en.svg" width="1080" height="450" alt="Four-step schematic: annotate buildings, set wind scenarios, compare facade and floor-band exposure, and review exports." loading="lazy"></picture></div><figcaption>Workflow schematic. Geometry is illustrative, not a map or a computed result.</figcaption></figure><details class="project-animation"><summary>Watch the original wind-direction animation</summary><figure class="project-media"><div class="project-media-image"><img src="../../images/software/building-wind-screening/desktop-floor-band-demo.gif" width="900" height="620" alt="Original desktop export showing a pseudo-3D building and floor-band pressure estimates as wind direction changes; the prototype interface is in Chinese." loading="lazy"></div><figcaption>Original desktop export (Chinese interface). Values illustrate the simplified screening model; they are not validated design loads or measured damage probabilities.</figcaption></figure></details></section><div class="project-layout"><article class="prose project-prose"><h2>From a site image to an inspection overview</h2>
+<p>Building Wind Screening is a local desktop prototype for annotating groups of buildings and exploring their relative wind-pressure exposure under different wind directions. It brings image calibration, editable building footprints, floor and height information, simplified pressure estimates and visual exports into one workflow.</p>
+<p>The project is intended to support exploratory inspection planning for residential communities, campuses and multi-building sites. It helps organize which buildings, facades and floor bands deserve closer attention under a chosen scenario.</p>
+<h2>What the current prototype does</h2>
+<ul>
+<li>Loads a user-supplied site image and calibrates distances using two scale points.</li>
+<li>Creates and refines building footprints, including corner editing, additional vertices and rotation.</li>
+<li>Records building names, floors, heights and a selected target building.</li>
+<li>Annotates open areas and considers surrounding buildings in directional exposure estimates.</li>
+<li>Compares facade pressures, floor-band summaries and building-level rankings as wind direction changes.</li>
+<li>Saves and reloads project annotations in JSON, and exports static PNG figures and plan-view or pseudo-3D GIF animations.</li>
+</ul>
+<h2>A practical workflow</h2>
+<p>Start with a site image and a known reference length. Calibrate the image, outline the buildings, enter their floors or heights, and mark relevant open areas. Set a wind-speed and incoming-direction scenario, then review the building overview and the selected building’s facade and floor-band outputs.</p>
+<p>Annotations remain in the original image-pixel coordinate system. Zooming and panning change the desktop view rather than the stored building geometry.</p>
+<h2>How to read the output</h2>
+<p>The model combines velocity pressure with height-dependent estimates, facade orientation and heuristic adjustments for building shape, surrounding exposure, shielding, open areas and nearby-building channels. Four floor bands provide a compact comparison across building height.</p>
+<p>The pseudo-3D animation illustrates how this screening model’s surface-pressure estimates change with wind direction. Its colors describe relative modeled exposure; they are not a computed airflow field or observed damage measurements.</p>
+<h2>Scope and current limitations</h2>
+<p>This is a development-stage screening model. The pressure coefficients and environmental corrections include empirical assumptions, and the project documentation identifies a need for comparison with measurements and established engineering methods. It does not estimate glass-breakage probability or certify structural or facade safety, and it does not replace CFD, wind-tunnel testing or professional engineering assessment.</p>
+<h2>Development status and access</h2>
+<p>The reviewed working folder contains a Python/Tkinter desktop implementation, requirements and product notes, saved example projects, an earlier standalone HTML prototype and exported animations. PNG/GIF export uses Pillow. A public source release and downloadable software package have not been established for this project yet.</p>
+<p>This page presents the current software and an existing output example. For a demonstration, collaboration or release enquiries, contact Yuming Su using the link above.</p></article><aside class="project-aside"><h2>Project information</h2><p>Software runs in the user’s own environment. This page provides information, documentation and source links.</p><h2>Development stage</h2><p>Development prototype</p><h2>Availability</h2><p>Desktop demonstration available by enquiry. Public source and software package release are pending.</p></aside></div></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>Updated 2026-10-19 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">Website source ↗</a></p></div></footer>
+</body>
+</html>

@@ -41,6 +41,7 @@ TEXT = {
         'contact_title': '欢迎交流与合作', 'contact_text': '围绕可解释机器学习、化学材料与自动化实验，探索共同感兴趣的问题。',
         'updated': '更新于', 'source': '网站源码', 'home': '首页', 'code': '源码仓库 ↗', 'docs': '使用手册 ↗', 'download': '下载软件 ↗',
         'related': '相关研究', 'project_info': '项目信息', 'back': '全部软件', 'project_note': '软件在用户自己的环境中运行。本页提供介绍、手册与代码入口。', 'quick_start': '快速安装',
+        'contact_project': '联系了解软件 ↗', 'stage': '开发阶段', 'availability': '获取方式',
     },
     'en': {
         'skip': 'Skip to content', 'navigation': 'Main navigation', 'about': 'About', 'research': 'Research', 'software': 'Software', 'publications': 'Publications', 'contact': 'Contact',
@@ -59,6 +60,7 @@ TEXT = {
         'contact_title': 'Let’s explore a question together.', 'contact_text': 'Open to conversations on interpretable machine learning, chemistry, materials and automated experiments.',
         'updated': 'Updated', 'source': 'Website source', 'home': 'Home', 'code': 'Source code ↗', 'docs': 'Documentation ↗', 'download': 'Download ↗',
         'related': 'Related research', 'project_info': 'Project information', 'back': 'All software', 'project_note': 'Software runs in the user’s own environment. This page provides information, documentation and source links.', 'quick_start': 'Quick install',
+        'contact_project': 'Discuss this software ↗', 'stage': 'Development stage', 'availability': 'Availability',
     },
 }
 
@@ -181,9 +183,29 @@ def home_body(profile, papers, software, lang, prefix):
       <section class="contact-section" id="contact"><div><p class="section-kicker">{t['contact']}</p><h2>{t['contact_title']}</h2><p>{t['contact_text']}</p></div><a class="button" href="mailto:{E(profile['email'])}">{E(profile['email'])} <span aria-hidden="true">↗</span></a></section>
     </div>'''
 
-def project_body(project, papers, lang, home):
+def project_media(project, lang, prefix):
+    blocks = []
+    for item in project.get('media', []):
+        source = item['src'][lang] if isinstance(item['src'], dict) else item['src']
+        picture = f'<img src="{E(prefix+source)}" width="{int(item["width"])}" height="{int(item["height"])}" alt="{E(item["alt"][lang])}" loading="lazy">'
+        if item.get('mobile_src'):
+            mobile = item['mobile_src'][lang] if isinstance(item['mobile_src'],dict) else item['mobile_src']
+            picture = f'<picture><source media="(max-width:700px)" srcset="{E(prefix+mobile)}" width="{int(item["mobile_width"])}" height="{int(item["mobile_height"])}">{picture}</picture>'
+        figure = f'<figure class="project-media"><div class="project-media-image">{picture}</div><figcaption>{E(item["caption"][lang])}</figcaption></figure>'
+        if item.get('type') == 'animation':
+            blocks.append(f'<details class="project-animation"><summary>{E(item["label"][lang])}</summary>{figure}</details>')
+        else:
+            blocks.append(figure)
+    return '<section class="project-showcase">' + ''.join(blocks) + '</section>' if blocks else ''
+
+
+def project_body(project, papers, lang, home, prefix, email):
     t = TEXT[lang]
-    buttons = f'<a class="button" href="{E(project["repository"])}">{t["code"]}</a>'
+    buttons = ''
+    if project.get('repository'):
+        buttons += f'<a class="button" href="{E(project["repository"])}">{t["code"]}</a>'
+    if project.get('contact'):
+        buttons += f'<a class="button" href="mailto:{E(email)}">{t["contact_project"]}</a>'
     docs = project.get('docs_en' if lang=='en' else 'docs')
     if docs:
         buttons += f'<a class="button secondary" href="{E(docs)}">{t["docs"]}</a>'
@@ -195,8 +217,11 @@ def project_body(project, papers, lang, home):
         related += f'<a class="pub-title" lang="en" href="{home}#{E(p["id"])}">{E(p["title"])} ({p["year"]}) ↗</a>'
     related_block = f'<h2>{t["related"]}</h2>{related}' if related else ''
     quick = f'<p class="workflow-label">{t["quick_start"]}</p><p><code>{E(project["command"])}</code></p>' if project.get('command') else ''
-    return f'''<div class="container"><section class="project-hero"><div class="breadcrumb"><a href="{home}">{t['home']}</a> / <a href="{home}#software">{t['back']}</a> / {E(software_name(project,lang))}</div><div class="eyebrow">{E(project['category'][lang])}</div><h1>{E(software_name(project,lang))}</h1><p class="project-lead">{E(project['summary'][lang])}</p>{localized_tags(project,lang)}<div class="project-buttons">{buttons}</div></section>
-      <div class="project-layout"><article class="prose project-prose">{markdown(ROOT/'content/software'/f'{project["slug"]}.{lang}.md')}</article><aside class="project-aside"><h2>{t['project_info']}</h2><p>{t['project_note']}</p>{quick}{related_block}</aside></div></div>'''
+    status = f'<p class="project-status">{E(project["status"][lang])}</p>' if project.get('status') else ''
+    availability = f'<h2>{t["availability"]}</h2><p>{E(project["availability"][lang])}</p>' if project.get('availability') else ''
+    stage = f'<h2>{t["stage"]}</h2><p>{E(project["status"][lang])}</p>' if project.get('status') else ''
+    return f'''<div class="container"><section class="project-hero"><div class="breadcrumb"><a href="{home}">{t['home']}</a> / <a href="{home}#software">{t['back']}</a> / {E(software_name(project,lang))}</div><div class="eyebrow">{E(project['category'][lang])}</div><h1>{E(software_name(project,lang))}</h1>{status}<p class="project-lead">{E(project['summary'][lang])}</p>{localized_tags(project,lang)}<div class="project-buttons">{buttons}</div></section>
+      {project_media(project,lang,prefix)}<div class="project-layout"><article class="prose project-prose">{markdown(ROOT/'content/software'/f'{project["slug"]}.{lang}.md')}</article><aside class="project-aside"><h2>{t['project_info']}</h2><p>{t['project_note']}</p>{stage}{availability}{quick}{related_block}</aside></div></div>'''
 
 def validate(profile, papers, software):
     if len({p['id'] for p in papers}) != len(papers):
@@ -212,6 +237,15 @@ def validate(profile, papers, software):
     for s in software:
         if not re.fullmatch('[a-z0-9]+(?:-[a-z0-9]+)*',s['slug']):
             raise ValueError('Invalid software slug')
+        if not (s.get('repository') or s.get('contact')):
+            raise ValueError('Software needs a repository or a contact route: ' + s['slug'])
+        for media in s.get('media', []):
+            sources = list(media['src'].values()) if isinstance(media['src'],dict) else [media['src']]
+            if media.get('mobile_src'):
+                sources += list(media['mobile_src'].values()) if isinstance(media['mobile_src'],dict) else [media['mobile_src']]
+            for source in sources:
+                if not (ROOT/source).is_file():
+                    raise ValueError('Missing software media: ' + source)
         for lang in TEXT:
             if not (ROOT/'content/software'/f'{s["slug"]}.{lang}.md').exists():
                 raise ValueError('Missing software Markdown')
@@ -238,7 +272,7 @@ def build(check=False):
             other = 'zh' if lang=='en' else 'en'
             language_url = prefix + language_root(other) + ('software/'+project['slug']+'/' if project else '')
             nav = ''.join(f'<a href="{home}#{section}">{t[section]}</a>' for section in ['about','research','software','publications','contact'])
-            body = project_body(project,papers,lang,home) if project else home_body(profile,papers,software,lang,prefix)
+            body = project_body(project,papers,lang,home,prefix,profile['email']) if project else home_body(profile,papers,software,lang,prefix)
             outputs[path] = template.substitute(
                 html_lang='zh-CN' if lang=='zh' else 'en',title=E(software_name(project,lang)+' · Yuming Su' if project else t['title']),
                 description=E(project['summary'][lang] if project else t['description']),prefix=prefix,asset_version=asset_version,skip=t['skip'],navigation=t['navigation'],home=home,nav=nav,

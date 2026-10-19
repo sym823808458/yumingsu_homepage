@@ -138,5 +138,82 @@
       "Multiwfn",
       "描述符"
     ]
+  },
+  {
+    "slug": "building-wind-screening",
+    "name": "Building Wind Screening",
+    "name_en": "Building Wind Screening",
+    "name_zh": "楼栋风压筛查工具",
+    "category": {
+      "en": "Building exposure · Inspection planning",
+      "zh": "楼栋风压暴露 · 巡检规划"
+    },
+    "summary": {
+      "en": "A local desktop prototype that connects building annotation, wind-direction scenarios and facade/floor-band visualizations for exploratory inspection planning.",
+      "zh": "连接楼栋标注、风向情景和立面／楼层段可视化的本地桌面原型，服务于探索性的巡检规划。"
+    },
+    "tags": [
+      "Python",
+      "Desktop GUI",
+      "Wind scenarios"
+    ],
+    "tags_zh": [
+      "Python",
+      "桌面界面",
+      "风向情景"
+    ],
+    "status": {
+      "en": "Development prototype",
+      "zh": "开发原型"
+    },
+    "availability": {
+      "en": "Desktop demonstration available by enquiry. Public source and software package release are pending.",
+      "zh": "可联系了解桌面演示；公开源码和软件安装包尚待整理发布。"
+    },
+    "contact": true,
+    "related_publications": [],
+    "media": [
+      {
+        "type": "image",
+        "src": {
+          "en": "images/software/building-wind-screening/workflow.en.svg",
+          "zh": "images/software/building-wind-screening/workflow.zh.svg"
+        },
+        "width": 1080,
+        "height": 450,
+        "alt": {
+          "en": "Four-step schematic: annotate buildings, set wind scenarios, compare facade and floor-band exposure, and review exports.",
+          "zh": "四步工作流示意：标注楼栋、设置风向情景、比较立面与楼层段暴露、查看并导出结果。"
+        },
+        "caption": {
+          "en": "Workflow schematic. Geometry is illustrative, not a map or a computed result.",
+          "zh": "工作流示意图。图中几何为示意，不是真实底图或计算结果。"
+        },
+        "mobile_src": {
+          "en": "images/software/building-wind-screening/workflow-mobile.en.svg",
+          "zh": "images/software/building-wind-screening/workflow-mobile.zh.svg"
+        },
+        "mobile_width": 480,
+        "mobile_height": 1100
+      },
+      {
+        "type": "animation",
+        "src": "images/software/building-wind-screening/desktop-floor-band-demo.gif",
+        "width": 900,
+        "height": 620,
+        "alt": {
+          "en": "Original desktop export showing a pseudo-3D building and floor-band pressure estimates as wind direction changes; the prototype interface is in Chinese.",
+          "zh": "桌面软件已有导出：伪三维楼栋及不同风向下的楼层段风压估计。"
+        },
+        "caption": {
+          "en": "Original desktop export (Chinese interface). Values illustrate the simplified screening model; they are not validated design loads or measured damage probabilities.",
+          "zh": "桌面软件原始导出。数值展示简化筛查模型的输出，不是经验证的设计荷载或实测破坏概率。"
+        },
+        "label": {
+          "en": "Watch the original wind-direction animation",
+          "zh": "查看原始风向扫描动画"
+        }
+      }
+    ]
   }
 ]

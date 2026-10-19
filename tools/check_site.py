@@ -28,6 +28,8 @@ class Page(HTMLParser):
         if 'data-publication' in a: self.publications+=1
         for attribute in ('href','src'):
             if a.get(attribute): self.links.append(a[attribute])
+        if a.get('srcset'):
+            self.links.extend(candidate.strip().split()[0] for candidate in a['srcset'].split(','))
 
 def main():
     pages={}

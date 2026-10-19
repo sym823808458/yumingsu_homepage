@@ -41,3 +41,14 @@ Software descriptions reflect the public README/documentation reviewed in this c
 The supplied titles, citation counts and years are the primary record of this update. DOI and bibliographic metadata were supplemented using existing public links, publisher records and Crossref. Successful Crossref checks are recorded per item with `metadata_source`, `metadata_checked` and `authors_verified`; HTTP 429 or other errors are not marked verified. User-supplied truncated author lists remain where no complete list has been confirmed. Preprint status is retained as supplied rather than inferring a later acceptance.
 
 All publication links lead to the original scholarly resources. No full-text PDFs or copyrighted article images are republished.
+
+## Building Wind Screening project page
+
+Added on 2026-10-19 from the user-requested working folder `D:/YumingSu/Papers/buildings-analysis`:
+
+- `wind_pressure_tool_product_brief.md`: project positioning, input/output workflow, known empirical assumptions, product ideas and future work. Product ideas are not treated as implemented features.
+- `wind_pressure_requirements.md`: single-image annotation workflow and original-image coordinate convention.
+- `wind_pressure_gui.py`: Python/Tkinter implementation; inspected functions include `pressure_result`, `save_project`, `load_project`, `export_plan_gif`, `export_3d_gif`, and `export_selected_output_png`.
+- `1号楼-3d-wind.gif`: original 900 × 620, 36-frame software export, copied unchanged as the optional output animation. The displayed values are outputs of the simplified screening model, not validated design loads.
+
+The bilingual workflow SVGs are newly authored schematics, not real-site maps or computed results. No site map images, saved annotation JSON, Python source code, commercial pricing proposals, or standalone HTML prototype were uploaded as part of this page. No formal paper manuscript was present in the reviewed folder, and no publication has been added for this project. The page presents a development prototype with a contact link; no public software repository or downloadable release has been invented.
