@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取和 MATLAB 双光子吸收批量分析。">
+  <meta name="description" content="连接 Gaussian 激发态计算与 Multiwfn 跃迁偶极矩提取，支持 Python 或 MATLAB 后处理，批量输出双光子吸收光谱与截面。">
   <meta name="color-scheme" content="light">
   <meta property="og:title" content="双光子吸收计算工具 · Yuming Su">
-  <meta property="og:description" content="连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取和 MATLAB 双光子吸收批量分析。">
+  <meta property="og:description" content="连接 Gaussian 激发态计算与 Multiwfn 跃迁偶极矩提取，支持 Python 或 MATLAB 后处理，批量输出双光子吸收光谱与截面。">
   <meta property="og:type" content="website">
   <title>双光子吸收计算工具 · Yuming Su</title>
   <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
@@ -21,21 +21,31 @@
     <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#contact">联系</a></nav>
     <a class="language-link" href="../../../software/tpa-calculation/" lang="en" hreflang="en">English</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / 双光子吸收计算工具</div><div class="eyebrow">双光子吸收 · 计算工作流</div><h1>双光子吸收计算工具</h1><p class="project-lead">连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取和 MATLAB 双光子吸收批量分析。</p><div class="tags"><span class="tag">MATLAB</span><span class="tag">Gaussian</span><span class="tag">Multiwfn</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/calculateTPAbyMATLAB">源码仓库 ↗</a></div></section>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / 双光子吸收计算工具</div><div class="eyebrow">双光子吸收 · 计算工作流</div><h1>双光子吸收计算工具</h1><p class="project-lead">连接 Gaussian 激发态计算与 Multiwfn 跃迁偶极矩提取，支持 Python 或 MATLAB 后处理，批量输出双光子吸收光谱与截面。</p><div class="tags"><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">Gaussian</span><span class="tag">Multiwfn</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/calculateTPAbyMATLAB">源码仓库 ↗</a><a class="button" href="mailto:yumingsu@xmu.edu.cn">联系了解软件 ↗</a></div></section>
       <div class="project-layout"><article class="prose project-prose"><h2>从激发态计算到双光子吸收分析</h2>
-<p>这套工作流连接 Gaussian、Multiwfn 与 MATLAB，用于提取激发态相关的跃迁偶极矩信息，并进行双光子吸收（TPA）批量计算与分析。</p>
+<p>这套工作流连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取与 <strong>Python 或 MATLAB</strong> 后处理，用于双光子吸收（TPA）光谱和截面的批量计算。</p>
 <h2>三个步骤</h2>
 <ul>
-<li>使用 Gaussian 计算激发态并准备相关输出文件。</li>
-<li>使用 Multiwfn 提取跃迁偶极矩等信息。</li>
-<li>使用 MATLAB 脚本处理提取结果并计算 TPA。</li>
+<li>完成 Gaussian TD 计算，用 <code>formchk</code> 将检查点转为 <code>.fchk</code>。</li>
+<li>用 Multiwfn 导出跃迁偶极矩文本，每个分子保存为单独命名的 <code>.txt</code>。</li>
+<li>选择 Python 或 MATLAB 处理同一类型的导出数据，生成数值光谱。</li>
 </ul>
-<h2>仓库内容</h2>
-<p>仓库提供 Gaussian 输入示例、Multiwfn 分析结果示例、批处理脚本 <code>batchTDM.bat</code> 与 MATLAB 程序 <code>calculateTPAinbatchpar.m</code>。</p>
-<h2>使用前提</h2>
-<p>需要自行准备 Gaussian、Multiwfn 和 MATLAB 环境。计算结果依赖所选理论方法、激发态范围及参数，请结合原始方法和仓库中的参考文献使用。</p>
+<h2>Python 配套版本</h2>
+<p>已有的配套脚本 <code>tpa_from_multiwfn.py</code> 读取 Multiwfn 文本中的基态偶极矩、基态到激发态及激发态之间的跃迁矩和激发能。输入是导出的偶极矩文本，不是直接读取 Gaussian 原始日志。</p>
+<p>通过上方联系入口获取 Python 配套程序后：</p>
+<ul>
+<li>创建环境：<code>conda create -n tpa python=3.11</code>，然后运行 <code>conda activate tpa</code>。</li>
+<li>安装两个依赖：<code>python -m pip install numpy matplotlib</code>。</li>
+<li>将导出的文本放入脚本旁的 <code>tpa_inputs</code> 文件夹，运行 <code>python tpa_from_multiwfn.py --input-dir tpa_inputs --output-dir tpa_outputs --plot</code>。</li>
+</ul>
+<p>程序生成 <code>tpa_summary.csv</code>、每个分子的 <code>*_tpa_spectrum.csv</code>，以及可选的 <code>plots/</code> 光谱 PNG。Python 后处理不需要 MATLAB；重新生成电子结构与偶极矩输入仍需要上游量化软件。</p>
+<h2>MATLAB 路线</h2>
+<p><a href="https://github.com/sym823808458/calculateTPAbyMATLAB">公开 MATLAB 仓库</a>提供 Gaussian 与 Multiwfn 示例、<code>batchTDM.bat</code> 和 <code>calculateTPAinbatchpar.m</code>。它保留为原工作流的公开源码入口；Python 配套版本目前通过联系单独获取。</p>
+<h2>输出与结果核对</h2>
+<p>Python 输出中的 <code>sigma_gm</code> 为计算截面，单位 GM；<code>lambda2_nm</code> 是简并双光子激发的入射波长，<code>lambda_half_nm</code> 为其一半，即单光子等效波长。绘图和报告峰值时应明确使用哪一种波长。</p>
+<p>Python 与 MATLAB 路线均用于既有计算流程的后处理。切换实现时请用已知输入交叉核对，目前未认证二者数值完全等价。结果依赖输入电子态、跃迁矩、态数范围与展宽参数。</p>
 <h2>相关研究</h2>
 <p>该工具页与双光子吸收机器学习、纳米石墨烯和金属有机层的相关研究相连接；具体方法与引用请参见<a href="https://github.com/sym823808458/calculateTPAbyMATLAB">仓库说明</a>。</p></article><aside class="project-aside"><h2>项目信息</h2><p>软件在用户自己的环境中运行。本页提供介绍、手册与代码入口。</p><h2>相关研究</h2><a class="pub-title" lang="en" href="../../../zh/#tpa-ml-2023">Interpretable Machine Learning of Two-Photon Absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#nanographenes-2023">Hexa-branched nanographenes with large two-photon absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#mol-tpa-2021">Metal–organic layers with an enhanced two-photon absorption cross-section and up-converted emission (2021) ↗</a><section class="visit-statistics"><h2>访问统计</h2><p>尚未启用</p><p class="stats-note">启用后开始累计，无法补回此前访问。</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-19 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-20 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>

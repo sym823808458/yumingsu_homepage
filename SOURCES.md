@@ -65,6 +65,16 @@ No verified GBLine preprint was found in the Crossref title searches or public p
 
 The workflow SVGs are newly authored schematics. No third-party article screenshots, manuscript figures, private spectra, API spending records or unverified benchmark claims were uploaded. This website update does not constitute a fresh GBLine extraction experiment.
 
+## TPA Python and MATLAB workflow — 2026-10-20
+
+The author corrected the reference conversation to `019f45e5-108c-7713-aa22-ebc2fba976f7`; the previously mentioned discussion is not used as evidence for this update. The corrected conversation records the collaborator-facing Python instructions and the prepared post-processing bundle.
+
+Reviewed local sources under `D:/YumingSu/Papers/TPA/calc/tpa_batch_20260709/share/tpa_postprocess_bundle/`: `README_EN.md`, `python/tpa_from_multiwfn.py`, `python/requirements.txt`, `matlab/tpa_from_multiwfn.m` and the Multiwfn conversion helpers. The Python CLI accepts input/output directories and `--plot`; it writes spectrum CSVs, a summary and optional PNG plots. The CSV wavelength names are checked against the source and the corrected conversation: `lambda2_nm` is incident wavelength, `lambda_half_nm` is the one-photon-equivalent half wavelength.
+
+The live public `sym823808458/calculateTPAbyMATLAB` repository was checked on 2026-10-20 and still presents the original MATLAB workflow. The updated website therefore describes both routes but identifies the public repository as MATLAB and offers the existing contact route for the separately shared Python companion. It does not invent a public Python repository, pip package or verified numerical equivalence.
+
+This update publishes descriptions and generic usage commands only. The four molecules' private inputs, spectra, numerical results, server/account details and unpublished calculation logs from the conversation are not distributed. No new electronic-structure calculation or numerical-method validation is claimed.
+
 ## Publication metadata
 
 The supplied titles, citation counts and years are the primary record of this update. DOI and bibliographic metadata were supplemented using existing public links, publisher records and Crossref. Successful Crossref checks are recorded per item with `metadata_source`, `metadata_checked` and `authors_verified`; HTTP 429 or other errors are not marked verified. User-supplied truncated author lists remain where no complete list has been confirmed. Preprint status is retained as supplied rather than inferring a later acceptance.

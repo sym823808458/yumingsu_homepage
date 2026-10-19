@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A Gaussian–Multiwfn–MATLAB workflow for excited-state calculations, transition dipole extraction and batch TPA analysis.">
+  <meta name="description" content="A Gaussian–Multiwfn workflow with Python or MATLAB post-processing for batch two-photon absorption spectra and cross sections.">
   <meta name="color-scheme" content="light">
   <meta property="og:title" content="TPA Calculation · Yuming Su">
-  <meta property="og:description" content="A Gaussian–Multiwfn–MATLAB workflow for excited-state calculations, transition dipole extraction and batch TPA analysis.">
+  <meta property="og:description" content="A Gaussian–Multiwfn workflow with Python or MATLAB post-processing for batch two-photon absorption spectra and cross sections.">
   <meta property="og:type" content="website">
   <title>TPA Calculation · Yuming Su</title>
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
@@ -21,21 +21,31 @@
     <nav aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#research">Research</a><a href="../../#software">Software</a><a href="../../#publications">Publications</a><a href="../../#contact">Contact</a></nav>
     <a class="language-link" href="../../zh/software/tpa-calculation/" lang="zh-CN" hreflang="zh-CN">中文</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / TPA Calculation</div><div class="eyebrow">Two-photon absorption · Computational workflow</div><h1>TPA Calculation</h1><p class="project-lead">A Gaussian–Multiwfn–MATLAB workflow for excited-state calculations, transition dipole extraction and batch TPA analysis.</p><div class="tags"><span class="tag">MATLAB</span><span class="tag">Gaussian</span><span class="tag">Multiwfn</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/calculateTPAbyMATLAB">Source code ↗</a></div></section>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / TPA Calculation</div><div class="eyebrow">Two-photon absorption · Computational workflow</div><h1>TPA Calculation</h1><p class="project-lead">A Gaussian–Multiwfn workflow with Python or MATLAB post-processing for batch two-photon absorption spectra and cross sections.</p><div class="tags"><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">Gaussian</span><span class="tag">Multiwfn</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/calculateTPAbyMATLAB">Source code ↗</a><a class="button" href="mailto:yumingsu@xmu.edu.cn">Discuss this software ↗</a></div></section>
       <div class="project-layout"><article class="prose project-prose"><h2>From excited-state calculations to TPA analysis</h2>
-<p>This workflow connects Gaussian, Multiwfn and MATLAB to extract transition dipole information and perform batch two-photon absorption (TPA) calculations and analysis.</p>
+<p>This workflow connects Gaussian excited-state calculations and Multiwfn transition-dipole extraction with <strong>Python or MATLAB</strong> post-processing for two-photon absorption (TPA) spectra and cross sections.</p>
 <h2>Three steps</h2>
 <ul>
-<li>Calculate excited states with Gaussian and prepare the required output files.</li>
-<li>Extract transition dipole information with Multiwfn.</li>
-<li>Process the extracted data and calculate TPA with MATLAB.</li>
+<li>Complete a Gaussian TD calculation and convert its checkpoint to <code>.fchk</code> with <code>formchk</code>.</li>
+<li>Export the transition-dipole text with Multiwfn and save one named <code>.txt</code> file per molecule.</li>
+<li>Choose Python or MATLAB to process the same type of exported data and generate numerical spectra.</li>
 </ul>
-<h2>Repository contents</h2>
-<p>The repository includes a Gaussian input example, a Multiwfn output example, the <code>batchTDM.bat</code> batch script and the <code>calculateTPAinbatchpar.m</code> MATLAB program.</p>
-<h2>Requirements</h2>
-<p>Users need their own Gaussian, Multiwfn and MATLAB environments. Results depend on the theoretical method, excited-state range and parameters; consult the original methodology and repository references.</p>
+<h2>Python companion</h2>
+<p>The existing <code>tpa_from_multiwfn.py</code> companion reads Multiwfn text containing the ground-state dipole, ground-to-excited and excited-to-excited transition moments, and excitation energies. Its input is the exported transition-dipole text, rather than a raw Gaussian log.</p>
+<p>After obtaining the Python companion through the contact link above:</p>
+<ul>
+<li>Create an environment: <code>conda create -n tpa python=3.11</code>, then <code>conda activate tpa</code>.</li>
+<li>Install the two dependencies: <code>python -m pip install numpy matplotlib</code>.</li>
+<li>Put the exported files in <code>tpa_inputs</code> beside the script, and run <code>python tpa_from_multiwfn.py --input-dir tpa_inputs --output-dir tpa_outputs --plot</code>.</li>
+</ul>
+<p>It writes <code>tpa_summary.csv</code>, one <code>*_tpa_spectrum.csv</code> per molecule, and optional PNG spectra under <code>plots/</code>. Python post-processing does not require MATLAB; generating new electronic-structure and dipole inputs still requires the upstream chemistry tools.</p>
+<h2>MATLAB route</h2>
+<p>The <a href="https://github.com/sym823808458/calculateTPAbyMATLAB">public MATLAB repository</a> provides Gaussian and Multiwfn examples, <code>batchTDM.bat</code>, and <code>calculateTPAinbatchpar.m</code>. It remains the public source entry for the original workflow; the Python companion is currently shared separately by enquiry.</p>
+<h2>Reading and comparing results</h2>
+<p>In the Python output, <code>sigma_gm</code> is the calculated cross section in GM. <code>lambda2_nm</code> is the incident wavelength for degenerate two-photon excitation; <code>lambda_half_nm</code> is half that value, the one-photon-equivalent wavelength. Keep these conventions explicit when plotting or reporting a peak.</p>
+<p>The Python and MATLAB routes implement the existing post-processing workflow. Compare a known input when switching implementations; numerical equivalence has not been certified. Results depend on the supplied electronic states, transition moments, state range and broadening parameters.</p>
 <h2>Related research</h2>
 <p>This tool connects with research on machine learning of TPA, nanographenes and metal–organic layers. See the <a href="https://github.com/sym823808458/calculateTPAbyMATLAB">repository documentation</a> for methodology and citations.</p></article><aside class="project-aside"><h2>Project information</h2><p>Software runs in the user’s own environment. This page provides information, documentation and source links.</p><h2>Related research</h2><a class="pub-title" lang="en" href="../../#tpa-ml-2023">Interpretable Machine Learning of Two-Photon Absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../#nanographenes-2023">Hexa-branched nanographenes with large two-photon absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../#mol-tpa-2021">Metal–organic layers with an enhanced two-photon absorption cross-section and up-converted emission (2021) ↗</a><section class="visit-statistics"><h2>Visit statistics</h2><p>Not enabled</p><p class="stats-note">Counts begin on activation; earlier visits cannot be recovered.</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>Updated 2026-10-19 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">Website source ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>Updated 2026-10-20 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">Website source ↗</a></p></div></footer>
 </body>
 </html>

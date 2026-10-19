@@ -1,20 +1,34 @@
 ## From excited-state calculations to TPA analysis
 
-This workflow connects Gaussian, Multiwfn and MATLAB to extract transition dipole information and perform batch two-photon absorption (TPA) calculations and analysis.
+This workflow connects Gaussian excited-state calculations and Multiwfn transition-dipole extraction with **Python or MATLAB** post-processing for two-photon absorption (TPA) spectra and cross sections.
 
 ## Three steps
 
-- Calculate excited states with Gaussian and prepare the required output files.
-- Extract transition dipole information with Multiwfn.
-- Process the extracted data and calculate TPA with MATLAB.
+- Complete a Gaussian TD calculation and convert its checkpoint to `.fchk` with `formchk`.
+- Export the transition-dipole text with Multiwfn and save one named `.txt` file per molecule.
+- Choose Python or MATLAB to process the same type of exported data and generate numerical spectra.
 
-## Repository contents
+## Python companion
 
-The repository includes a Gaussian input example, a Multiwfn output example, the `batchTDM.bat` batch script and the `calculateTPAinbatchpar.m` MATLAB program.
+The existing `tpa_from_multiwfn.py` companion reads Multiwfn text containing the ground-state dipole, ground-to-excited and excited-to-excited transition moments, and excitation energies. Its input is the exported transition-dipole text, rather than a raw Gaussian log.
 
-## Requirements
+After obtaining the Python companion through the contact link above:
 
-Users need their own Gaussian, Multiwfn and MATLAB environments. Results depend on the theoretical method, excited-state range and parameters; consult the original methodology and repository references.
+- Create an environment: `conda create -n tpa python=3.11`, then `conda activate tpa`.
+- Install the two dependencies: `python -m pip install numpy matplotlib`.
+- Put the exported files in `tpa_inputs` beside the script, and run `python tpa_from_multiwfn.py --input-dir tpa_inputs --output-dir tpa_outputs --plot`.
+
+It writes `tpa_summary.csv`, one `*_tpa_spectrum.csv` per molecule, and optional PNG spectra under `plots/`. Python post-processing does not require MATLAB; generating new electronic-structure and dipole inputs still requires the upstream chemistry tools.
+
+## MATLAB route
+
+The [public MATLAB repository](https://github.com/sym823808458/calculateTPAbyMATLAB) provides Gaussian and Multiwfn examples, `batchTDM.bat`, and `calculateTPAinbatchpar.m`. It remains the public source entry for the original workflow; the Python companion is currently shared separately by enquiry.
+
+## Reading and comparing results
+
+In the Python output, `sigma_gm` is the calculated cross section in GM. `lambda2_nm` is the incident wavelength for degenerate two-photon excitation; `lambda_half_nm` is half that value, the one-photon-equivalent wavelength. Keep these conventions explicit when plotting or reporting a peak.
+
+The Python and MATLAB routes implement the existing post-processing workflow. Compare a known input when switching implementations; numerical equivalence has not been certified. Results depend on the supplied electronic states, transition moments, state range and broadening parameters.
 
 ## Related research
 

@@ -151,11 +151,13 @@
       "en": "Two-photon absorption · Computational workflow"
     },
     "summary": {
-      "zh": "连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取和 MATLAB 双光子吸收批量分析。",
-      "en": "A Gaussian–Multiwfn–MATLAB workflow for excited-state calculations, transition dipole extraction and batch TPA analysis."
+      "zh": "连接 Gaussian 激发态计算与 Multiwfn 跃迁偶极矩提取，支持 Python 或 MATLAB 后处理，批量输出双光子吸收光谱与截面。",
+      "en": "A Gaussian–Multiwfn workflow with Python or MATLAB post-processing for batch two-photon absorption spectra and cross sections."
     },
     "repository": "https://github.com/sym823808458/calculateTPAbyMATLAB",
+    "contact": true,
     "tags": [
+      "Python",
       "MATLAB",
       "Gaussian",
       "Multiwfn"
@@ -168,6 +170,7 @@
     "name_en": "TPA Calculation",
     "name_zh": "双光子吸收计算工具",
     "tags_zh": [
+      "Python",
       "MATLAB",
       "Gaussian",
       "Multiwfn"
