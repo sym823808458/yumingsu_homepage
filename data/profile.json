@@ -1,0 +1,119 @@
+{
+  "name": "Yuming Su",
+  "name_zh": "苏禹铭",
+  "updated": "2026-10-19",
+  "email": "yumingsu@xmu.edu.cn",
+  "location": {
+    "zh": "中国 · 厦门",
+    "en": "Xiamen, China"
+  },
+  "position": {
+    "zh": "助理研究员",
+    "en": "Assistant Researcher"
+  },
+  "affiliation": {
+    "zh": "厦门大学 · 嘉庚创新实验室 AI4EC Lab",
+    "en": "Xiamen University · AI4EC Lab, IKKEM"
+  },
+  "links": {
+    "scholar": "https://scholar.google.com/citations?user=SL8pQfEAAAAJ",
+    "github": "https://github.com/sym823808458",
+    "orcid": "https://orcid.org/0009-0001-9510-4173"
+  },
+  "scholar_snapshot": {
+    "date": "2026-10-19",
+    "source": "Profile text supplied by Yuming Su in this conversation; not a live API feed.",
+    "citations": 782,
+    "h_index": 14,
+    "i10_index": 15,
+    "since_year": 2021,
+    "since_citations": 778,
+    "since_h_index": 14,
+    "since_i10_index": 15
+  },
+  "research": [
+    {
+      "number": "01",
+      "title": {
+        "zh": "可解释化学机器学习",
+        "en": "Interpretable chemical machine learning"
+      },
+      "text": {
+        "zh": "用分子表面、局部官能团与电子结构描述符，连接分子结构、性质预测和化学解释。",
+        "en": "Connecting molecular structure, property prediction and chemical interpretation through molecular surfaces, local functional groups and electronic descriptors."
+      },
+      "tags": [
+        "Surfacia",
+        "LoFFi",
+        "Structure–property relationships"
+      ]
+    },
+    {
+      "number": "02",
+      "title": {
+        "zh": "自动化电化学与智能电镀",
+        "en": "Automated electrochemistry & electroplating"
+      },
+      "text": {
+        "zh": "推进自动化配液、电化学测试、数据分析与实验决策，探索连接分子设计、界面响应和镀层性能的研究流程。",
+        "en": "Developing workflows for automated dosing, electrochemical measurements, data analysis and experimental decisions, linking molecular design with interface responses and deposit performance."
+      },
+      "tags": [
+        "Electroplating",
+        "Electrochemistry",
+        "AI agents"
+      ]
+    },
+    {
+      "number": "03",
+      "title": {
+        "zh": "光功能材料与计算化学",
+        "en": "Photofunctional materials & computational chemistry"
+      },
+      "text": {
+        "zh": "结合量子化学和机器学习研究双光子吸收、框架材料与催化问题，并开发可复用的科研软件与数据工具。",
+        "en": "Combining quantum chemistry and machine learning for two-photon absorption, framework materials and catalysis, supported by reusable research software and data tools."
+      },
+      "tags": [
+        "Two-photon absorption",
+        "Quantum chemistry",
+        "Catalysis"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "period": "2024–",
+      "title": {
+        "zh": "助理研究员",
+        "en": "Assistant Researcher"
+      },
+      "institution": {
+        "zh": "嘉庚创新实验室 · AI4EC Lab",
+        "en": "AI4EC Lab, IKKEM"
+      }
+    },
+    {
+      "period": "2018–2024",
+      "title": {
+        "zh": "化学博士",
+        "en": "Ph.D. in Chemistry"
+      },
+      "institution": {
+        "zh": "厦门大学 · 化学化工学院",
+        "en": "College of Chemistry and Chemical Engineering, Xiamen University"
+      }
+    },
+    {
+      "period": "2014–2018",
+      "title": {
+        "zh": "化学学士",
+        "en": "B.S. in Chemistry"
+      },
+      "institution": {
+        "zh": "山西大学 · 化学化工学院",
+        "en": "College of Chemistry and Chemical Engineering, Shanxi University"
+      }
+    }
+  ]
+}
