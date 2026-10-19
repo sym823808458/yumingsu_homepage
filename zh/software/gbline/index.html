@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="连接 OCR、坐标标定、曲线提取与可选视觉大模型复核，将科研图表和化学谱图转为可检查的数值曲线。">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="GBLine · Yuming Su">
+  <meta property="og:description" content="连接 OCR、坐标标定、曲线提取与可选视觉大模型复核，将科研图表和化学谱图转为可检查的数值曲线。">
+  <meta property="og:type" content="website">
+  <title>GBLine · Yuming Su</title>
+  <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../assets/site.css?v=13b85c0d6120">
+  <script src="../../../assets/site.js?v=13b85c0d6120" defer></script>
+  <script src="../../../assets/analytics.js?v=13b85c0d6120" defer></script>
+</head>
+<body data-analytics-endpoint="" data-analytics-hosts="yumingsu.top,www.yumingsu.top,sym823808458.github.io" data-analytics-path="/software/gbline/" data-analytics-title="GBLine">
+  <a class="skip-link" href="#main">跳至正文</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="wordmark" href="../../../zh/"><span class="monogram">YS<span>.</span></span><span>Yuming Su <span class="wordmark-zh">苏禹铭</span></span></a>
+    <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#contact">联系</a></nav>
+    <a class="language-link" href="../../../software/gbline/" lang="en" hreflang="en">English</a>
+  </div></header>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / GBLine</div><div class="eyebrow">谱图数字化 · 证据引导复核</div><h1>GBLine</h1><p class="project-status">研究原型</p><p class="project-lead">连接 OCR、坐标标定、曲线提取与可选视觉大模型复核，将科研图表和化学谱图转为可检查的数值曲线。</p><div class="tags"><span class="tag">Python</span><span class="tag">OCR</span><span class="tag">MCP</span></div><div class="project-buttons"><a class="button" href="mailto:yumingsu@xmu.edu.cn">联系了解软件 ↗</a></div></section>
+      <section class="project-showcase"><figure class="project-media"><div class="project-media-image"><picture><source media="(max-width:700px)" srcset="../../../images/software/gbline/workflow-mobile.zh.svg" width="480" height="760"><img src="../../../images/software/gbline/workflow.zh.svg" width="1080" height="330" alt="工作流：图片输入、坐标与曲线提取、可选证据复核、数值输出与诊断。" loading="lazy"></picture></div><figcaption>工作流示意。模型复核为可选环节，输出数值仍需检查。</figcaption></figure></section><div class="project-layout"><article class="prose project-prose"><h2>从谱图图片到数值曲线</h2>
+<p>GBLine 是面向科研折线图与化学谱图的本地数字化工具，将 OCR、坐标标定、像素曲线提取与可选的视觉大模型复核连接起来，通过 MCP 提供工具接口。</p>
+<p>数值核心负责坐标换算与曲线追踪；视觉模型观察原图中的刻度和曲线颜色，提出修正，并根据工具返回的诊断继续复核。</p>
+<h2>主要工作流</h2>
+<ul>
+<li>输入单面板图，检查绘图区、坐标轴与可见刻度。</li>
+<li>根据图像证据建立线性或 log10 坐标映射。</li>
+<li>提取曲线像素；工具要求时复核歧义刻度、漏检曲线或颜色。</li>
+<li>获取完整数值曲线和诊断记录，检查覆盖与数值质量后再用于分析。</li>
+</ul>
+<p>MCP 接口包括 <code>inspect_chart_axes</code>、<code>extract_chart_data</code> 和 <code>get_curve_full_data</code>。根据证据情况，工具可以返回提取数据、请求继续复核，或明确弃权。</p>
+<h2>怎样判断输出可用</h2>
+<p>坐标轴正确、曲线数量符合预期，并不保证整条曲线已经恢复。需要检查横轴覆盖范围、断裂，以及提取结果与原图的重合情况。多面板图应先拆开；双 Y 轴及缺少足够可见标定证据的图不属于当前流程的适用范围。</p>
+<p>当前研究包含开发性试验与回顾性验证，面向未见谱图的独立评价仍在推进。</p>
+<h2>获取方式与研究状态</h2>
+<p>当前本地 MCP 实现的文档版本为 2.0.0。模型辅助需要支持图像与工具调用的 Agent 及所选服务；数值工具不绑定特定大模型平台。</p>
+<p>可联系苏禹铭了解当前软件与配置。修订研究论文正在准备中。</p></article><aside class="project-aside"><h2>项目信息</h2><p>软件在用户自己的环境中运行。本页提供介绍、手册与代码入口。</p><h2>开发阶段</h2><p>研究原型</p><h2>获取方式</h2><p>可联系了解当前本地软件与配置。</p><section class="visit-statistics"><h2>访问统计</h2><p>尚未启用</p><p class="stats-note">启用后开始累计，无法补回此前访问。</p></section></aside></div></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-19 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+</body>
+</html>

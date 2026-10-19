@@ -16,6 +16,12 @@ Surfacia 将分子表面性质转化为多层级描述符，并连接特征筛�
 
 完整量子化学流程还依赖 xTB、Gaussian 和 Multiwfn 等外部软件，需要自行安装并满足相应许可要求。环境与版本要求请以当前手册为准。
 
-## 深入了解
+## 研究预印本
+
+Yuming Su, Yangtao Chen, Yiheng Dai and Cheng Wang. **Explain and Go Beyond with Surfacia: A Surface-Descriptor based Workflow for Interpretable Molecular Machine Learning.** ChemRxiv，v1，2026 年 8 月 27 日。[DOI: 10.26434/chemrxiv.15007949/v1](https://doi.org/10.26434/chemrxiv.15007949/v1)。
+
+这篇归档预印本早于当前 4.0.0 的范围调整及最新可解释性稿件。标题按登记原文保留，不作为当前功能列表，也不表示期刊已经接收。
+
+## 手册与源码
 
 [阅读完整中文手册](https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html)或访问[源码仓库](https://github.com/sym823808458/Surfacia)，查看命令、示例、依赖与问题反馈入口。

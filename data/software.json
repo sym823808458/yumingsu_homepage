@@ -28,6 +28,66 @@
       "Python",
       "命令行",
       "量子化学"
+    ],
+    "preprint": "https://doi.org/10.26434/chemrxiv.15007949/v1"
+  },
+  {
+    "slug": "gbline",
+    "name": "GBLine",
+    "name_en": "GBLine",
+    "name_zh": "GBLine",
+    "category": {
+      "en": "Spectral digitization · Evidence-guided review",
+      "zh": "谱图数字化 · 证据引导复核"
+    },
+    "summary": {
+      "en": "A local workflow connecting OCR, coordinate calibration and curve extraction with optional vision-language-model review for scientific charts and chemical spectra.",
+      "zh": "连接 OCR、坐标标定、曲线提取与可选视觉大模型复核，将科研图表和化学谱图转为可检查的数值曲线。"
+    },
+    "tags": [
+      "Python",
+      "OCR",
+      "MCP"
+    ],
+    "tags_zh": [
+      "Python",
+      "OCR",
+      "MCP"
+    ],
+    "status": {
+      "en": "Research prototype",
+      "zh": "研究原型"
+    },
+    "availability": {
+      "en": "Contact for the current local tool and setup.",
+      "zh": "可联系了解当前本地软件与配置。"
+    },
+    "contact": true,
+    "related_publications": [],
+    "media": [
+      {
+        "type": "image",
+        "src": {
+          "en": "images/software/gbline/workflow.en.svg",
+          "zh": "images/software/gbline/workflow.zh.svg"
+        },
+        "width": 1080,
+        "height": 330,
+        "mobile_src": {
+          "en": "images/software/gbline/workflow-mobile.en.svg",
+          "zh": "images/software/gbline/workflow-mobile.zh.svg"
+        },
+        "mobile_width": 480,
+        "mobile_height": 760,
+        "alt": {
+          "en": "Workflow: image input, axis and curve extraction, optional evidence review, numerical output and diagnostics.",
+          "zh": "工作流：图片输入、坐标与曲线提取、可选证据复核、数值输出与诊断。"
+        },
+        "caption": {
+          "en": "Workflow schematic. Model review is optional; numerical quality still requires checking.",
+          "zh": "工作流示意。模型复核为可选环节，输出数值仍需检查。"
+        }
+      }
     ]
   },
   {

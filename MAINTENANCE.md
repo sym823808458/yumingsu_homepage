@@ -38,6 +38,8 @@
 
 不再展示的软件设置 `visible: false`。条目与 Markdown 保留归档，主页不再列出或读取其计数，中英文详情页与旧英文地址转到对应语言主页的软件列表并标记 noindex。恢复展示时移除该字段或改为 `true` 后重新构建。
 
+软件按 `data/software.json` 的顺序展示；GBLine 为第二个可见条目。已核实的论文预印本可用 `preprint` URL 添加按钮，并在中英文 Markdown 说明版本与发表状态；不能把论文 DOI 当作软件发行包 DOI，也不能把本地初稿写成公开预印本。
+
 项目条目可添加 `media` 数组展示图片或动画。每项包含 `type`（`image` / `animation`）、`src`（相对资源路径，或按 `en` / `zh` 区分的路径）、`width`、`height`，以及中英文 `alt`、`caption`；动画另需中英文 `label`，默认收起，由访客主动展开。只添加已确认适合公开的演示资源，并注明示意图、模型输出与实测结果的区别。
 
 横向流程图可另设 `mobile_src`、`mobile_width`、`mobile_height`，在手机上显示竖向版本，避免把整张图缩成无法阅读的小字。

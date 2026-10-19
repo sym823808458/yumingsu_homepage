@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A local workflow connecting OCR, coordinate calibration and curve extraction with optional vision-language-model review for scientific charts and chemical spectra.">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="GBLine · Yuming Su">
+  <meta property="og:description" content="A local workflow connecting OCR, coordinate calibration and curve extraction with optional vision-language-model review for scientific charts and chemical spectra.">
+  <meta property="og:type" content="website">
+  <title>GBLine · Yuming Su</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/site.css?v=13b85c0d6120">
+  <script src="../../assets/site.js?v=13b85c0d6120" defer></script>
+  <script src="../../assets/analytics.js?v=13b85c0d6120" defer></script>
+</head>
+<body data-analytics-endpoint="" data-analytics-hosts="yumingsu.top,www.yumingsu.top,sym823808458.github.io" data-analytics-path="/software/gbline/" data-analytics-title="GBLine">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="wordmark" href="../../"><span class="monogram">YS<span>.</span></span><span>Yuming Su <span class="wordmark-zh">苏禹铭</span></span></a>
+    <nav aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#research">Research</a><a href="../../#software">Software</a><a href="../../#publications">Publications</a><a href="../../#contact">Contact</a></nav>
+    <a class="language-link" href="../../zh/software/gbline/" lang="zh-CN" hreflang="zh-CN">中文</a>
+  </div></header>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / GBLine</div><div class="eyebrow">Spectral digitization · Evidence-guided review</div><h1>GBLine</h1><p class="project-status">Research prototype</p><p class="project-lead">A local workflow connecting OCR, coordinate calibration and curve extraction with optional vision-language-model review for scientific charts and chemical spectra.</p><div class="tags"><span class="tag">Python</span><span class="tag">OCR</span><span class="tag">MCP</span></div><div class="project-buttons"><a class="button" href="mailto:yumingsu@xmu.edu.cn">Discuss this software ↗</a></div></section>
+      <section class="project-showcase"><figure class="project-media"><div class="project-media-image"><picture><source media="(max-width:700px)" srcset="../../images/software/gbline/workflow-mobile.en.svg" width="480" height="760"><img src="../../images/software/gbline/workflow.en.svg" width="1080" height="330" alt="Workflow: image input, axis and curve extraction, optional evidence review, numerical output and diagnostics." loading="lazy"></picture></div><figcaption>Workflow schematic. Model review is optional; numerical quality still requires checking.</figcaption></figure></section><div class="project-layout"><article class="prose project-prose"><h2>From a spectrum image to numerical curves</h2>
+<p>GBLine is a local tool for digitizing scientific line charts and chemical spectra. It connects OCR, coordinate calibration and pixel-based curve extraction with an optional vision-language-model review workflow through MCP.</p>
+<p>The numerical core performs coordinate conversion and curve tracing. A visual model can inspect visible tick labels and curve colors, propose corrections and respond to the tool&#x27;s diagnostic feedback.</p>
+<h2>Main workflow</h2>
+<ul>
+<li>Start with a single-panel chart and inspect the plotting area, axes and visible ticks.</li>
+<li>Establish a linear or log10 coordinate mapping from image evidence.</li>
+<li>Extract curve pixels; review ambiguous axes, missing curves or colors when requested.</li>
+<li>Retrieve full numerical curves and diagnostic records, then check coverage and numerical fidelity before reusing the data.</li>
+</ul>
+<p>The MCP interface includes <code>inspect_chart_axes</code>, <code>extract_chart_data</code> and <code>get_curve_full_data</code>. Depending on the available evidence, the tool can return extracted data, request further review or abstain.</p>
+<h2>What to check in the output</h2>
+<p>Correct axis calibration and the expected number of curves do not guarantee a complete trace. Inspect horizontal-domain coverage, gaps and the extracted curve against the source image. Multi-panel figures should be separated first; dual-y-axis plots and insufficient visible calibration evidence are outside the current workflow.</p>
+<p>The research currently includes developmental and retrospective validation; independent evaluation on unseen spectra remains ongoing.</p>
+<h2>Access and research status</h2>
+<p>The current local MCP implementation is documented as version 2.0.0. Model assistance requires a compatible image-capable agent and its selected provider; the numerical tool itself is not tied to a particular model service.</p>
+<p>Contact Yuming Su for the current software and setup. A revised research manuscript is in preparation.</p></article><aside class="project-aside"><h2>Project information</h2><p>Software runs in the user’s own environment. This page provides information, documentation and source links.</p><h2>Development stage</h2><p>Research prototype</p><h2>Availability</h2><p>Contact for the current local tool and setup.</p><section class="visit-statistics"><h2>Visit statistics</h2><p>Not enabled</p><p class="stats-note">Counts begin on activation; earlier visits cannot be recovered.</p></section></aside></div></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>Updated 2026-10-19 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">Website source ↗</a></p></div></footer>
+</body>
+</html>

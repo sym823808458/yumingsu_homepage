@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 330" role="img">
+<title>GBLine 工作流示意</title>
+<rect width="1080" height="330" rx="10" fill="#f2f4f0"/>
+<g font-family="Georgia,serif" fill="#183c3b">
+<rect x="20" y="65" width="239" height="205" rx="8" fill="#fff" stroke="#b8c9c3"/>
+<text x="38" y="96" fill="#a34b2d" font-size="17">01</text>
+<text x="38" y="132" font-size="22" font-weight="bold">图片输入</text>
+<text x="38" y="165" font-size="17">科研折线图</text>
+<text x="38" y="192" font-size="16">化学谱图</text>
+<path d="M264 165h17m-5-5 5 5-5 5" fill="none" stroke="#a34b2d" stroke-width="2"/>
+<rect x="287" y="65" width="239" height="205" rx="8" fill="#fff" stroke="#b8c9c3"/>
+<text x="305" y="96" fill="#a34b2d" font-size="17">02</text>
+<text x="305" y="132" font-size="22" font-weight="bold">坐标与曲线</text>
+<text x="305" y="165" font-size="17">OCR 与坐标标定</text>
+<text x="305" y="192" font-size="16">像素曲线提取</text>
+<path d="M531 165h17m-5-5 5 5-5 5" fill="none" stroke="#a34b2d" stroke-width="2"/>
+<rect x="554" y="65" width="239" height="205" rx="8" fill="#fff" stroke="#b8c9c3"/>
+<text x="572" y="96" fill="#a34b2d" font-size="17">03</text>
+<text x="572" y="132" font-size="22" font-weight="bold">证据复核</text>
+<text x="572" y="165" font-size="17">可选视觉大模型</text>
+<text x="572" y="192" font-size="16">修正与本地校验</text>
+<path d="M798 165h17m-5-5 5 5-5 5" fill="none" stroke="#a34b2d" stroke-width="2"/>
+<rect x="821" y="65" width="239" height="205" rx="8" fill="#fff" stroke="#b8c9c3"/>
+<text x="839" y="96" fill="#a34b2d" font-size="17">04</text>
+<text x="839" y="132" font-size="22" font-weight="bold">数值输出</text>
+<text x="839" y="165" font-size="17">曲线数据与诊断</text>
+<text x="839" y="192" font-size="16">检查质量后再使用</text>
+</g></svg>

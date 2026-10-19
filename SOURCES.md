@@ -50,6 +50,21 @@ The subsequent authorized Surfacia repository/manual update is recorded separate
 
 Surfacia 4.0.0 was published to [PyPI](https://pypi.org/project/surfacia/4.0.0/) on 2026-10-19. The version-specific PyPI JSON endpoint confirmed both wheel and source distribution, with SHA-256 hashes matching the locally checked release artifacts. Installation from the official PyPI index succeeded. The bilingual homepage installation text now directs users to the published release and explicitly upgrades older installations.
 
+The Surfacia research preprint was verified against the live Crossref DOI record on 2026-10-19: DOI `10.26434/chemrxiv.15007949/v1`, title *Explain and Go Beyond with Surfacia: A Surface-Descriptor based Workflow for Interpretable Molecular Machine Learning*, authors Yuming Su, Yangtao Chen, Yiheng Dai and Cheng Wang, posted 2026-08-27, subtype `preprint`. The registered title is preserved verbatim, with an explicit note that this archived v1 predates the current scope revision. It is not treated as a software-release DOI or a journal acceptance. Citation counts and the dated Scholar list are unchanged.
+
+## GBLine project page
+
+Added at the author's request as the second visible software project, after Surfacia. The existing handle_candle project remains a separate entry. Sources reviewed:
+
+- The user-referenced conversation `01a066e8-40b8-7531-860f-dfe29b486393`, including the 2026-10-16 first-draft delivery and the limits of retrospective/developmental validation.
+- `D:/YumingSu/Papers/gbline/gbline-mcp/README.md` and `GBLINE_AUTO_MCP_V2.md`: the documented local 2.0.0 MCP interface, evidence correction, numerical extraction and abstention behavior.
+- `D:/YumingSu/Papers/gbline/spectrum_project/paper_draft_v1_20261016/manuscript.md`: project positioning and remaining validation gaps.
+- `D:/YumingSu/Papers/gbline/release_measurement_github_public_20260429/CITATION.cff`: an older release-manuscript title without a registered publication DOI.
+
+No verified GBLine preprint was found in the Crossref title searches or public preprint searches on 2026-10-19. The page therefore describes a manuscript in preparation and does not invent a DOI, journal acceptance, public source URL or pip installation command. Public repository lookup was rate limited; absence of a repository is not claimed. The contact route is used pending a confirmed distribution link.
+
+The workflow SVGs are newly authored schematics. No third-party article screenshots, manuscript figures, private spectra, API spending records or unverified benchmark claims were uploaded. This website update does not constitute a fresh GBLine extraction experiment.
+
 ## Publication metadata
 
 The supplied titles, citation counts and years are the primary record of this update. DOI and bibliographic metadata were supplemented using existing public links, publisher records and Crossref. Successful Crossref checks are recorded per item with `metadata_source`, `metadata_checked` and `authors_verified`; HTTP 429 or other errors are not marked verified. User-supplied truncated author lists remain where no complete list has been confirmed. Preprint status is retained as supplied rather than inferring a later acceptance.

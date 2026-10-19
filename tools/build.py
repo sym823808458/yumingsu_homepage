@@ -208,6 +208,9 @@ def project_body(project, papers, lang, home, prefix, email):
         buttons += f'<a class="button secondary" href="{E(docs)}">{t["docs"]}</a>'
     if project.get('download'):
         buttons += f'<a class="button secondary" href="{E(project["download"])}">{t["download"]}</a>'
+    if project.get('preprint'):
+        label = '预印本' if lang == 'zh' else 'Preprint'
+        buttons += f'<a class="button secondary" href="{E(project["preprint"])}">{label}</a>'
     related = ''
     for paper_id in project['related_publications']:
         p = next(p for p in papers if p['id']==paper_id)

@@ -16,6 +16,12 @@ Version 4.0.0 is available on PyPI and focuses on descriptors, modeling and inte
 
 The full quantum-chemistry workflow additionally requires external tools such as xTB, Gaussian and Multiwfn, installed under their respective licenses. Consult the current documentation for environment and version requirements.
 
-## Further information
+## Research preprint
+
+Yuming Su, Yangtao Chen, Yiheng Dai and Cheng Wang. **Explain and Go Beyond with Surfacia: A Surface-Descriptor based Workflow for Interpretable Molecular Machine Learning.** ChemRxiv, v1, 27 August 2026. [DOI: 10.26434/chemrxiv.15007949/v1](https://doi.org/10.26434/chemrxiv.15007949/v1).
+
+This archived preprint predates the current 4.0.0 scope revision and the latest interpretability-focused manuscript. Its registered title is retained verbatim; it is not a current feature list or a journal acceptance.
+
+## Documentation and source
 
 Visit the [full documentation](https://surfacia.readthedocs.io/zh-cn/latest/) and [source repository](https://github.com/sym823808458/Surfacia) for commands, examples, dependencies and issue reporting.
