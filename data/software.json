@@ -29,7 +29,30 @@
       "命令行",
       "量子化学"
     ],
-    "preprint": "https://doi.org/10.26434/chemrxiv.15007949/v1"
+    "preprint": "https://doi.org/10.26434/chemrxiv.15007949/v1",
+    "online": {
+      "url": "https://fragrance-were-swim-round.trycloudflare.com",
+      "note": {
+        "en": "Temporary online demo · email verification and administrator approval required. This address can change or stop; QQ SMTP setup is still pending, so new email registrations cannot yet complete.",
+        "zh": "临时在线演示，须验证邮箱并经管理员批准。地址可能变更或停止；QQ 发信配置尚未完成，新邮箱注册暂时不能走完流程。"
+      }
+    },
+    "media": [
+      {
+        "type": "image",
+        "src": "images/software/surfacia/online-shap.png",
+        "width": 1120,
+        "height": 560,
+        "alt": {
+          "en": "Actual held-out mean absolute SHAP values: TPSA and molecular weight have the largest attribution magnitudes in this teaching run.",
+          "zh": "实际留出样本的平均绝对 SHAP：本次教学运行中 TPSA 与分子量的影响幅度最大。"
+        },
+        "caption": {
+          "en": "Server run, 20 October 2026: 36 public molecules, six RDKit descriptors, computed Crippen logP. Importance is measured on eight held-out samples; inspect signed contributions in the downloadable result. This is an operation demo, not experimental validation.",
+          "zh": "2026 年 10 月 20 日服务器实跑：36 个公开分子、6 个 RDKit 描述符、计算 Crippen logP。重要性来自 8 个留出样本；正负方向请结合下载结果中的带符号贡献查看。这是操作示例，不是实验验证。"
+        }
+      }
+    ]
   },
   {
     "slug": "gbline",

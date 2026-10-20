@@ -230,6 +230,12 @@ def project_body(project, papers, lang, home, prefix, email):
     if project.get('preprint'):
         label = '预印本' if lang == 'zh' else 'Preprint'
         buttons += f'<a class="button secondary" href="{E(project["preprint"])}">{label}</a>'
+    online_note = ''
+    if project.get('online'):
+        online = project['online']
+        label = '在线计算演示' if lang == 'zh' else 'Online compute demo'
+        buttons += f'<a class="button secondary" href="{E(online["url"])}">{label}</a>'
+        online_note = f'<p class="project-status">{E(online["note"][lang])}</p>'
     related = ''
     for paper_id in project['related_publications']:
         p = next(p for p in papers if p['id']==paper_id)
@@ -239,7 +245,7 @@ def project_body(project, papers, lang, home, prefix, email):
     status = f'<p class="project-status">{E(project["status"][lang])}</p>' if project.get('status') else ''
     availability = f'<h2>{t["availability"]}</h2><p>{E(project["availability"][lang])}</p>' if project.get('availability') else ''
     stage = f'<h2>{t["stage"]}</h2><p>{E(project["status"][lang])}</p>' if project.get('status') else ''
-    return f'''<div class="container"><section class="project-hero"><div class="breadcrumb"><a href="{home}">{t['home']}</a> / <a href="{home}#software">{t['back']}</a> / {E(software_name(project,lang))}</div><div class="eyebrow">{E(project['category'][lang])}</div><h1>{E(software_name(project,lang))}</h1>{status}<p class="project-lead">{E(project['summary'][lang])}</p>{localized_tags(project,lang)}<div class="project-buttons">{buttons}</div></section>
+    return f'''<div class="container"><section class="project-hero"><div class="breadcrumb"><a href="{home}">{t['home']}</a> / <a href="{home}#software">{t['back']}</a> / {E(software_name(project,lang))}</div><div class="eyebrow">{E(project['category'][lang])}</div><h1>{E(software_name(project,lang))}</h1>{status}<p class="project-lead">{E(project['summary'][lang])}</p>{localized_tags(project,lang)}<div class="project-buttons">{buttons}</div>{online_note}</section>
       {project_media(project,lang,prefix)}<div class="project-layout"><article class="prose project-prose">{markdown(ROOT/'content/software'/f'{project["slug"]}.{lang}.md')}</article><aside class="project-aside"><h2>{t['project_info']}</h2><p>{t['project_note']}</p>{stage}{availability}{quick}{related_block}</aside></div></div>'''
 
 def validate(profile, papers, software):

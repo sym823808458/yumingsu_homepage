@@ -21,8 +21,8 @@
     <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#contact">联系</a></nav>
     <a class="language-link" href="../../../software/surfacia/" lang="en" hreflang="en">English</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / Surfacia</div><div class="eyebrow">分子表示 · 可解释建模</div><h1>Surfacia</h1><p class="project-lead">从分子结构与表面性质出发，构建化学可解释的描述符，连接特征筛选、预测建模与模型解释。</p><div class="tags"><span class="tag">Python</span><span class="tag">命令行</span><span class="tag">量子化学</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/Surfacia">源码仓库 ↗</a><a class="button secondary" href="https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html">使用手册 ↗</a><a class="button secondary" href="https://doi.org/10.26434/chemrxiv.15007949/v1">预印本</a></div></section>
-      <div class="project-layout"><article class="prose project-prose"><h2>让分子表示保留化学意义</h2>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / Surfacia</div><div class="eyebrow">分子表示 · 可解释建模</div><h1>Surfacia</h1><p class="project-lead">从分子结构与表面性质出发，构建化学可解释的描述符，连接特征筛选、预测建模与模型解释。</p><div class="tags"><span class="tag">Python</span><span class="tag">命令行</span><span class="tag">量子化学</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/Surfacia">源码仓库 ↗</a><a class="button secondary" href="https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html">使用手册 ↗</a><a class="button secondary" href="https://doi.org/10.26434/chemrxiv.15007949/v1">预印本</a><a class="button secondary" href="https://fragrance-were-swim-round.trycloudflare.com">在线计算演示</a></div><p class="project-status">临时在线演示，须验证邮箱并经管理员批准。地址可能变更或停止；QQ 发信配置尚未完成，新邮箱注册暂时不能走完流程。</p></section>
+      <section class="project-showcase"><figure class="project-media"><div class="project-media-image"><img src="../../../images/software/surfacia/online-shap.png" width="1120" height="560" alt="实际留出样本的平均绝对 SHAP：本次教学运行中 TPSA 与分子量的影响幅度最大。" loading="lazy"></div><figcaption>2026 年 10 月 20 日服务器实跑：36 个公开分子、6 个 RDKit 描述符、计算 Crippen logP。重要性来自 8 个留出样本；正负方向请结合下载结果中的带符号贡献查看。这是操作示例，不是实验验证。</figcaption></figure></section><div class="project-layout"><article class="prose project-prose"><h2>让分子表示保留化学意义</h2>
 <p>Surfacia 将分子表面性质转化为多层级描述符，并连接特征筛选、机器学习与 SHAP 解释。它面向希望将预测结果与化学结构联系起来的研究者。</p>
 <h2>工作流程</h2>
 <ul>
@@ -30,6 +30,23 @@
 <li>提取静电势、局部离子化能等表面性质及相关描述符。</li>
 <li>进行特征筛选、建模与模型解释。</li>
 </ul>
+<h2>在服务器上运行描述符表格</h2>
+<p>点击上方<strong>在线计算演示</strong>。已批准用户与 GBLine 共用同一个账户提交 Surfacia 任务。当前 HTTPS 入口为临时地址，可能变更；新用户的邮箱验证仍需作者完成 QQ 发信配置，已有的批准账户可使用计算服务。</p>
+<ul>
+<li>在计算页下载示例 CSV，或准备自己的 UTF-8 CSV：包含一个连续数值的 <code>target</code> 列，以及 1–32 个数值描述符列；30–500 个样本，文件不超过 2 MiB。描述符列名以英文字母开头，只使用字母、数字和下划线；不接受空值、无穷值或公式。</li>
+<li>可选的 <code>Sample Name</code> 列填写唯一编号，只使用字母、数字、点、下划线和连字符，并以字母或数字开头；省略时使用行号。可选的 <code>smiles</code> 列仅作为文本接受，本次在线计算忽略结构内容；其余列均作为数值描述符。</li>
+<li>用邮箱和密码注册，验证邮箱并等待管理员批准。登录后选择 <strong>Surfacia</strong>，上传 CSV 并提交。保留任务编号；可以关闭页面，之后重新登录查看进度。</li>
+<li>完成后下载 ZIP。先阅读 <code>README.txt</code> 和 <code>report.json</code>，再检查 <code>predictions.csv</code> 与 <code>parity.png</code>；结合训练集均值基线，判断独立测试的 MAE、RMSE、R²，再解释特征。</li>
+<li><code>feature_importance.csv</code> 和 <code>shap_importance.png</code> 展示影响幅度；<code>shap_values.csv</code> 保留测试样本的描述符值与带正负号贡献，<code>shap_dependence.png</code> 展示首要描述符的方向。SHAP 解释的是拟合模型，不能直接证明化学机制或因果干预效果。</li>
+</ul>
+<p>两个工具共用每个账户的配额：同时运行 1 个任务、排队 2 个任务、每日提交 10 次。Surfacia 单次最长 10 分钟；结果仅提交账户可下载，72 小时后删除，请及时保存。</p>
+<h3>在线版具体计算什么</h3>
+<p>服务器调用 Surfacia 4.0.0 的 <code>BaseChemMLAnalyzer.XGB_Fit</code>，使用全部上传描述符及固定 XGBoost 回归参数：350 棵树、深度 8、学习率 0.03，仅使用 CPU。仅接受数据，不接受用户脚本或模型。</p>
+<p>固定随机种子 42，留出 20% 的不同描述符向量作为测试组；相同向量保持在同一组。建模池采用五折分组验证，每个建模样本均得到一次折外预测；随后用整个建模池训练最终模型，对未参与训练的测试样本预测并计算带符号 TreeSHAP，同时核对贡献加和是否还原预测值。不进行特征搜索、调参、早停或按测试结果挑选模型。下载包记录参数、特征顺序、依赖版本、输入与训练源码哈希、数据划分及最终 XGBoost 原生 <code>model.json</code>。</p>
+<p>这是有计算上限的网页分析流程，与桌面 CLI 的重复随机划分、文章冻结的研究评估方案分别说明。随机分组不能替代骨架划分、时间划分或外部验证。完整结构准备、量化计算、表面描述符提取和交互式三维查看仍在本地流程中进行。</p>
+<h3>已完成的在线案例</h3>
+<p>2026 年 10 月 20 日，36 个公开分子的 CSV 已完成真实网页提交、后台计算和 ZIP 下载。28 个建模样本的折外 R² 为 0.776、MAE 为 0.259；8 个留出样本的 R² 为 0.858、MAE 为 0.181、RMSE 为 0.275，训练集均值基线的测试 RMSE 为 0.762。SHAP 贡献加和还原预测值的误差不超过 3.6 × 10⁻⁷。</p>
+<p><a href="http://yumingsu.top/downloads/surfacia/descriptors.csv">下载示例 CSV</a>与<a href="http://yumingsu.top/downloads/surfacia/online-demo-results.zip">本次运行完整输出</a>。示例使用 6 个 RDKit 描述符和<strong>计算 Crippen logP</strong>，不涉及实验标签或量化表面描述符。测试集很小，划分方案也与桌面教学不同，不能据此直接比较优劣；特征排序仅描述本次运行。</p>
 <h2>安装与使用</h2>
 <p>通过上方命令从 PyPI 安装当前版本，再运行 <code>surfacia --help</code> 查看命令；已有描述符表时，可以单独进行机器学习分析。</p>
 <p>4.0.0 已在 PyPI 发布，聚焦描述符、建模与解释。如果此前安装了 3.0.3，请使用上方升级命令，并查看手册的迁移说明。<a href="https://surfacia.readthedocs.io/zh-cn/latest/zh/examples/interpretation.html">解释案例</a>从硫局部的化学问题讲到证据卡，并用可下载教学运行的实际带符号 SHAP 输出示范读图。</p>

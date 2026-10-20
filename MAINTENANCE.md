@@ -91,3 +91,7 @@ GoatCounter 接入代码已准备，配置集中在 `data/analytics.json`。当�
 这是启用后的**会话访问次数**，不是历史独立人数；同一人跨会话可能重复计数，语言切换在同一会话合并。启用前没有记录的访问无法补回。源码仓库 Traffic、手册访问、PyPI 安装和 Release 下载不计入个人主页软件页访问。广告拦截器、脚本禁用等也可能造成漏计。禁止从 localStorage、随机数或示意数字生成所谓访问量。
 
 官方接入与口径：https://www.goatcounter.com/help/start 、https://www.goatcounter.com/help/visitor-counter 、https://www.goatcounter.com/help/sessions 。需要保存长期历史时，可在作者后台导出 CSV，不能把访问量冒充下载量。
+
+## 在线计算入口
+
+软件条目的 `online.url` 统一保存实际计算平台入口，`online.note.en/zh` 同步注明临时状态、注册条件和发信配置是否就绪。入口按钮由模板生成，使用方法保存在对应的 Markdown 中。正式接入 compute.yumingsu.top 后，只更新数据文件中的 URL 和真实状态；不要将服务器配置、队列数据库、上传文件、测试账户或密钥复制到公开仓库。在线算法版本、评估方案和资源限制必须与实际部署一致。
