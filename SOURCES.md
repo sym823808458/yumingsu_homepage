@@ -141,3 +141,8 @@ The unaltered audited Python SOS equations produce negative response points on t
 Only an arbitrary two-excited-state algebra matrix is offered as a public loadable example. It is labeled synthetic, uses no private molecular data, and has no experimental meaning. Limits remain 2 CPU / 4 GiB / 10 minutes per TPA task, with the same approval, ownership, shared quotas, no-network container and 72-hour retention policy as the other tools. The temporary HTTPS endpoint and pending SMTP/permanent-domain status remain disclosed.
 
 The public MATLAB repository still contained the overwrite loop on live inspection. Commit `f3eca3d` now saves `mu0` before subtraction and documents the narrow scope and remaining dipole-definition/physical-validation requirements. No MATLAB runtime validation is claimed. The online runner uses the separately audited Python snapshot.
+
+
+### Input scope clarified — 2026-10-20
+
+The owner subsequently requested only fchk + log. The text-upload route, manual dipole fields, route selector and loadable synthetic input were removed. Both the API metadata gate and isolated runner reject text-mode submissions. Historical synthetic numerical-check plots/results remain explicitly archival and are not an online input mode. Existing completed task downloads remain accessible under the original ownership/retention checks.

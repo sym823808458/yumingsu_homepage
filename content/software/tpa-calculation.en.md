@@ -16,11 +16,11 @@ The [online TPA workspace](https://fragrance-were-swim-round.trycloudflare.com/?
 
 Prepare a completed all-electron, restricted closed-shell singlet TD calculation with **IOp(9/40=4)** and 2–40 singlet excited states. Convert the checkpoint with Gaussian `formchk` beforehand. Maximum sizes are 64 MiB for fchk and 16 MiB for log; the current service supports up to 300 atoms / 2000 basis functions. It checks atom order, coordinates, axes/origin, state count and energies. Incomplete, unsupported or mismatched inputs are rejected. The server does not run Gaussian or optimize a structure.
 
-An advanced option accepts a complete Multiwfn electric-dipole text export, including every excited-state pair and diagonal. Specify electronic/total definitions and a nuclear dipole vector in the same atomic-unit frame. A text export alone cannot establish those definitions; do not enter zero without checking. The **Load synthetic matrix test** button supplies an arbitrary algebra example to try the interface; it is not a molecular prediction or experimental case.
+The online service accepts **only the fchk + log pair**. Multiwfn extraction and permanent-dipole definition checks are automatic; no text export or manually entered dipole vector is needed.
 
 The temporary HTTPS address can change or stop. New access requires email verification and administrator approval; QQ SMTP configuration remains pending, so new registrations cannot yet complete. Each task uses at most 2 CPU threads / 4 GiB and has a 10-minute total limit. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private downloads expire after 72 hours.
 
-You can [download the synthetic input](http://yumingsu.top/downloads/tpa-calculation/synthetic-input.txt) and [the actual server output ZIP](http://yumingsu.top/downloads/tpa-calculation/synthetic-results.zip). In the advanced form choose electronic ground/excited dipoles and nuclear vector [0, 0, 0] for this artificial test only.
+The plot above is an archived synthetic algebra verification of the numerical core, not an upload option or a molecular benchmark. [Recorded verification outputs](http://yumingsu.top/downloads/tpa-calculation/synthetic-results.zip) remain available for reference.
 
 ## Permanent-dipole reference: save before subtracting
 
