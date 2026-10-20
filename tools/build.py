@@ -241,12 +241,13 @@ def project_body(project, papers, lang, home, prefix, email):
         p = next(p for p in papers if p['id']==paper_id)
         related += f'<a class="pub-title" lang="en" href="{home}#{E(p["id"])}">{E(p["title"])} ({p["year"]}) ↗</a>'
     related_block = f'<h2>{t["related"]}</h2>{related}' if related else ''
+    project_note = ('在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。' if lang == 'zh' else 'Online tasks run on a separate compute service for approved accounts. This page provides documentation and local workflow links.') if project.get('online') else t['project_note']
     quick = f'<p class="workflow-label">{t["quick_start"]}</p><p><code>{E(project["command"])}</code></p>' if project.get('command') else ''
     status = f'<p class="project-status">{E(project["status"][lang])}</p>' if project.get('status') else ''
     availability = f'<h2>{t["availability"]}</h2><p>{E(project["availability"][lang])}</p>' if project.get('availability') else ''
     stage = f'<h2>{t["stage"]}</h2><p>{E(project["status"][lang])}</p>' if project.get('status') else ''
     return f'''<div class="container"><section class="project-hero"><div class="breadcrumb"><a href="{home}">{t['home']}</a> / <a href="{home}#software">{t['back']}</a> / {E(software_name(project,lang))}</div><div class="eyebrow">{E(project['category'][lang])}</div><h1>{E(software_name(project,lang))}</h1>{status}<p class="project-lead">{E(project['summary'][lang])}</p>{localized_tags(project,lang)}<div class="project-buttons">{buttons}</div>{online_note}</section>
-      {project_media(project,lang,prefix)}<div class="project-layout"><article class="prose project-prose">{markdown(ROOT/'content/software'/f'{project["slug"]}.{lang}.md')}</article><aside class="project-aside"><h2>{t['project_info']}</h2><p>{t['project_note']}</p>{stage}{availability}{quick}{related_block}</aside></div></div>'''
+      {project_media(project,lang,prefix)}<div class="project-layout"><article class="prose project-prose">{markdown(ROOT/'content/software'/f'{project["slug"]}.{lang}.md')}</article><aside class="project-aside"><h2>{t['project_info']}</h2><p>{project_note}</p>{stage}{availability}{quick}{related_block}</aside></div></div>'''
 
 def validate(profile, papers, software):
     if len({p['id'] for p in papers}) != len(papers):

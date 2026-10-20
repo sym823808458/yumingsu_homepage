@@ -174,8 +174,8 @@
       "en": "Two-photon absorption · Computational workflow"
     },
     "summary": {
-      "zh": "基于态求和（SOS）理论，连接 Gaussian、Multiwfn 与 Python 或 MATLAB，由激发能和偶极矩计算双光子吸收光谱与截面。",
-      "en": "Sum-over-states (SOS) calculations of two-photon absorption spectra and cross sections from excitation energies and dipoles, using Gaussian, Multiwfn and Python or MATLAB."
+      "en": "Upload Gaussian fchk and TD log for automated Multiwfn extraction and finite-state SOS spectra, with explicit permanent-dipole reference diagnostics.",
+      "zh": "上传 Gaussian fchk 与 TD log，由服务器完成 Multiwfn 提取及有限态 SOS 光谱计算，并提供永久偶极矩参考核对。"
     },
     "repository": "https://github.com/sym823808458/calculateTPAbyMATLAB",
     "contact": true,
@@ -199,6 +199,29 @@
       "MATLAB",
       "Gaussian",
       "Multiwfn"
+    ],
+    "online": {
+      "url": "https://fragrance-were-swim-round.trycloudflare.com/?tool=tpa",
+      "note": {
+        "en": "Temporary online demo · email verification and administrator approval required. This address can change or stop; QQ SMTP setup is still pending, so new email registrations cannot yet complete.",
+        "zh": "临时在线演示，须验证邮箱并经管理员批准。地址可能变更或停止；QQ 发信配置尚未完成，新邮箱注册暂时不能走完流程。"
+      }
+    },
+    "media": [
+      {
+        "type": "image",
+        "src": "images/software/tpa-calculation/synthetic-spectrum.svg",
+        "width": 900,
+        "height": 520,
+        "alt": {
+          "en": "Server-computed spectrum of an arbitrary synthetic dipole matrix; not molecular or experimental data",
+          "zh": "任意合成偶极矩矩阵在服务器生成的光谱，仅为代数测试，不是分子或实验数据"
+        },
+        "caption": {
+          "en": "A reproducible algebra example: two supplied excited states, saved ground reference and 0.05 eV denominator damping. This tests the workflow; it is not a physical accuracy benchmark.",
+          "zh": "可复现代数示例：两个输入激发态、保存基态参考、0.05 eV 分母阻尼。用于演示工作流，不是物理精度基准。"
+        }
+      }
     ]
   },
   {

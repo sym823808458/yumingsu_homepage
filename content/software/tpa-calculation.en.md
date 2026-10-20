@@ -10,11 +10,23 @@ The post-processing code evaluates the frequency-dependent **second hyperpolariz
 
 The original MATLAB repository identifies **Terenziani et al. (2008)** as its method reference. **Orr and Ward (1971)** provides the foundational perturbative SOS framework for nonlinear optical response; **Göppert-Mayer (1931)** is the foundational two-photon-transition paper. Full citations and DOI links are listed below.
 
-## Three steps
+## Online calculation: upload two files
 
-- Complete a Gaussian TD calculation and convert its checkpoint to `.fchk` with `formchk`.
-- Export the transition-dipole text with Multiwfn and save one named `.txt` file per molecule.
-- Choose Python or MATLAB to process the same type of exported data and generate numerical spectra.
+The [online TPA workspace](https://fragrance-were-swim-round.trycloudflare.com/?tool=tpa) accepts one matching Gaussian **`.fchk` + TD `.log`** pair. After signing in with an approved account, select TPA, upload the two files and submit. The server runs the fixed Multiwfn export and Python SOS calculation; task history provides the spectrum, dipole-reference audit and a downloadable ZIP. You may close the page while it runs.
+
+Prepare a completed all-electron, restricted closed-shell singlet TD calculation with **IOp(9/40=4)** and 2–40 singlet excited states. Convert the checkpoint with Gaussian `formchk` beforehand. Maximum sizes are 64 MiB for fchk and 16 MiB for log; the current service supports up to 300 atoms / 2000 basis functions. It checks atom order, coordinates, axes/origin, state count and energies. Incomplete, unsupported or mismatched inputs are rejected. The server does not run Gaussian or optimize a structure.
+
+An advanced option accepts a complete Multiwfn electric-dipole text export, including every excited-state pair and diagonal. Specify electronic/total definitions and a nuclear dipole vector in the same atomic-unit frame. A text export alone cannot establish those definitions; do not enter zero without checking. The **Load synthetic matrix test** button supplies an arbitrary algebra example to try the interface; it is not a molecular prediction or experimental case.
+
+The temporary HTTPS address can change or stop. New access requires email verification and administrator approval; QQ SMTP configuration remains pending, so new registrations cannot yet complete. Each task uses at most 2 CPU threads / 4 GiB and has a 10-minute total limit. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private downloads expire after 72 hours.
+
+You can [download the synthetic input](http://yumingsu.top/downloads/tpa-calculation/synthetic-input.txt) and [the actual server output ZIP](http://yumingsu.top/downloads/tpa-calculation/synthetic-results.zip). In the advanced form choose electronic ground/excited dipoles and nuclear vector [0, 0, 0] for this artificial test only.
+
+## Permanent-dipole reference: save before subtracting
+
+Every diagonal must use **Δμᵢ = μᵢᵢ − μ₀₀**, with a copy of μ₀₀ saved before changing any diagonal. Otherwise the first iteration zeros the reference, leaving later excited-state diagonals unchanged. The web runner uses the corrected Python implementation and checks invariance to a common shift of all permanent dipoles.
+
+In the pinned Multiwfn 3.8(dev), 2024-10-20 build used here, the Gaussian export has a total ground dipole and electronic excited-state diagonals. The server computes the nuclear vector from fchk nuclear charges and Cartesian coordinates, puts all permanent dipoles on a common electronic basis, and then applies the saved reference. The report and `dipole_reference.csv` retain raw, normalized and difference vectors. A near-zero nuclear vector is reported numerically; the electronic-only annotation alone does not demonstrate a significant mixing error in a particular historical sample.
 
 ## Python companion
 
@@ -30,13 +42,13 @@ It writes `tpa_summary.csv`, one `*_tpa_spectrum.csv` per molecule, and optional
 
 ## MATLAB route
 
-The [public MATLAB repository](https://github.com/sym823808458/calculateTPAbyMATLAB) provides Gaussian and Multiwfn examples, `batchTDM.bat`, and `calculateTPAinbatchpar.m`. It remains the public source entry for the original workflow; the Python companion is currently shared separately by enquiry.
+The [public MATLAB repository](https://github.com/sym823808458/calculateTPAbyMATLAB) provides Gaussian and Multiwfn examples, `batchTDM.bat`, and `calculateTPAinbatchpar.m`. The public diagonal-reference loop was corrected on 2026-10-20; MATLAB execution and absolute cross sections have not been certified. It remains the public source entry for the original workflow; the Python companion is currently shared separately by enquiry.
 
 ## Reading and comparing results
 
 In the Python output, `sigma_gm` is the calculated cross section in GM. `lambda2_nm` is the incident wavelength for degenerate two-photon excitation; `lambda_half_nm` is half that value, the one-photon-equivalent wavelength. Keep these conventions explicit when plotting or reporting a peak.
 
-The Python and MATLAB routes implement the existing post-processing workflow. Compare a known input when switching implementations; numerical equivalence has not been certified. A finite SOS state sum requires convergence checks. Report the electronic-structure method, basis set, solvent treatment, included states, dipole inputs and damping/broadening convention when comparing cross sections; peak heights are sensitive to broadening. Match these settings between implementations.
+The web runner retains the audited Python core's equations, frequency grid and constants, including its legacy 0.528 Å atomic-dipole conversion, and uses 0.05 eV denominator damping (not a certified spectral FWHM). Negative response values are retained and marked for review. The reference fix alone does not validate absolute cross sections, prefactors or state convergence. The Python and MATLAB routes implement the existing post-processing workflow. Compare a known input when switching implementations; numerical equivalence has not been certified. A finite SOS state sum requires convergence checks. Report the electronic-structure method, basis set, solvent treatment, included states, dipole inputs and damping/broadening convention when comparing cross sections; peak heights are sensitive to broadening. Match these settings between implementations.
 
 ## Theory and software references
 
@@ -44,6 +56,8 @@ The Python and MATLAB routes implement the existing post-processing workflow. Co
 - **Foundational SOS response theory:** B. J. Orr and J. F. Ward. [Perturbation theory of the non-linear optical polarization of an isolated system](https://doi.org/10.1080/00268977100100481). Molecular Physics **20**, 513–526 (1971). DOI: `10.1080/00268977100100481`.
 - **Foundational two-photon-transition theory:** M. Göppert-Mayer. [Über Elementarakte mit zwei Quantensprüngen](https://doi.org/10.1002/andp.19314010303). Annalen der Physik **401** [series volume 9], 273–294 (1931). DOI: `10.1002/andp.19314010303`.
 - **Upstream wavefunction-analysis software:** T. Lu and F. Chen. [Multiwfn: A multifunctional wavefunction analyzer](https://doi.org/10.1002/jcc.22885). Journal of Computational Chemistry **33**, 580–592 (2012). DOI: `10.1002/jcc.22885`. Cite the Multiwfn version actually used, alongside the applicable Gaussian and electronic-structure-method references.
+
+- **Current Multiwfn developments:** T. Lu. [A comprehensive electron wavefunction analysis toolbox for chemists, Multiwfn](https://doi.org/10.1063/5.0216272). Journal of Chemical Physics **161**, 082503 (2024). Cite both the 2012 and 2024 Multiwfn papers in the main text, as requested by the deployed build.
 
 ## Related research
 
