@@ -238,17 +238,17 @@
       "zh": "楼栋风压暴露 · 巡检规划"
     },
     "summary": {
-      "en": "A local desktop prototype that connects building annotation, wind-direction scenarios and facade/floor-band visualizations for exploratory inspection planning.",
-      "zh": "连接楼栋标注、风向情景和立面／楼层段可视化的本地桌面原型，服务于探索性的巡检规划。"
+      "en": "A screening prototype connecting desktop building annotation and approved online direct-input calculations with wind-direction, facade and height-band comparisons.",
+      "zh": "连接桌面楼栋标注与审批后在线参数计算，比较来风方向、立面和高度分段压力幅值的筛查原型。"
     },
     "tags": [
       "Python",
-      "Desktop GUI",
+      "Web inputs",
       "Wind scenarios"
     ],
     "tags_zh": [
       "Python",
-      "桌面界面",
+      "网页输入",
       "风向情景"
     ],
     "status": {
@@ -256,8 +256,8 @@
       "zh": "开发原型"
     },
     "availability": {
-      "en": "Desktop demonstration available by enquiry. Public source and software package release are pending.",
-      "zh": "可联系了解桌面演示；公开源码和软件安装包尚待整理发布。"
+      "en": "Approved online direct-input demo and desktop demonstrations. A public source/package release remains pending.",
+      "zh": "已提供审批后直接输入的在线演示，也可联系了解桌面软件；公开源码与安装包仍待整理。"
     },
     "contact": true,
     "related_publications": [],
@@ -302,7 +302,28 @@
           "en": "Watch the original wind-direction animation",
           "zh": "查看原始风向扫描动画"
         }
+      },
+      {
+        "type": "image",
+        "src": "images/software/building-wind-screening/online-height-bands.svg",
+        "width": 900,
+        "height": 454,
+        "alt": {
+          "en": "Actual online three-building example: maximum pressure magnitudes across facades for the four model height bands.",
+          "zh": "在线三栋合成楼示例的实际输出：四个模型高度分段的立面最大压力幅值。"
+        },
+        "caption": {
+          "en": "Online direct-input example, 20 October 2026. Hypothetical rectangular buildings; model-estimated nonnegative pressure magnitudes in kPa, not measured loads or calibrated safety thresholds. Colors distinguish height bands.",
+          "zh": "2026 年 10 月 20 日直接输入的在线示例。使用假设的矩形楼栋，展示模型估计的非负压力幅值（kPa）；不是实测荷载或标定的安全阈值。颜色区分高度分段。"
+        }
       }
-    ]
+    ],
+    "online": {
+      "url": "https://fragrance-were-swim-round.trycloudflare.com/?tool=wind",
+      "note": {
+        "en": "Temporary online demo · email verification and administrator approval required. This address can change or stop; QQ SMTP setup is still pending, so new email registrations cannot yet complete.",
+        "zh": "临时在线演示，须验证邮箱并经管理员批准。地址可能变更或停止；QQ 发信配置尚未完成，新邮箱注册暂时不能走完流程。"
+      }
+    }
   }
 ]

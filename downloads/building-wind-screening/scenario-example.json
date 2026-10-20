@@ -1,0 +1,46 @@
+{
+  "wind_speed": 45,
+  "wind_direction": 225,
+  "buildings": [
+    {
+      "name": "B1",
+      "x_m": 0,
+      "y_m": 0,
+      "width_m": 30,
+      "depth_m": 20,
+      "floors": 18,
+      "height_m": 54,
+      "rotation_deg": 0
+    },
+    {
+      "name": "B2",
+      "x_m": 60,
+      "y_m": 0,
+      "width_m": 24,
+      "depth_m": 16,
+      "floors": 12,
+      "height_m": 36,
+      "rotation_deg": 0
+    },
+    {
+      "name": "B3",
+      "x_m": -50,
+      "y_m": 70,
+      "width_m": 24,
+      "depth_m": 20,
+      "floors": 24,
+      "height_m": 72,
+      "rotation_deg": 15
+    }
+  ],
+  "open_areas": [
+    {
+      "name": "Open1",
+      "x_m": 0,
+      "y_m": -120,
+      "width_m": 120,
+      "depth_m": 80,
+      "rotation_deg": 0
+    }
+  ]
+}
