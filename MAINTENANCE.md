@@ -12,6 +12,12 @@
 
 无需长期运行本地 HTTP 服务；预览结束后可以关闭。Python 只在生成页面时需要，GitHub 上发布的是静态文件。
 
+## 研究方向图片
+
+主页研究方向采用三行图文布局，手机上先显示方向说明，再显示完整图片。每个 `data/profile.json` 的 `research` 条目通过 `publication_id` 关联已有论文，并用 `figure` 保存本地图路径、固有尺寸、中英文替代文字与说明、来源页面、作者/期刊/图号和许可链接。替换图片时同步这些字段；图片保持完整比例，点击可打开完整文件。原图保存在 `images/research/`，无需外部图片服务。
+
+只使用已发表且已核对复用许可的图片。综述中转载其他团队的图片不自动适用整篇文章的许可，也不能作为本人搭建设备的展示。现有原图、许可与下载来源见 `images/research/README.md`。英中文共用原始英文论文图，不重绘或翻译图内文字。
+
 ## 增加论文
 
 在 `data/publications.json` 增加一个对象。必填字段：`id`、`title`、`authors`、`venue`、`details`、`year`、`citations`、`type`；可选 `doi`、`url`、`featured`。

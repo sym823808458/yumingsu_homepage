@@ -144,6 +144,25 @@ def publication(paper, t, lang, hidden=False):
       <div class="pub-links"><span class="pub-type">{t[paper['type']]}</span><a href="{E(link)}">{link_label}</a></div></div>
       <div class="pub-citations"><strong>{paper['citations']}</strong>{t['cited']}</div></li>'''
 
+def research_item(item, papers, lang, prefix):
+    figure = item['figure']
+    source = prefix + figure['src']
+    image_version = hashlib.sha256((ROOT/figure['src']).read_bytes()).hexdigest()[:12]
+    image_url = source + '?v=' + image_version
+    paper = next(p for p in papers if p['id'] == item['publication_id'])
+    view_label = '查看完整图片 ↗' if lang == 'zh' else 'View full figure ↗'
+    paper_label = '代表论文' if lang == 'zh' else 'Representative paper'
+    return f'''<article class="research-item">
+      <figure class="research-figure"><a class="research-image-link" href="{E(image_url)}" target="_blank" rel="noopener" aria-label="{E(view_label+': '+figure['alt'][lang])}">
+        <img src="{E(image_url)}" alt="{E(figure['alt'][lang])}" width="{int(figure['width'])}" height="{int(figure['height'])}" loading="lazy">
+        <span class="research-image-action">{view_label}</span></a>
+        <figcaption>{E(figure['caption'][lang])}<span class="research-credit"><a href="{E(figure['source'])}">{E(figure['attribution'])}</a> · <a href="{E(figure['license_url'])}">{E(figure['license'])}</a></span></figcaption>
+      </figure>
+      <div class="research-copy"><div class="research-number">{E(item['number'])}</div><h3>{E(item['title'][lang])}</h3><p>{E(item['text'][lang])}</p>{localized_tags(item,lang)}
+        <div class="research-paper"><span>{paper_label}</span><a href="https://doi.org/{E(paper['doi'])}" lang="en">{E(paper['title'])} ↗</a></div>
+      </div></article>'''
+
+
 def home_body(profile, papers, software, lang, prefix):
     t = TEXT[lang]
     portrait_version = hashlib.sha256((ROOT/'images/profile.jpg').read_bytes()).hexdigest()[:12]
@@ -153,7 +172,7 @@ def home_body(profile, papers, software, lang, prefix):
     contact_links = ''.join(f'<a href="{E(url)}">{E(name)} ↗</a>' for name,url in contacts)
     metrics = ''.join(f'<div class="metric"><strong>{snapshot[key]}</strong><span>{t[label]}</span></div>' for key,label in [('citations','citations'),('h_index','hindex'),('i10_index','i10index')])
     timeline = ''.join(f'<div class="timeline-item" id="{["work","education","education-bachelors"][i]}"><div class="timeline-period">{E(x["period"])}</div><div class="timeline-title">{E(x["title"][lang])}</div><div class="timeline-place">{E(x["institution"][lang])}</div></div>' for i,x in enumerate(profile['experience']))
-    research = ''.join(f'<article class="research-item"><div class="research-number">{x["number"]}</div><h3>{E(x["title"][lang])}</h3><p>{E(x["text"][lang])}</p>{localized_tags(x,lang)}</article>' for x in profile['research'])
+    research = ''.join(research_item(item,papers,lang,prefix) for item in profile['research'])
     rows = ''.join(f'<article class="software-row"><span class="software-index">{i:02d}</span><div><a class="software-name" href="software/{s["slug"]}/">{E(software_name(s,lang))}</a><div class="software-category">{E(s["category"][lang])}</div></div><p class="software-summary">{E(s["summary"][lang])}</p><a class="text-link" href="software/{s["slug"]}/">{t["software_view"]}<span class="sr-only"> {E(software_name(s,lang))}</span></a></article>' for i,s in enumerate(software,1))
     # Software-resource records stay in the data archive, not the paper display.
     ordered = sorted((p for p in papers if p['type'] != 'resource'), key=lambda p:(p['citations'],p['year']), reverse=True)

@@ -1,5 +1,14 @@
 # Content provenance — 2026-10-19
 
+## Published research figures — 2026-10-20
+
+At the author's request, the homepage's three research directions now pair the existing bilingual descriptions with published figures. No unpublished figures, instrument photos or new scientific results are used. Sources and exact image hashes are recorded in `images/research/README.md`.
+
+- *Interpretable Machine Learning of Two-Photon Absorption*, Advanced Science (2023), DOI `10.1002/advs.202204902`: Fig. 4 for interpretable chemical ML and Fig. 2 for the two-photon absorption workflow. The Europe PMC full-text record `PMC10015897` identifies © 2023 The Authors and CC BY 4.0. Both figures are original to the article and have no separate third-party credit in their captions.
+- *Automation and machine learning augmented by large language models in a catalysis study*, Chemical Science (2024), DOI `10.1039/d3sc07012c`: Fig. 1 for the overall information–experiment–computation workflow. Full text `PMC11304797` identifies CC BY-NC 3.0; this figure is used on the noncommercial academic homepage with attribution. Its caption has no third-party reproduction notice. The many separately credited third-party robot/platform figures elsewhere in this review were deliberately not reused. The homepage labels the selected figure as a review overview, not an instrument built or validated by the author.
+
+The license and full captions were checked against the official Europe PMC full-text XML endpoints on 2026-10-20. Image bytes come from the NCBI CDN URLs present in the corresponding PMC article HTML and are stored unchanged. The webpage changes only their display size, preserves the whole figure, and provides source, figure number, license and DOI links. The original paper titles and image text remain in English in both language versions. Scholar statistics and the software catalogue are unchanged.
+
 ## Scholar snapshot
 
 Yuming Su supplied a Google Scholar profile text in the website-maintenance conversation on 2026-10-19 (Asia/Shanghai).

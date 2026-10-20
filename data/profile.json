@@ -51,7 +51,25 @@
         "Surfacia",
         "LoFFi",
         "构效关系"
-      ]
+      ],
+      "figure": {
+        "src": "images/research/tpa-shap-2023.jpg",
+        "width": 546,
+        "height": 283,
+        "alt": {
+          "en": "Six SHAP analyses relating two-photon absorption to conjugation, fragment descriptors, wavelength and solvent.",
+          "zh": "双光子吸收研究中共轭、片段描述符、波长和溶剂的六组 SHAP 分析图。"
+        },
+        "caption": {
+          "en": "Interpreting structure–property relationships: SHAP analysis from our two-photon absorption study.",
+          "zh": "以双光子吸收研究为例，通过 SHAP 分析理解分子结构与性质的关系。"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10015897/figure/advs5053-fig-0004/",
+        "attribution": "Y. Su et al. · Advanced Science (2023) · Fig. 4 · © The Authors",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publication_id": "tpa-ml-2023"
     },
     {
       "number": "02",
@@ -72,7 +90,25 @@
         "电镀",
         "电化学",
         "智能体"
-      ]
+      ],
+      "figure": {
+        "src": "images/research/catalysis-workflow-2024.jpg",
+        "width": 749,
+        "height": 714,
+        "alt": {
+          "en": "Overview connecting literature extraction, datasets, hypotheses, experiment design and computational analysis in catalyst discovery.",
+          "zh": "催化剂研究中连接文献信息提取、数据集、假设、实验设计与计算分析的总体工作流。"
+        },
+        "caption": {
+          "en": "Connecting information, experiments and computation: the overview from our 2024 review.",
+          "zh": "连接信息、实验与计算：2024 年综述中的总体工作流示意。"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11304797/figure/fig1/",
+        "attribution": "Y. Su et al. · Chemical Science (2024) · Fig. 1 · © RSC",
+        "license": "CC BY-NC 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-nc/3.0/"
+      },
+      "publication_id": "automation-2024"
     },
     {
       "number": "03",
@@ -93,7 +129,25 @@
         "双光子吸收",
         "量子化学",
         "催化"
-      ]
+      ],
+      "figure": {
+        "src": "images/research/tpa-features-2023.jpg",
+        "width": 600,
+        "height": 562,
+        "alt": {
+          "en": "Two-photon absorption workflow from experimental molecules through fragment and conjugation features to model validation and chemical hypotheses.",
+          "zh": "双光子吸收研究从实验分子、片段与共轭特征到模型验证和化学假设的流程图。"
+        },
+        "caption": {
+          "en": "Two-photon absorption: molecular features, model validation and chemically testable hypotheses.",
+          "zh": "双光子吸收：分子特征、模型验证与可检验的化学假设。"
+        },
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10015897/figure/advs5053-fig-0002/",
+        "attribution": "Y. Su et al. · Advanced Science (2023) · Fig. 2 · © The Authors",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publication_id": "tpa-ml-2023"
     }
   ],
   "experience": [
