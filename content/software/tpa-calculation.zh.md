@@ -1,6 +1,14 @@
 ## 从激发态计算到双光子吸收分析
 
-这套工作流连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取与 **Python 或 MATLAB** 后处理，用于双光子吸收（TPA）光谱和截面的批量计算。
+这套工作流基于 **sum-over-states（SOS，态求和）理论**，由电子激发能和偶极矩矩阵元计算双光子吸收（TPA）光谱与截面。工作流连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取与 **Python 或 MATLAB** 后处理。
+
+## 理论依据：sum-over-states（SOS，态求和）
+
+在电偶极近似下，SOS 理论利用激发能、偶极矩矩阵元及含频率的能量分母，对电子态求和，得到非线性光学响应。对于简并双光子吸收，两个同频光子共同提供激发所需的能量；中间态求和描述的是虚跃迁通道，并不表示依次占据两个真实电子态的逐步吸收。
+
+后处理代码使用输入的有限组电子态和唯象阻尼，计算随频率变化的**二阶超极化率 γ**，即分子的三阶光学响应，再由取向平均后响应的虚部得到 TPA 光谱及以 GM 为单位的截面。计算链条为**激发能与偶极矩 → SOS 响应 → 取向平均 → TPA 截面**。这是基于电子结构的理论计算；相关论文中的 ML-TPA 性质预测模型属于另一条研究路线。
+
+原始 MATLAB 仓库明确将 **Terenziani 等人（2008）**列为计算方法参考；**Orr 和 Ward（1971）**给出了非线性光学响应的微扰 SOS 理论基础；**Göppert-Mayer（1931）**是双光子跃迁理论的奠基文献。完整书目信息与 DOI 见下方。
 
 ## 三个步骤
 
@@ -28,8 +36,15 @@
 
 Python 输出中的 `sigma_gm` 为计算截面，单位 GM；`lambda2_nm` 是简并双光子激发的入射波长，`lambda_half_nm` 为其一半，即单光子等效波长。绘图和报告峰值时应明确使用哪一种波长。
 
-Python 与 MATLAB 路线均用于既有计算流程的后处理。切换实现时请用已知输入交叉核对，目前未认证二者数值完全等价。结果依赖输入电子态、跃迁矩、态数范围与展宽参数。
+Python 与 MATLAB 路线均用于既有计算流程的后处理。切换实现时请用已知输入交叉核对，目前未认证二者数值完全等价。有限态 SOS 求和需要检查态数收敛性；比较截面时应报告电子结构方法、基组、溶剂处理、纳入的电子态、偶极矩输入和阻尼／展宽约定，峰高尤其依赖展宽参数。不同实现之间应使用一致设置。
+
+## 理论与软件参考文献
+
+- **原工作流注明的直接方法参考：** F. Terenziani, C. Katan, E. Badaeva, S. Tretiak and M. Blanchard-Desce. [Enhanced Two-Photon Absorption of Organic Chromophores: Theoretical and Experimental Assessments](https://doi.org/10.1002/adma.200800402). Advanced Materials **20**, 4641–4678 (2008). DOI: `10.1002/adma.200800402`。
+- **SOS 响应理论基础：** B. J. Orr and J. F. Ward. [Perturbation theory of the non-linear optical polarization of an isolated system](https://doi.org/10.1080/00268977100100481). Molecular Physics **20**, 513–526 (1971). DOI: `10.1080/00268977100100481`。
+- **双光子跃迁理论奠基文献：** M. Göppert-Mayer. [Über Elementarakte mit zwei Quantensprüngen](https://doi.org/10.1002/andp.19314010303). Annalen der Physik **401**［分辑卷号 9］, 273–294 (1931). DOI: `10.1002/andp.19314010303`。
+- **上游波函数分析软件：** T. Lu and F. Chen. [Multiwfn: A multifunctional wavefunction analyzer](https://doi.org/10.1002/jcc.22885). Journal of Computational Chemistry **33**, 580–592 (2012). DOI: `10.1002/jcc.22885`。使用时还应注明实际 Multiwfn 版本，并引用所用 Gaussian 版本和电子结构方法的适用文献。
 
 ## 相关研究
 
-该工具页与双光子吸收机器学习、纳米石墨烯和金属有机层的相关研究相连接；具体方法与引用请参见[仓库说明](https://github.com/sym823808458/calculateTPAbyMATLAB)。
+该工具页与双光子吸收机器学习、纳米石墨烯和金属有机层的相关研究相连接；相关应用论文见[仓库说明](https://github.com/sym823808458/calculateTPAbyMATLAB)，与上述理论及上游软件文献配合引用。

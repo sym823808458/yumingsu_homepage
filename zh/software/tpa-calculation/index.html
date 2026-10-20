@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="连接 Gaussian 激发态计算与 Multiwfn 跃迁偶极矩提取，支持 Python 或 MATLAB 后处理，批量输出双光子吸收光谱与截面。">
+  <meta name="description" content="基于态求和（SOS）理论，连接 Gaussian、Multiwfn 与 Python 或 MATLAB，由激发能和偶极矩计算双光子吸收光谱与截面。">
   <meta name="color-scheme" content="light">
   <meta property="og:title" content="双光子吸收计算工具 · Yuming Su">
-  <meta property="og:description" content="连接 Gaussian 激发态计算与 Multiwfn 跃迁偶极矩提取，支持 Python 或 MATLAB 后处理，批量输出双光子吸收光谱与截面。">
+  <meta property="og:description" content="基于态求和（SOS）理论，连接 Gaussian、Multiwfn 与 Python 或 MATLAB，由激发能和偶极矩计算双光子吸收光谱与截面。">
   <meta property="og:type" content="website">
   <title>双光子吸收计算工具 · Yuming Su</title>
   <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
@@ -21,9 +21,13 @@
     <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#contact">联系</a></nav>
     <a class="language-link" href="../../../software/tpa-calculation/" lang="en" hreflang="en">English</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / 双光子吸收计算工具</div><div class="eyebrow">双光子吸收 · 计算工作流</div><h1>双光子吸收计算工具</h1><p class="project-lead">连接 Gaussian 激发态计算与 Multiwfn 跃迁偶极矩提取，支持 Python 或 MATLAB 后处理，批量输出双光子吸收光谱与截面。</p><div class="tags"><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">Gaussian</span><span class="tag">Multiwfn</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/calculateTPAbyMATLAB">源码仓库 ↗</a><a class="button" href="mailto:yumingsu@xmu.edu.cn">联系了解软件 ↗</a></div></section>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / 双光子吸收计算工具</div><div class="eyebrow">双光子吸收 · 计算工作流</div><h1>双光子吸收计算工具</h1><p class="project-lead">基于态求和（SOS）理论，连接 Gaussian、Multiwfn 与 Python 或 MATLAB，由激发能和偶极矩计算双光子吸收光谱与截面。</p><div class="tags"><span class="tag">态求和（SOS）</span><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">Gaussian</span><span class="tag">Multiwfn</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/calculateTPAbyMATLAB">源码仓库 ↗</a><a class="button" href="mailto:yumingsu@xmu.edu.cn">联系了解软件 ↗</a></div></section>
       <div class="project-layout"><article class="prose project-prose"><h2>从激发态计算到双光子吸收分析</h2>
-<p>这套工作流连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取与 <strong>Python 或 MATLAB</strong> 后处理，用于双光子吸收（TPA）光谱和截面的批量计算。</p>
+<p>这套工作流基于 <strong>sum-over-states（SOS，态求和）理论</strong>，由电子激发能和偶极矩矩阵元计算双光子吸收（TPA）光谱与截面。工作流连接 Gaussian 激发态计算、Multiwfn 跃迁偶极矩提取与 <strong>Python 或 MATLAB</strong> 后处理。</p>
+<h2>理论依据：sum-over-states（SOS，态求和）</h2>
+<p>在电偶极近似下，SOS 理论利用激发能、偶极矩矩阵元及含频率的能量分母，对电子态求和，得到非线性光学响应。对于简并双光子吸收，两个同频光子共同提供激发所需的能量；中间态求和描述的是虚跃迁通道，并不表示依次占据两个真实电子态的逐步吸收。</p>
+<p>后处理代码使用输入的有限组电子态和唯象阻尼，计算随频率变化的<strong>二阶超极化率 γ</strong>，即分子的三阶光学响应，再由取向平均后响应的虚部得到 TPA 光谱及以 GM 为单位的截面。计算链条为<strong>激发能与偶极矩 → SOS 响应 → 取向平均 → TPA 截面</strong>。这是基于电子结构的理论计算；相关论文中的 ML-TPA 性质预测模型属于另一条研究路线。</p>
+<p>原始 MATLAB 仓库明确将 <strong>Terenziani 等人（2008）</strong>列为计算方法参考；<strong>Orr 和 Ward（1971）</strong>给出了非线性光学响应的微扰 SOS 理论基础；<strong>Göppert-Mayer（1931）</strong>是双光子跃迁理论的奠基文献。完整书目信息与 DOI 见下方。</p>
 <h2>三个步骤</h2>
 <ul>
 <li>完成 Gaussian TD 计算，用 <code>formchk</code> 将检查点转为 <code>.fchk</code>。</li>
@@ -43,9 +47,16 @@
 <p><a href="https://github.com/sym823808458/calculateTPAbyMATLAB">公开 MATLAB 仓库</a>提供 Gaussian 与 Multiwfn 示例、<code>batchTDM.bat</code> 和 <code>calculateTPAinbatchpar.m</code>。它保留为原工作流的公开源码入口；Python 配套版本目前通过联系单独获取。</p>
 <h2>输出与结果核对</h2>
 <p>Python 输出中的 <code>sigma_gm</code> 为计算截面，单位 GM；<code>lambda2_nm</code> 是简并双光子激发的入射波长，<code>lambda_half_nm</code> 为其一半，即单光子等效波长。绘图和报告峰值时应明确使用哪一种波长。</p>
-<p>Python 与 MATLAB 路线均用于既有计算流程的后处理。切换实现时请用已知输入交叉核对，目前未认证二者数值完全等价。结果依赖输入电子态、跃迁矩、态数范围与展宽参数。</p>
+<p>Python 与 MATLAB 路线均用于既有计算流程的后处理。切换实现时请用已知输入交叉核对，目前未认证二者数值完全等价。有限态 SOS 求和需要检查态数收敛性；比较截面时应报告电子结构方法、基组、溶剂处理、纳入的电子态、偶极矩输入和阻尼／展宽约定，峰高尤其依赖展宽参数。不同实现之间应使用一致设置。</p>
+<h2>理论与软件参考文献</h2>
+<ul>
+<li><strong>原工作流注明的直接方法参考：</strong> F. Terenziani, C. Katan, E. Badaeva, S. Tretiak and M. Blanchard-Desce. <a href="https://doi.org/10.1002/adma.200800402">Enhanced Two-Photon Absorption of Organic Chromophores: Theoretical and Experimental Assessments</a>. Advanced Materials <strong>20</strong>, 4641–4678 (2008). DOI: <code>10.1002/adma.200800402</code>。</li>
+<li><strong>SOS 响应理论基础：</strong> B. J. Orr and J. F. Ward. <a href="https://doi.org/10.1080/00268977100100481">Perturbation theory of the non-linear optical polarization of an isolated system</a>. Molecular Physics <strong>20</strong>, 513–526 (1971). DOI: <code>10.1080/00268977100100481</code>。</li>
+<li><strong>双光子跃迁理论奠基文献：</strong> M. Göppert-Mayer. <a href="https://doi.org/10.1002/andp.19314010303">Über Elementarakte mit zwei Quantensprüngen</a>. Annalen der Physik <strong>401</strong>［分辑卷号 9］, 273–294 (1931). DOI: <code>10.1002/andp.19314010303</code>。</li>
+<li><strong>上游波函数分析软件：</strong> T. Lu and F. Chen. <a href="https://doi.org/10.1002/jcc.22885">Multiwfn: A multifunctional wavefunction analyzer</a>. Journal of Computational Chemistry <strong>33</strong>, 580–592 (2012). DOI: <code>10.1002/jcc.22885</code>。使用时还应注明实际 Multiwfn 版本，并引用所用 Gaussian 版本和电子结构方法的适用文献。</li>
+</ul>
 <h2>相关研究</h2>
-<p>该工具页与双光子吸收机器学习、纳米石墨烯和金属有机层的相关研究相连接；具体方法与引用请参见<a href="https://github.com/sym823808458/calculateTPAbyMATLAB">仓库说明</a>。</p></article><aside class="project-aside"><h2>项目信息</h2><p>软件在用户自己的环境中运行。本页提供介绍、手册与代码入口。</p><h2>相关研究</h2><a class="pub-title" lang="en" href="../../../zh/#tpa-ml-2023">Interpretable Machine Learning of Two-Photon Absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#nanographenes-2023">Hexa-branched nanographenes with large two-photon absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#mol-tpa-2021">Metal–organic layers with an enhanced two-photon absorption cross-section and up-converted emission (2021) ↗</a><section class="visit-statistics"><h2>访问统计</h2><p>尚未启用</p><p class="stats-note">启用后开始累计，无法补回此前访问。</p></section></aside></div></div></main>
+<p>该工具页与双光子吸收机器学习、纳米石墨烯和金属有机层的相关研究相连接；相关应用论文见<a href="https://github.com/sym823808458/calculateTPAbyMATLAB">仓库说明</a>，与上述理论及上游软件文献配合引用。</p></article><aside class="project-aside"><h2>项目信息</h2><p>软件在用户自己的环境中运行。本页提供介绍、手册与代码入口。</p><h2>相关研究</h2><a class="pub-title" lang="en" href="../../../zh/#tpa-ml-2023">Interpretable Machine Learning of Two-Photon Absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#nanographenes-2023">Hexa-branched nanographenes with large two-photon absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#mol-tpa-2021">Metal–organic layers with an enhanced two-photon absorption cross-section and up-converted emission (2021) ↗</a><section class="visit-statistics"><h2>访问统计</h2><p>尚未启用</p><p class="stats-note">启用后开始累计，无法补回此前访问。</p></section></aside></div></div></main>
   <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-20 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>
