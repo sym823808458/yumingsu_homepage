@@ -82,39 +82,6 @@
       "url": "https://www.chemsoc.org.cn/meeting/35th/"
     },
     {
-      "id": "energy-catalysis-2026",
-      "period": {
-        "en": "1–3 January 2026",
-        "zh": "2026年1月1–3日"
-      },
-      "name": {
-        "en": "Conference on energy catalysis",
-        "zh": "能源催化会议"
-      },
-      "location": {
-        "en": "Hangzhou, China",
-        "zh": "中国·杭州"
-      },
-      "kind": "participation"
-    },
-    {
-      "id": "isaiec-2025",
-      "period": {
-        "en": "22–25 June 2025",
-        "zh": "2025年6月22–25日"
-      },
-      "name": {
-        "en": "2nd International Symposium on AI for Electrochemistry (iSAIEC 2025)",
-        "zh": "第二届人工智能应用电化学国际研讨会（iSAIEC 2025）"
-      },
-      "kind": "participation",
-      "location": {
-        "en": "Xiamen, China",
-        "zh": "中国·厦门"
-      },
-      "url": "https://ai4ec.ac.cn/zh/event/isaiec_2025"
-    },
-    {
       "id": "surfaces-interfaces-2025",
       "period": {
         "en": "9–12 May 2025",
@@ -130,7 +97,24 @@
       },
       "kind": "oral",
       "url": "https://www.chemsoc.org.cn/meeting/NCSI1/"
+    },
+    {
+      "id": "national-electrochemistry-22-2024",
+      "period": {
+        "en": "5–8 November 2024",
+        "zh": "2024年11月5–8日"
+      },
+      "name": {
+        "en": "22nd National Electrochemistry Conference, Chinese Chemical Society",
+        "zh": "中国化学会第二十二次全国电化学大会"
+      },
+      "location": {
+        "en": "Haikou, China",
+        "zh": "中国·海口"
+      },
+      "kind": "oral",
+      "url": "https://www.chemsoc.org.cn/meeting/home/m542"
     }
   ],
-  "conference_source": "Five events retained by the author on 2026-10-21. Presentation types and the CCS award follow the supplied weekly report: oral presentations at FEPAM, CCS35 and the first CCS surface/interface conference; participation elsewhere. Official meeting dates and locations replace weekly-report ranges where verified. Hangzhou retains the weekly-report name and dates. No talk titles, registration identifiers or account event logs are published. English names are official where available, otherwise descriptive translations."
+  "conference_source": "Four oral-presentation records retained by the author on 2026-10-21. Hangzhou and iSAIEC were removed at the author's request and the 2024 22nd National Electrochemistry Conference oral presentation was added by direct author confirmation. The other three oral labels and the CCS35 award follow the supplied weekly report. Official meeting dates and locations replace weekly-report ranges where verified. No talk titles, registration identifiers or account event logs are published. English names are official where available, otherwise descriptive translations."
 }
