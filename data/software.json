@@ -35,6 +35,10 @@
       "note": {
         "en": "Email verification and administrator approval required. Shared per-user limits: 1 running task, 2 queued tasks and 10 submissions per day; private results are retained for 72 hours. Service availability depends on the research server.",
         "zh": "须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。"
+      },
+      "label": {
+        "en": "Free to use · Try online",
+        "zh": "免费使用 · 线上体验"
       }
     },
     "media": [
@@ -117,6 +121,10 @@
       "note": {
         "en": "Email verification and administrator approval required. Shared per-user limits: 1 running task, 2 queued tasks and 10 submissions per day; private results are retained for 72 hours. Service availability depends on the research server.",
         "zh": "须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。"
+      },
+      "label": {
+        "en": "Free to use · Try online",
+        "zh": "免费使用 · 线上体验"
       }
     }
   },
@@ -212,6 +220,10 @@
       "note": {
         "en": "Email verification and administrator approval required. Shared per-user limits: 1 running task, 2 queued tasks and 10 submissions per day; private results are retained for 72 hours. Service availability depends on the research server.",
         "zh": "须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。"
+      },
+      "label": {
+        "en": "Free to use · Try online",
+        "zh": "免费使用 · 线上体验"
       }
     },
     "media": [
@@ -353,6 +365,10 @@
       "note": {
         "en": "Email verification and administrator approval required. Shared per-user limits: 1 running task, 2 queued tasks and 10 submissions per day; private results are retained for 72 hours. Service availability depends on the research server.",
         "zh": "须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。"
+      },
+      "label": {
+        "en": "Free to use · Try online",
+        "zh": "免费使用 · 线上体验"
       }
     }
   }

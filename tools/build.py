@@ -163,6 +163,16 @@ def research_item(item, papers, lang, prefix):
       </div></article>'''
 
 
+def software_row(project, index, lang):
+    name = E(software_name(project, lang))
+    online = project.get('online')
+    badge = ''
+    if online:
+        label = E(online['label'][lang])
+        badge = f'<a class="software-online" href="{E(online["url"])}" aria-label="{name}: {label}">{label} <span aria-hidden="true">↗</span></a>'
+    return f'<article class="software-row"><span class="software-index">{index:02d}</span><div><div class="software-title"><a class="software-name" href="software/{project["slug"]}/">{name}</a>{badge}</div><div class="software-category">{E(project["category"][lang])}</div></div><p class="software-summary">{E(project["summary"][lang])}</p><a class="text-link" href="software/{project["slug"]}/">{TEXT[lang]["software_view"]}<span class="sr-only"> {name}</span></a></article>'
+
+
 def home_body(profile, papers, software, lang, prefix):
     t = TEXT[lang]
     portrait_version = hashlib.sha256((ROOT/'images/profile.jpg').read_bytes()).hexdigest()[:12]
@@ -173,7 +183,11 @@ def home_body(profile, papers, software, lang, prefix):
     metrics = ''.join(f'<div class="metric"><strong>{snapshot[key]}</strong><span>{t[label]}</span></div>' for key,label in [('citations','citations'),('h_index','hindex'),('i10_index','i10index')])
     timeline = ''.join(f'<div class="timeline-item" id="{["work","education","education-bachelors"][i]}"><div class="timeline-period">{E(x["period"])}</div><div class="timeline-title">{E(x["title"][lang])}</div><div class="timeline-place">{E(x["institution"][lang])}</div></div>' for i,x in enumerate(profile['experience']))
     research = ''.join(research_item(item,papers,lang,prefix) for item in profile['research'])
-    rows = ''.join(f'<article class="software-row"><span class="software-index">{i:02d}</span><div><a class="software-name" href="software/{s["slug"]}/">{E(software_name(s,lang))}</a><div class="software-category">{E(s["category"][lang])}</div></div><p class="software-summary">{E(s["summary"][lang])}</p><a class="text-link" href="software/{s["slug"]}/">{t["software_view"]}<span class="sr-only"> {E(software_name(s,lang))}</span></a></article>' for i,s in enumerate(software,1))
+    rows = ''.join(software_row(s,i,lang) for i,s in enumerate(software,1))
+    online_note = ''
+    if any(s.get('online') for s in software):
+        note = '线上体验免费，须注册、验证邮箱并经管理员批准。' if lang == 'zh' else 'Online trials are free to use; email verification and administrator approval are required.'
+        online_note = f'<p class="software-online-note">{note}</p>'
     # Software-resource records stay in the data archive, not the paper display.
     ordered = sorted((p for p in papers if p['type'] != 'resource'), key=lambda p:(p['citations'],p['year']), reverse=True)
     pub_rows = ''.join(publication(p,t,lang,hidden=i>=10) for i,p in enumerate(ordered))
@@ -189,7 +203,7 @@ def home_body(profile, papers, software, lang, prefix):
       <div class="metrics-band" aria-label="{t['snapshot']}">{metrics}<div class="metrics-note"><a href="{E(links['scholar'])}">{t['snapshot']} ↗</a><br>{E(t['snapshot_note'].format(date=snapshot['date']))}</div></div>
       <section class="section" id="about">{heading(t['about_kicker'],t['about_title'])}<div class="about-layout"><div class="prose">{markdown(ROOT/'content'/f'about.{lang}.md')}</div><div class="timeline">{timeline}</div></div></section>
       <section class="section" id="research">{heading(t['research_kicker'],t['research_title'])}<div class="research-grid">{research}</div></section>
-      <section class="section" id="software">{heading(t['software_kicker'],t['software_title'],f'<a class="section-link" href="{E(links["github"])}">GitHub ↗</a>')}<div class="software-list">{rows}</div></section>
+      <section class="section" id="software">{heading(t['software_kicker'],t['software_title'],f'<a class="section-link" href="{E(links["github"])}">GitHub ↗</a>')}{online_note}<div class="software-list">{rows}</div></section>
       <section class="section" id="publications">{heading(t['pub_kicker'],t['pub_title'],f'<a class="section-link" href="{E(links["scholar"])}">{t["full_list"]}</a>')}
         <p class="publication-intro">{E(t['pub_intro'].format(date=snapshot['date']))}</p>
         <div class="publication-toolbar"><div class="pub-tabs" role="group" aria-label="{t['pub_views']}"><button type="button" data-publication-view="citations" aria-pressed="true" disabled>{t['top_ten']}</button><button type="button" data-publication-view="year" aria-pressed="false" disabled>{t['by_time']}</button></div></div>

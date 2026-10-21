@@ -411,6 +411,34 @@ nav a,.language-link {
 .software-list {
   border-top:1px solid var(--line);
 }
+.software-title {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px 12px;
+}
+.software-online {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 8px;
+  border:1px solid #b6cfc3;
+  border-radius:3px;
+  background:#edf4ef;
+  color:var(--green);
+  font-size:11px;
+  line-height:1.4;
+  text-decoration:none;
+}
+.software-online:hover {
+  background:var(--green);
+  color:white;
+}
+.software-online-note {
+  margin:0 0 20px;
+  color:var(--muted);
+  font-size:12px;
+}
 .software-row {
   display:grid;
   grid-template-columns:44px minmax(0,1fr) 1.25fr 80px;
