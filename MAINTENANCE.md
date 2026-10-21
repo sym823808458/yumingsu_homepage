@@ -77,20 +77,27 @@
 
 ## 访问量与下载量
 
-GoatCounter 接入代码已准备，配置集中在 `data/analytics.json`。当前 `enabled: false`，尚未开始采集；没有配置时软件详情页显示“尚未启用”，不会显示假的零值。
+2026-10-21 起改用作者现有 Cloudflare 账号中的 Worker / D1，配置集中在 `data/analytics.json`：provider 为 `cloudflare-d1`，endpoint 为 `https://stats.yumingsu.top`，enabled 为 true。无需 GoatCounter 账号、网站访客注册或前端密钥。静态主页继续由 GitHub Pages 发布；统计服务与 B650 计算服务相互独立。
 
-启用步骤：
+主页展示六个可见软件各自的累计详情页访问及六项合计，打开主页只读取计数，不增加各项计数。英语、中文、`index.html`、查询参数和片段在同一软件下合并；旧 `/en/` 入口先跳转，再由正式详情页计数。隐藏的 MultiwfnMLhelper 不统计。中英文对应页不翻译论文标题。
 
-1. 作者在 https://www.goatcounter.com/signup 创建本人账号和站点，域名填 `yumingsu.top`。保留默认 Sessions 会话统计。
-2. 在站点设置启用 **Allow adding visitor counts on your website**，允许读取公开计数；管理后台不必公开。
-3. 把公开站点地址（例如 `https://your-code.goatcounter.com`，不包含 `/count`）填入 `endpoint`，将 `started_on` 填为实际启用日期，`enabled` 改为 `true`。不需要 API token、密码或服务器。
-4. 构建并发布，检查 `/software/<slug>/` 的真实计数、中文对应页和 GoatCounter 后台。第一次没有统计或被拦截时可显示“暂时无法读取”；服务响应可能缓存数小时，不应靠反复刷新验收。
+计数口径为**同一标签页内、同一软件，从一次事件开始的 30 分钟内合并计次**。脚本在 sessionStorage 中暂存随机事件 ID、窗口开始时间和确认状态，再提交固定 software / event_id；只有进入新窗口才生成新事件。刷新和语言切换保留同一事件。请求在服务端成功但响应丢失时，重试同一 ID 不会重复增加。软件之间的计数分别维护。无法使用 sessionStorage 或随机数 API 时只读取累计值，以免无法去重的刷新增加计数。
 
-英文和中文软件页都记录到 `/software/<slug>/`；域名、旧项目路径、`index.html`、参数和锚点不会拆散同一软件。主页展示当前可见软件各自的累计访问，但仅打开主页不会增加这些软件的计数。`allowed_hosts` 防止本地预览采集。
+这是**软件详情页访问次数**，不是独立访客人数、下载量或算法执行次数。跨标签页、浏览器或 HTTP/HTTPS origin 可能分别计次；脚本禁用、广告拦截和网络失败可能漏计。公开接口的 Origin 校验不是身份认证，尽力限流也不能完全防刷量。此前未采集的历史访问无法补回，不提供虚假的历史数字。正常维护验收对线上页面的访问也可能计入。
 
-这是启用后的**会话访问次数**，不是历史独立人数；同一人跨会话可能重复计数，语言切换在同一会话合并。启用前没有记录的访问无法补回。源码仓库 Traffic、手册访问、PyPI 安装和 Release 下载不计入个人主页软件页访问。广告拦截器、脚本禁用等也可能造成漏计。禁止从 localStorage、随机数或示意数字生成所谓访问量。
+D1 只保存六项累计值、数据库初始化时间和临时随机去重事件，不保存邮箱、任务、科研数据或原始 IP；Cloudflare 平台日志由作者控制台的 Observability 设置管理，与 D1 表是两回事。计数读取失败显示“暂时无法读取”，不能替换成零或随机数。所有累计量从服务端读取，浏览器本地不保存所谓累计总数。
 
-官方接入与口径：https://www.goatcounter.com/help/start 、https://www.goatcounter.com/help/visitor-counter 、https://www.goatcounter.com/help/sessions 。需要保存长期历史时，可在作者后台导出 CSV，不能把访问量冒充下载量。
+维护入口：
+
+- Cloudflare → Workers & Pages → `yumingsu-visits` → Domains：应绑定恰好 `stats.yumingsu.top`。如果输入框自带 `.yumingsu.top` 后缀，只填 `stats`，避免重复主域名。用 Custom Domain，DNS 和证书由 Cloudflare 处理。
+- Worker 的 D1 绑定变量为大写 `DB`，数据库为 `yumingsu-visits`；不要改成其他变量名。
+- `https://stats.yumingsu.top/health` 检查数据库连通；`/v1/counts` 读取六项和合计，GET 不增加计数。
+- 重跑初始化 schema 不会清零；不要删除 D1 数据库或手工改累计数字。后续可按官方 D1 导出流程备份。
+- 新增或隐藏软件时，要同步 Worker、schema、`assets/analytics.js` 和构建器的固定软件名单；不要只改前端。
+- 本地验证：`node --test tools/test_analytics.mjs`、正常构建三项检查；预览 hostname 不在 allowed_hosts 内，禁止本地预览误采集。
+- 紧急停采：将 enabled 改为 false，重新构建发布。保留数据库，日后恢复可继续累计。免费方案仍有 Workers / D1 配额，达到额度可能暂时不可用，不应自动升级付费。
+
+此段替代此前尚未启用的 GoatCounter 准备方案。基础构建没有增加任何依赖或新框架。
 
 ## 在线计算入口
 

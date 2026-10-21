@@ -1127,3 +1127,9 @@ code {
 /* Counters use real provider data; missing configuration never becomes zero. */
 .visit-statistics {margin-top:1.8rem; padding-top:1rem; border-top:1px solid var(--line, #ddd);}
 .stats-note, .software-visits {font-size:.86rem; color:#666; line-height:1.5;}
+.software-visit-summary {padding:16px 0 20px; border-bottom:1px solid var(--line);}
+.software-visit-summary p {margin:0;}
+.software-visit-summary strong {font-size:1.45rem; color:var(--green); margin-left:.4em; font-variant-numeric:tabular-nums;}
+.software-visit-summary .stats-note {max-width:780px; margin-top:7px;}
+.software-visits {margin-top:5px;}
+[data-visit-count], [data-visit-total] {font-variant-numeric:tabular-nums;}

@@ -15,7 +15,7 @@
 | 论文、引用快照、DOI、代表作标记 | `data/publications.json` |
 | 软件目录、链接、简介 | `data/software.json` |
 | 软件详细介绍 | `content/software/<slug>.zh.md`、`<slug>.en.md` |
-| 各软件累计访问（GoatCounter） | `data/analytics.json`，启用方法见 `MAINTENANCE.md` |
+| 各软件累计访问与合计（Cloudflare D1） | `data/analytics.json`，启用方法见 `MAINTENANCE.md` |
 | 页面框架、视觉、交互 | `templates/base.html`、`assets/site.css`、`assets/site.js` |
 
 修改内容后，用 Python 3.10+ 运行（无需安装依赖）：
@@ -33,7 +33,7 @@ python -m http.server 8765 --bind 127.0.0.1
 
 ## 设计原则
 
-- 静态网站；不依赖后端、数据库或付费构建服务。
+- 静态网站；内容展示无需后端或付费构建服务，访问统计独立使用 Cloudflare Worker / D1。
 - 内容集中维护，同一模板生成中文、英文和软件页。
 - 论文默认显示 10 篇，优先展示作者确认的一作（含共同一作）和通讯论文，其余按引用排序；不再提供按时间切换。禁用 JavaScript 时仍显示同样的 10 篇。
 - 英文字体优先使用系统 Times New Roman，中文使用宋体等衬线字体回退；样式、脚本和照片本地托管，不依赖外部字体服务。

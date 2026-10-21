@@ -322,13 +322,17 @@ def build(check=False):
     visible_software = [project for project in software if project.get('visible', True)]
     analytics = load('analytics')
     endpoint = analytics['endpoint'].rstrip('/')
-    if analytics['provider'] != 'goatcounter':
+    if analytics['provider'] != 'cloudflare-d1':
         raise ValueError('Unsupported analytics provider')
     if analytics['enabled']:
-        if not re.fullmatch(r'https://[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.goatcounter\.com', endpoint):
-            raise ValueError('Use the public GoatCounter site URL, never an API token')
+        if endpoint != 'https://stats.yumingsu.top':
+            raise ValueError('Use the configured public counter origin, never an API token')
         if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', analytics['started_on']):
             raise ValueError('Record the real analytics activation date')
+        if analytics['session_minutes'] != 30:
+            raise ValueError('Keep the published 30-minute counting convention')
+        if {p['slug'] for p in visible_software} != {'surfacia','gbline','handle-candle','pka-ml-education','tpa-calculation','building-wind-screening'}:
+            raise ValueError('Synchronize the six-software counter allowlist before changing it')
     validate(profile,papers,software)
     template = Template((ROOT/'templates/base.html').read_text(encoding='utf-8'))
     asset_text = ''.join((ROOT/'assets'/name).read_text(encoding='utf-8') for name in ['site.css','site.js','analytics.js'])
@@ -351,8 +355,8 @@ def build(check=False):
             if project:
                 if analytics['enabled']:
                     label = '累计访问' if lang == 'zh' else 'Recorded visits'
-                    status = f'<strong data-visit-count="/software/{E(project["slug"])}/">…</strong>'
-                    note = ('自 '+analytics['started_on']+' 起，中英文合并；按会话计次，并非历史独立人数。' if lang=='zh' else 'Since '+analytics['started_on']+'; English and Chinese combined. Session-based visits, not lifetime unique people.')
+                    status = f'<strong data-visit-count="{E(project["slug"])}">…</strong>'
+                    note = ('自 '+analytics['started_on']+' 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。' if lang=='zh' else 'Since '+analytics['started_on']+'; English and Chinese combined, once per software per browser tab within 30 minutes. Software-page visits, not unique people, downloads or computations.')
                 else:
                     label = '访问统计' if lang == 'zh' else 'Visit statistics'
                     status = '尚未启用' if lang == 'zh' else 'Not enabled'
@@ -363,11 +367,15 @@ def build(check=False):
                 label = '累计访问' if lang=='zh' else 'Recorded visits'
                 for item in visible_software:
                     anchor = f'<div class="software-category">{E(item["category"][lang])}</div>'
-                    counter = f'<div class="software-visits">{label} <span data-visit-count="/software/{E(item["slug"])}/">…</span></div>'
+                    counter = f'<div class="software-visits">{label} <span data-visit-count="{E(item["slug"])}">…</span></div>'
                     body = body.replace(anchor,anchor+counter)
+                total_label = '六个软件累计访问合计' if lang=='zh' else 'Total visits across six software pages'
+                note = ('自 '+analytics['started_on']+' 起；访问详情页才计数，中英文合并，同一标签页内 30 分钟合并计次。不是独立人数或计算次数。' if lang=='zh' else 'Since '+analytics['started_on']+'. Detail-page visits only; English and Chinese combined, once per software per tab within 30 minutes. Not unique visitors or computations.')
+                summary = f'<div class="software-visit-summary"><p>{total_label} <strong data-visit-total>…</strong></p><p class="stats-note">{E(note)}</p></div>'
+                body = body.replace('<div class="software-list">',summary+'<div class="software-list">',1)
             outputs[path] = template.substitute(
                 analytics_endpoint=E(endpoint if analytics['enabled'] else ''),analytics_hosts=E(','.join(analytics['allowed_hosts'])),
-                analytics_path='/software/'+E(project['slug'])+'/' if project else '/',analytics_title=E(project['name'] if project else 'Yuming Su'),
+                analytics_provider=E(analytics['provider']),analytics_software=E(project['slug']) if project else '',analytics_minutes=analytics['session_minutes'],
                 html_lang='zh-CN' if lang=='zh' else 'en',title=E(software_name(project,lang)+' · Yuming Su' if project else t['title']),
                 description=E(project['summary'][lang] if project else t['description']),prefix=prefix,asset_version=asset_version,skip=t['skip'],navigation=t['navigation'],home=home,nav=nav,
                 language_url=language_url,other_lang='en' if other=='en' else 'zh-CN',language_label='English' if lang=='zh' else '中文',body=body,

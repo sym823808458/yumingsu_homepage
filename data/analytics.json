@@ -1,8 +1,9 @@
 {
-  "provider": "goatcounter",
-  "enabled": false,
-  "endpoint": "",
-  "started_on": "",
+  "provider": "cloudflare-d1",
+  "enabled": true,
+  "endpoint": "https://stats.yumingsu.top",
+  "started_on": "2026-10-21",
+  "session_minutes": 30,
   "allowed_hosts": [
     "yumingsu.top",
     "www.yumingsu.top",

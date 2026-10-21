@@ -16,3 +16,5 @@ This repository is Yuming Su's existing public academic website on GitHub Pages.
 - Keep updates reviewable in Git. For an authorized publication, commit content sources and generated HTML together and verify the deployed site.
 - Do not overwrite unrelated remote changes. Refresh the branch head before publishing and use a fast-forward or an expected-head lease.
 - Do not add visitor counters or downloads badges with invented numbers. Analytics needs a real configured source.
+
+- Software counters use the owner-managed Cloudflare Worker/D1 endpoint in data/analytics.json. Keep six visible software slugs aligned with the Worker/schema. The homepage is read-only; detail visits deduplicate per software/tab for 30 minutes, with one random event ID retained before sending and reused on retries. Never render invented counts or equate page visits with unique people, downloads or computations. Run node --test tools/test_analytics.mjs for tracking changes; local preview hosts must not collect.
