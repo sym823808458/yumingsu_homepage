@@ -21,7 +21,12 @@
     "citations": 131,
     "type": "journal",
     "doi": "10.1039/d3sc07012c",
-    "featured": true
+    "featured": true,
+    "display_priority": 5,
+    "author_roles": [
+      "first"
+    ],
+    "author_role_source": "Author-confirmed publication list, 2026-10-21"
   },
   {
     "id": "interphase-2025",
@@ -100,7 +105,12 @@
     "citations": 46,
     "type": "journal",
     "doi": "10.1002/smll.202200514",
-    "featured": false
+    "featured": false,
+    "display_priority": 3,
+    "author_roles": [
+      "co_first"
+    ],
+    "author_role_source": "Author-confirmed publication list, 2026-10-21"
   },
   {
     "id": "tpa-ml-2023",
@@ -126,7 +136,12 @@
       "Da Zhou",
       "Pavlo O. Dral",
       "Cheng Wang"
-    ]
+    ],
+    "display_priority": 1,
+    "author_roles": [
+      "first"
+    ],
+    "author_role_source": "Author-confirmed publication list, 2026-10-21"
   },
   {
     "id": "cages-2023",
@@ -175,7 +190,12 @@
       "Cheng Wang",
       "Klaus Müllen",
       "Yuan-Zhi Tan"
-    ]
+    ],
+    "display_priority": 4,
+    "author_roles": [
+      "co_first"
+    ],
+    "author_role_source": "Author-confirmed publication list, 2026-10-21"
   },
   {
     "id": "tta-printing-2022",
@@ -231,7 +251,12 @@
     "citations": 17,
     "type": "journal",
     "doi": "10.1002/anie.202502090",
-    "featured": true
+    "featured": true,
+    "display_priority": 6,
+    "author_roles": [
+      "co_first"
+    ],
+    "author_role_source": "Author-confirmed publication list, 2026-10-21"
   },
   {
     "id": "mol-tpa-2021",
@@ -389,6 +414,39 @@
     "featured": false,
     "doi": "10.1039/d3ta03115b",
     "metadata_source": "https://pubs.rsc.org/en/content/articlelanding/2023/ta/d3ta03115b",
-    "metadata_checked": "2026-10-19"
+    "metadata_checked": "2026-10-19",
+    "display_priority": 2,
+    "author_roles": [
+      "co_first"
+    ],
+    "author_role_source": "Author-confirmed publication list, 2026-10-21"
+  },
+  {
+    "id": "f19-nmr-2026",
+    "title": "Improving Quantum-Chemical Prediction of 19F NMR Chemical Shifts via Machine Learning",
+    "authors": "D. Chen, Y. Ye, Y. Zhu, Y. Jiang, Y. Su, C. Wang",
+    "authors_verified": [
+      "Dongdong Chen",
+      "Yuanxiang Ye",
+      "Yijie Zhu",
+      "Yibin Jiang",
+      "Yuming Su",
+      "Cheng Wang"
+    ],
+    "venue": "Journal of Chemical Information and Modeling",
+    "details": "66 (17), 10538–10547",
+    "year": 2026,
+    "citations": null,
+    "citations_note": "No citation count supplied with the author supplement; not included in the existing Scholar count snapshot.",
+    "type": "journal",
+    "doi": "10.1021/acs.jcim.6c01056",
+    "featured": false,
+    "display_priority": 7,
+    "author_roles": [
+      "co_corresponding"
+    ],
+    "author_role_source": "Author confirmation (2026-10-21) and ACS corresponding-author asterisks for Yuming Su and Cheng Wang",
+    "metadata_source": "https://pubs.acs.org/jcisd8/article-abstract/doi/10.1021/acs.jcim.6c01056/5267256/Improving-Quantum-Chemical-Prediction-of-19F-NMR?redirectedFrom=PDF",
+    "metadata_checked": "2026-10-21"
   }
 ]

@@ -482,28 +482,9 @@ nav a,.language-link {
   max-width:790px;
   margin-bottom:22px;
 }
-.publication-toolbar {
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:12px;
-  margin-bottom:22px;
-}
-.pub-tabs {
-  display:flex;
-  gap:7px;
-}
-.pub-tabs button {
-  border:1px solid var(--line);
-  background:transparent;
-  padding:9px 13px;
-  font-size:15px;
-  color:var(--muted);
-}
-.pub-tabs button[aria-pressed=true] {
-  background:var(--green);
-  border-color:var(--green);
-  color:white;
+.pub-type.pub-role {
+  background:#edf4ef;
+  color:var(--green);
 }
 .result-count {
   font-size:14px;
@@ -1001,15 +982,6 @@ code {
   }
   .software-category {
     font-size:10px;
-  }
-  .publication-toolbar {
-    gap:9px;
-  }
-  .pub-tabs {
-    order:3;
-  }
-  .pub-tabs button {
-    padding:7px 13px;
   }
   .publication {
     grid-template-columns:37px minmax(0,1fr);

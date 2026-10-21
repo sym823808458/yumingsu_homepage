@@ -9,39 +9,20 @@
   });
   const list = document.querySelector('[data-publications]');
   if (!list) return;
-  const tabs = [...document.querySelectorAll('[data-publication-view]')];
   const rows = [...list.querySelectorAll('[data-publication]')];
   const count = document.getElementById('publication-count');
-  let mode = 'citations';
-  function update() {
-    const ordered = [...rows].sort((a, b) => mode === 'citations'
-      ? Number(b.dataset.citations) - Number(a.dataset.citations) || Number(b.dataset.year) - Number(a.dataset.year)
-      : Number(b.dataset.year) - Number(a.dataset.year) || Number(b.dataset.citations) - Number(a.dataset.citations));
-    let visible = 0;
-    for (const [index, row] of ordered.entries()) {
-      row.hidden = mode === 'citations' && index >= 10;
-      if (!row.hidden) visible++;
-      list.append(row);
-    }
-    const template = mode === 'citations' ? count.dataset.templateTop : count.dataset.templateTime;
-    count.textContent = template.replace('{count}', visible);
-    for (const tab of tabs) tab.setAttribute('aria-pressed', String(tab.dataset.publicationView === mode));
-  }
-  for (const tab of tabs) tab.addEventListener('click', () => {
-    mode = tab.dataset.publicationView;
-    update();
-  });
-  for (const tab of tabs) tab.disabled = false;
-  // Project pages can link to a paper outside the default top ten.
+  // Keep the authored priority order, revealing only a directly linked archived paper.
   function revealLinkedPaper() {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     const target = rows.find(row => row.id === id);
     if (!target) return;
-    if (target.hidden) { mode = 'year'; update(); }
+    if (target.hidden) {
+      target.hidden = false;
+      count.textContent = count.dataset.template.replace('{count}', rows.filter(row => !row.hidden).length);
+    }
     requestAnimationFrame(() => target.scrollIntoView({block: 'start'}));
   }
   window.addEventListener('hashchange', revealLinkedPaper);
-  update();
   revealLinkedPaper();
 })();

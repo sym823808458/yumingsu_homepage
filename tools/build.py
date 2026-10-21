@@ -34,10 +34,10 @@ TEXT = {
         'research_title': '研究方向', 'research_kicker': '研究 · 问题与方法',
         'software_title': '让方法成为可用的工具', 'software_kicker': '软件 · 科研工具', 'software_view': '了解项目 ↗',
         'pub_title': '论文与学术成果', 'pub_kicker': '学术论文 · 研究成果', 'full_list': '完整学术列表 ↗',
-        'pub_intro': '默认展示引用最高的 10 篇论文，也可按时间查看收录的期刊论文与预印本。引用次数截至 {date}，完整列表见 Google Scholar。',
-        'top_ten': '引用最高的 10 篇', 'by_time': '按时间查看', 'pub_views': '论文展示方式',
-        'results_top': '引用最高的 {count} 篇论文', 'results_time': '按时间展示 {count} 篇论文 · 最新在前',
-        'static_papers': '当前展示引用最高的 10 篇，完整列表请访问 Google Scholar。',
+        'pub_intro': '优先展示第一作者（含共同一作）及通讯作者论文，其余按引用次数排序。引用快照截至 {date}；新增论文未核实的引用数标为“未记录”。完整列表见 Google Scholar。',
+        'results_selected': '展示 {count} 篇论文',
+        'static_papers': '当前展示 10 篇论文，完整列表请访问 Google Scholar。',
+        'first': '第一作者', 'co_first': '共同第一作者', 'corresponding': '通讯作者', 'co_corresponding': '共同通讯作者', 'citation_unknown': '未记录',
         'cited': '次引用', 'featured': '代表作', 'journal': '期刊论文', 'preprint': '预印本', 'resource': '软件资源', 'paper_link': '查看论文 ↗',
         'contact_title': '欢迎交流与合作', 'contact_text': '围绕可解释机器学习、化学材料与自动化实验，探索共同感兴趣的问题。',
         'updated': '更新于', 'source': '网站源码', 'home': '首页', 'code': '源码仓库 ↗', 'docs': '使用手册 ↗', 'download': '下载软件 ↗',
@@ -54,10 +54,10 @@ TEXT = {
         'research_title': 'Research interests', 'research_kicker': 'RESEARCH / QUESTIONS & METHODS',
         'software_title': 'From methods to usable tools', 'software_kicker': 'SOFTWARE / RESEARCH TOOLS', 'software_view': 'Explore ↗',
         'pub_title': 'Publications & scholarly work', 'pub_kicker': 'PUBLICATIONS / RESEARCH OUTPUTS', 'full_list': 'Full list on Scholar ↗',
-        'pub_intro': 'The 10 most cited papers, with a chronological view of the listed journal articles and preprints. Citation snapshot: {date}. See Google Scholar for the full list.',
-        'top_ten': '10 most cited', 'by_time': 'By date', 'pub_views': 'Publication view',
-        'results_top': '{count} most cited papers', 'results_time': '{count} papers · newest first',
-        'static_papers': 'The 10 most cited papers are shown. Visit Google Scholar for the full list.',
+        'pub_intro': 'First-author (including co-first) and corresponding-author papers are shown first; other papers follow by citation count. Citation snapshot: {date}. Counts not verified for newly added papers are marked as not recorded. See Google Scholar for the full list.',
+        'results_selected': 'Showing {count} papers',
+        'static_papers': 'Ten papers are shown. Visit Google Scholar for the full list.',
+        'first': 'First author', 'co_first': 'Co-first author', 'corresponding': 'Corresponding author', 'co_corresponding': 'Co-corresponding author', 'citation_unknown': 'Not recorded',
         'cited': 'citations', 'featured': 'Selected', 'journal': 'Journal article', 'preprint': 'Preprint', 'resource': 'Software resource', 'paper_link': 'Read paper ↗',
         'contact_title': 'Let’s explore a question together.', 'contact_text': 'Open to conversations on interpretable machine learning, chemistry, materials and automated experiments.',
         'updated': 'Updated', 'source': 'Website source', 'home': 'Home', 'code': 'Source code ↗', 'docs': 'Documentation ↗', 'download': 'Download ↗',
@@ -127,7 +127,7 @@ def authors(paper):
     values = paper.get('authors_verified', [])
     text = ', '.join(values) if values else paper['authors']
     text = E(text)
-    return re.sub(r'(?<![\w])(?:Yuming Su|Y\. M\. Su|Y\. Su)(?![\w])', r'<span class="author-self">\g<0></span>', text)
+    return re.sub(r'(?<![\w])(?:Yuming Su|Yu-Ming Su|Y\. M\. Su|Y\. Su)(?![\w])', r'<span class="author-self">\g<0></span>', text)
 
 def publication(paper, t, lang, hidden=False):
     link = 'https://doi.org/' + paper['doi'] if paper.get('doi') else paper.get('url', '')
@@ -136,13 +136,16 @@ def publication(paper, t, lang, hidden=False):
     venue = paper.get('venue_zh', paper['venue']) if lang == 'zh' else paper['venue']
     details = paper.get('details_zh', paper['details']) if lang == 'zh' else paper['details']
     link_label = 'DOI ↗' if paper.get('doi') else t['paper_link']
-    return f'''<li class="publication" id="{E(paper['id'])}" data-publication data-year="{paper['year']}" data-citations="{paper['citations']}"{' hidden' if hidden else ''}>
+    role_labels = ''.join(f'<span class="pub-type pub-role">{E(t[role])}</span>' for role in paper.get('author_roles', []))
+    citations = paper['citations'] if paper['citations'] is not None else '—'
+    citation_label = t['cited'] if paper['citations'] is not None else t['citation_unknown']
+    return f'''<li class="publication" id="{E(paper['id'])}" data-publication{' hidden' if hidden else ''}>
       <div class="pub-year">{paper['year']}</div><div>
       <a class="pub-title" href="{E(link)}" lang="en">{E(paper['title'])}</a>
       <p class="pub-authors">{authors(paper)}</p>
       <p class="pub-venue"><em>{E(venue)}</em> · {E(details)}</p>
-      <div class="pub-links"><span class="pub-type">{t[paper['type']]}</span><a href="{E(link)}">{link_label}</a></div></div>
-      <div class="pub-citations"><strong>{paper['citations']}</strong>{t['cited']}</div></li>'''
+      <div class="pub-links">{role_labels}<span class="pub-type">{t[paper['type']]}</span><a href="{E(link)}">{link_label}</a></div></div>
+      <div class="pub-citations"><strong>{citations}</strong>{citation_label}</div></li>'''
 
 def research_item(item, papers, lang, prefix):
     figure = item['figure']
@@ -189,9 +192,9 @@ def home_body(profile, papers, software, lang, prefix):
         note = '线上体验免费，须注册、验证邮箱并经管理员批准。' if lang == 'zh' else 'Online trials are free to use; email verification and administrator approval are required.'
         online_note = f'<p class="software-online-note">{note}</p>'
     # Software-resource records stay in the data archive, not the paper display.
-    ordered = sorted((p for p in papers if p['type'] != 'resource'), key=lambda p:(p['citations'],p['year']), reverse=True)
+    ordered = sorted((p for p in papers if p['type'] != 'resource'), key=lambda p:(p.get('display_priority', 100000), -(p['citations'] if p['citations'] is not None else -1), -p['year']))
     pub_rows = ''.join(publication(p,t,lang,hidden=i>=10) for i,p in enumerate(ordered))
-    count = t['results_top'].format(count=min(10,len(ordered)))
+    count = t['results_selected'].format(count=min(10,len(ordered)))
     return f'''<div class="container">
       <section id="home" class="hero" aria-label="Yuming Su">
         <div class="hero-main"><div class="hero-intro"><div class="eyebrow">{t['eyebrow']}</div>
@@ -206,8 +209,7 @@ def home_body(profile, papers, software, lang, prefix):
       <section class="section" id="software">{heading(t['software_kicker'],t['software_title'],f'<a class="section-link" href="{E(links["github"])}">GitHub ↗</a>')}{online_note}<div class="software-list">{rows}</div></section>
       <section class="section" id="publications">{heading(t['pub_kicker'],t['pub_title'],f'<a class="section-link" href="{E(links["scholar"])}">{t["full_list"]}</a>')}
         <p class="publication-intro">{E(t['pub_intro'].format(date=snapshot['date']))}</p>
-        <div class="publication-toolbar"><div class="pub-tabs" role="group" aria-label="{t['pub_views']}"><button type="button" data-publication-view="citations" aria-pressed="true" disabled>{t['top_ten']}</button><button type="button" data-publication-view="year" aria-pressed="false" disabled>{t['by_time']}</button></div></div>
-        <p class="result-count" id="publication-count" aria-live="polite" data-template-top="{E(t['results_top'])}" data-template-time="{E(t['results_time'])}">{count}</p>
+        <p class="result-count" id="publication-count" aria-live="polite" data-template="{E(t['results_selected'])}">{count}</p>
         <ol class="publication-list" data-publications>{pub_rows}</ol><noscript><p class="result-count">{t['static_papers']}</p></noscript>
       </section>
       <section class="contact-section" id="contact"><div><p class="section-kicker">{t['contact']}</p><h2>{t['contact_title']}</h2><p>{t['contact_text']}</p></div><a class="button" href="mailto:{E(profile['email'])}">{E(profile['email'])} <span aria-hidden="true">↗</span></a></section>
@@ -268,12 +270,20 @@ def validate(profile, papers, software):
         raise ValueError('Duplicate publication id')
     if len({s['slug'] for s in software}) != len(software):
         raise ValueError('Duplicate software slug')
+    priorities = [p['display_priority'] for p in papers if 'display_priority' in p]
+    if len(set(priorities)) != len(priorities):
+        raise ValueError('Duplicate publication display priority')
     for p in papers:
         for field in ['title','authors','venue','details','year','citations','type']:
             if field not in p:
                 raise ValueError(f'Missing {field}: {p["id"]}')
-        if p['type'] not in ('journal','preprint','resource') or p['citations'] < 0:
+        if p['type'] not in ('journal','preprint','resource') or (p['citations'] is not None and (type(p['citations']) is not int or p['citations'] < 0)):
             raise ValueError('Invalid publication record: ' + p['id'])
+        roles = p.get('author_roles', [])
+        if not isinstance(roles, list) or any(role not in ('first','co_first','corresponding','co_corresponding') for role in roles) or len(set(roles)) != len(roles):
+            raise ValueError('Invalid author roles: ' + p['id'])
+        if 'display_priority' in p and (type(p['display_priority']) is not int or p['display_priority'] < 1 or not roles or not p.get('author_role_source')):
+            raise ValueError('Publication priority requires confirmed authorship: ' + p['id'])
     for s in software:
         if not re.fullmatch('[a-z0-9]+(?:-[a-z0-9]+)*',s['slug']):
             raise ValueError('Invalid software slug')
