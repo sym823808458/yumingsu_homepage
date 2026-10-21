@@ -560,6 +560,29 @@ nav a,.language-link {
 .publication[hidden] {
   display:none;
 }
+.timeline-advisor {font-size:13px; color:var(--green); line-height:1.7; margin-top:5px;}
+.academic-group {margin-top:34px;}
+.academic-group > h3 {font-size:21px; margin:0 0 16px;}
+.academic-record {padding:22px 0; border-top:1px solid var(--line);}
+.academic-record h4 {font-size:18px; font-weight:600; line-height:1.65; margin:0;}
+.academic-record p {font-size:15px; line-height:1.8; margin:8px 0;}
+.academic-meta {font-size:14px; line-height:1.8; color:var(--muted); margin:6px 0;}
+.academic-badge {display:inline-block; border:1px solid var(--line); color:var(--green); padding:2px 8px; font-size:12px; margin-top:9px;}
+.conference-table-wrap {max-width:100%; overflow-x:auto;}
+.conference-table-wrap:focus-visible {outline:2px solid var(--green); outline-offset:4px;}
+.conference-table {width:100%; min-width:660px; border-collapse:collapse; table-layout:fixed; font-size:15px; line-height:1.65;}
+.conference-table th,.conference-table td {text-align:left; vertical-align:top; padding:17px 18px 17px 0; border-bottom:1px solid var(--line); overflow-wrap:break-word;}
+.conference-table thead th {font-size:13px; color:var(--muted); font-weight:400; border-top:1px solid var(--line);}
+.conference-table th:nth-child(1),.conference-table td:nth-child(1) {width:20%; color:var(--muted);}
+.conference-table th:nth-child(2) {width:43%;}
+.conference-table th:nth-child(3),.conference-table td:nth-child(3) {width:17%;}
+.conference-table th:last-child,.conference-table td:last-child {width:20%; padding-right:0;}
+.conference-table tbody th {font-weight:400;}
+.conference-award {display:block; color:var(--green); font-size:12px; margin-top:7px;}
+@media(max-width:700px) {
+  .conference-table {font-size:14px;}
+  .academic-group > h3 {font-size:20px;}
+}
 .empty-state {
   padding:35px 0;
   color:var(--muted);
@@ -808,6 +831,7 @@ code {
   nav {
     order:3;
     width:100%;
+    flex-wrap:wrap;
     justify-content:space-between;
     margin:0;
     padding-top:9px;
@@ -815,7 +839,7 @@ code {
     gap:8px;
   }
   nav a {
-    font-size:14px;
+    font-size:13px;
   }
   .container {
     padding:0 22px;

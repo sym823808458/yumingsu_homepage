@@ -176,15 +176,61 @@ def software_row(project, index, lang):
     return f'<article class="software-row"><span class="software-index">{index:02d}</span><div><div class="software-title"><a class="software-name" href="software/{project["slug"]}/">{name}</a>{badge}</div><div class="software-category">{E(project["category"][lang])}</div></div><p class="software-summary">{E(project["summary"][lang])}</p><a class="text-link" href="software/{project["slug"]}/">{TEXT[lang]["software_view"]}<span class="sr-only"> {name}</span></a></article>'
 
 
-def home_body(profile, papers, software, lang, prefix):
+def academic_activities(data, lang):
+    """Render author-confirmed records without filling unknown dates or roles."""
+    zh = lang == 'zh'
+    groups = []
+    grants = []
+    for item in data['grants']:
+        role = ('项目负责人（主持）' if zh else 'Principal investigator') if item['role']=='pi' else ('参与' if zh else 'Project participant')
+        amount = f'{item["amount_cny"] / 10000:g}万元' if zh else f'RMB {item["amount_cny"]:,}'
+        agency = E(item['agency'][lang]+' · '+item['program'][lang])
+        details = ('项目编号：' if zh else 'Grant No. ')+item['number']+' · '+item['start'].replace('-','.')+'–'+item['end'].replace('-','.')+' · '+amount
+        grants.append(f'<article class="academic-record" id="{E(item["id"])}"><p class="academic-meta">{agency}</p><h4>{E(item["title"][lang])}</h4><p class="academic-meta">{E(details)}</p><span class="academic-badge">{role}</span></article>')
+    if grants:
+        title = '科研项目与基金' if zh else 'Research funding'
+        groups.append(f'<div class="academic-group"><h3>{title}</h3>{"".join(grants)}</div>')
+    teaching = []
+    for item in data['teaching']:
+        editor = item['editor'][lang]+(' 主编' if zh else ' (editor)')
+        title = '《'+item['book_title']+'》' if zh else item['book_title']
+        link = f'software/{item["software_slug"]}/'
+        label = '配套教学软件' if zh else 'Related teaching software'
+        teaching.append(f'<article class="academic-record" id="{E(item["id"])}"><h4>{E(title)}</h4><p class="academic-meta">{E(editor)} · {E(item["publisher"][lang])}</p><p>{E(item["contribution"][lang])}</p><a class="text-link" href="{E(link)}">{label} ↗</a></article>')
+    if teaching:
+        title = '教学与教材' if zh else 'Teaching & textbook contributions'
+        groups.append(f'<div class="academic-group"><h3>{title}</h3>{"".join(teaching)}</div>')
+    events = []
+    for item in data['conferences']:
+        kind = ('口头报告' if zh else 'Oral presentation') if item['kind']=='oral' else ('参会' if zh else 'Conference participation')
+        name = E(item['name'][lang])
+        if item.get('url'):
+            name = f'<a href="{E(item["url"])}">{name} ↗</a>'
+        location = E(item['location'][lang])
+        award = f'<span class="conference-award">{E(item["award"][lang])}</span>' if item.get('award') else ''
+        events.append(f'<tr id="conference-{E(item["id"])}"><td>{E(item["period"][lang])}</td><th scope="row">{name}</th><td>{location}</td><td>{kind}{award}</td></tr>')
+    if events:
+        title = '学术报告与会议' if zh else 'Talks & conferences'
+        labels = ['时间','会议名称','地点','报告类型'] if zh else ['Dates','Conference','Location','Presentation type']
+        columns = ''.join(f'<th scope="col">{label}</th>' for label in labels)
+        groups.append(f'<div class="academic-group"><h3 id="conference-heading">{title}</h3><div class="conference-table-wrap" role="region" aria-labelledby="conference-heading" tabindex="0"><table class="conference-table" aria-labelledby="conference-heading"><thead><tr>{columns}</tr></thead><tbody>{"".join(events)}</tbody></table></div></div>')
+    if not groups:
+        return ''
+    return f'<section class="section" id="activities">{heading("学术经历" if zh else "ACADEMIC RECORD", "学术活动" if zh else "Academic activities")}{"".join(groups)}</section>'
+
+
+def home_body(profile, papers, software, lang, prefix, activities):
     t = TEXT[lang]
     portrait_version = hashlib.sha256((ROOT/'images/profile.jpg').read_bytes()).hexdigest()[:12]
     links = profile['links']
     snapshot = profile['scholar_snapshot']
-    contacts = [(t['email'], 'mailto:' + profile['email']), ('Google Scholar', links['scholar']), ('GitHub', links['github']), ('ORCID', links['orcid'])]
+    contacts = [(profile['email'], 'mailto:' + profile['email']), ('Google Scholar', links['scholar']), ('GitHub', links['github']), ('ORCID', links['orcid'])]
     contact_links = ''.join(f'<a href="{E(url)}">{E(name)} ↗</a>' for name,url in contacts)
     metrics = ''.join(f'<div class="metric"><strong>{snapshot[key]}</strong><span>{t[label]}</span></div>' for key,label in [('citations','citations'),('h_index','hindex'),('i10_index','i10index')])
-    timeline = ''.join(f'<div class="timeline-item" id="{["work","education","education-bachelors"][i]}"><div class="timeline-period">{E(x["period"])}</div><div class="timeline-title">{E(x["title"][lang])}</div><div class="timeline-place">{E(x["institution"][lang])}</div></div>' for i,x in enumerate(profile['experience']))
+    timeline = ''
+    for i,x in enumerate(profile['experience']):
+        advisor = f'<div class="timeline-advisor">{"博士导师：" if lang=="zh" else "Ph.D. advisor: "}{E(x["advisor"][lang])}</div>' if x.get('advisor') else ''
+        timeline += f'<div class="timeline-item" id="{["work","education","education-bachelors"][i]}"><div class="timeline-period">{E(x["period"])}</div><div class="timeline-title">{E(x["title"][lang])}</div><div class="timeline-place">{E(x["institution"][lang])}</div>{advisor}</div>'
     research = ''.join(research_item(item,papers,lang,prefix) for item in profile['research'])
     rows = ''.join(software_row(s,i,lang) for i,s in enumerate(software,1))
     online_note = ''
@@ -212,6 +258,7 @@ def home_body(profile, papers, software, lang, prefix):
         <p class="result-count" id="publication-count" aria-live="polite" data-template="{E(t['results_selected'])}">{count}</p>
         <ol class="publication-list" data-publications>{pub_rows}</ol><noscript><p class="result-count">{t['static_papers']}</p></noscript>
       </section>
+      {academic_activities(activities,lang)}
       <section class="contact-section" id="contact"><div><p class="section-kicker">{t['contact']}</p><h2>{t['contact_title']}</h2><p>{t['contact_text']}</p></div><a class="button" href="mailto:{E(profile['email'])}">{E(profile['email'])} <span aria-hidden="true">↗</span></a></section>
     </div>'''
 
@@ -319,6 +366,18 @@ def unlisted_redirect(target, lang):
 
 def build(check=False):
     profile, papers, software = load('profile'), load('publications'), load('software')
+    activities = load('activities')
+    if not profile['email'].endswith('@xmu.edu.cn'):
+        raise ValueError('Public contact must use the author-confirmed educational email')
+    if set(activities) != {'grants','teaching','conferences','conference_source'}:
+        raise ValueError('Unexpected academic activity data')
+    for grant in activities['grants']:
+        if grant['role'] not in ('pi','participant') or type(grant['amount_cny']) is not int or grant['amount_cny'] <= 0 or not re.fullmatch(r'\d+',grant['number']):
+            raise ValueError('Use the confirmed grant role, number and RMB amount')
+        if not all(re.fullmatch(r'\d{4}-(?:0[1-9]|1[0-2])',grant[k]) for k in ('start','end')) or grant['start'] > grant['end']:
+            raise ValueError('Grant dates must be ordered YYYY-MM values')
+    if any(item['kind'] not in ('oral','participation') for item in activities['conferences']):
+        raise ValueError('Only confirmed oral/participation records may be displayed')
     visible_software = [project for project in software if project.get('visible', True)]
     analytics = load('analytics')
     endpoint = analytics['endpoint'].rstrip('/')
@@ -351,7 +410,9 @@ def build(check=False):
             other = 'zh' if lang=='en' else 'en'
             language_url = prefix + language_root(other) + ('software/'+project['slug']+'/' if project else '')
             nav = ''.join(f'<a href="{home}#{section}">{t[section]}</a>' for section in ['about','research','software','publications','contact'])
-            body = project_body(project,papers,lang,home,prefix,profile['email']) if project else home_body(profile,papers,visible_software,lang,prefix)
+            activity_label = '学术活动' if lang=='zh' else 'Activities'
+            nav = nav.replace(f'<a href="{home}#contact">',f'<a href="{home}#activities">{activity_label}</a><a href="{home}#contact">')
+            body = project_body(project,papers,lang,home,prefix,profile['email']) if project else home_body(profile,papers,visible_software,lang,prefix,activities)
             if project:
                 if analytics['enabled']:
                     label = '累计访问' if lang == 'zh' else 'Recorded visits'

@@ -1,0 +1,136 @@
+{
+  "grants": [
+    {
+      "id": "nsfc-22505090",
+      "agency": {
+        "en": "National Natural Science Foundation of China (NSFC)",
+        "zh": "国家自然科学基金委员会"
+      },
+      "program": {
+        "en": "Young Scientists Fund (Category C)",
+        "zh": "青年科学基金项目（C类）"
+      },
+      "number": "22505090",
+      "title": {
+        "en": "Interpretable machine learning for photocatalytic hydrogen peroxide production using covalent organic framework materials",
+        "zh": "基于可解释机器学习的共价有机框架材料光催化产过氧化氢研究"
+      },
+      "start": "2026-01",
+      "end": "2028-12",
+      "amount_cny": 300000,
+      "role": "pi",
+      "source": "Author-supplied grant record, 2026-10-21"
+    }
+  ],
+  "teaching": [
+    {
+      "id": "chemistry-experiments-33",
+      "book_title": "大学化学实验",
+      "publisher": {
+        "en": "Higher Education Press",
+        "zh": "高等教育出版社"
+      },
+      "editor": {
+        "en": "Yanping Ren",
+        "zh": "任艳萍"
+      },
+      "contribution": {
+        "en": "Contributed to Experiment 33: Machine learning prediction of organic acid pKa.",
+        "zh": "参与编写实验33：机器学习预测有机酸pKa。"
+      },
+      "software_slug": "pka-ml-education",
+      "source": "Author-supplied textbook contribution, 2026-10-21; book participation also stated in the supplied CV. Edition, publication year and ISBN not supplied."
+    }
+  ],
+  "conferences": [
+    {
+      "id": "fepam-2026",
+      "period": {
+        "en": "21–23 August 2026",
+        "zh": "2026年8月21–23日"
+      },
+      "name": {
+        "en": "5th China Forum of Electronic Plating for Advanced Manufacturing (FEPAM-2026)",
+        "zh": "第五届高端制造电子电镀论坛（FEPAM-2026）"
+      },
+      "kind": "oral",
+      "location": {
+        "en": "Xiamen, China",
+        "zh": "中国·厦门"
+      },
+      "url": "https://en.xmu.edu.cn/info/1096/22162.htm"
+    },
+    {
+      "id": "ccs-35-2026",
+      "period": {
+        "en": "11–14 April 2026",
+        "zh": "2026年4月11–14日"
+      },
+      "name": {
+        "en": "35th Chinese Chemical Society Congress",
+        "zh": "中国化学会第35届学术年会"
+      },
+      "location": {
+        "en": "Chongqing, China",
+        "zh": "中国·重庆"
+      },
+      "kind": "oral",
+      "award": {
+        "en": "Outstanding Oral Presentation Award",
+        "zh": "优秀口头报告奖"
+      },
+      "url": "https://www.chemsoc.org.cn/meeting/35th/"
+    },
+    {
+      "id": "energy-catalysis-2026",
+      "period": {
+        "en": "1–3 January 2026",
+        "zh": "2026年1月1–3日"
+      },
+      "name": {
+        "en": "Conference on energy catalysis",
+        "zh": "能源催化会议"
+      },
+      "location": {
+        "en": "Hangzhou, China",
+        "zh": "中国·杭州"
+      },
+      "kind": "participation"
+    },
+    {
+      "id": "isaiec-2025",
+      "period": {
+        "en": "22–25 June 2025",
+        "zh": "2025年6月22–25日"
+      },
+      "name": {
+        "en": "2nd International Symposium on AI for Electrochemistry (iSAIEC 2025)",
+        "zh": "第二届人工智能应用电化学国际研讨会（iSAIEC 2025）"
+      },
+      "kind": "participation",
+      "location": {
+        "en": "Xiamen, China",
+        "zh": "中国·厦门"
+      },
+      "url": "https://ai4ec.ac.cn/zh/event/isaiec_2025"
+    },
+    {
+      "id": "surfaces-interfaces-2025",
+      "period": {
+        "en": "9–12 May 2025",
+        "zh": "2025年5月9–12日"
+      },
+      "name": {
+        "en": "1st National Conference on Surface and Interface Science, Chinese Chemical Society",
+        "zh": "中国化学会第一届全国表界面科学会议"
+      },
+      "location": {
+        "en": "Chengdu, China",
+        "zh": "中国·成都"
+      },
+      "kind": "oral",
+      "url": "https://www.chemsoc.org.cn/meeting/NCSI1/"
+    }
+  ],
+  "conference_source": "Five events retained by the author on 2026-10-21. Presentation types and the CCS award follow the supplied weekly report: oral presentations at FEPAM, CCS35 and the first CCS surface/interface conference; participation elsewhere. Official meeting dates and locations replace weekly-report ranges where verified. Hangzhou retains the weekly-report name and dates. No talk titles, registration identifiers or account event logs are published. English names are official where available, otherwise descriptive translations."
+}

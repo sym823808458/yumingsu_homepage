@@ -13,6 +13,7 @@
 | 个人简介 | `content/about.zh.md`、`content/about.en.md` |
 | 职位、单位、研究方向、经历、Scholar 统计 | `data/profile.json` |
 | 论文、引用快照、DOI、代表作标记 | `data/publications.json` |
+| 基金、教材参编、会议与报告记录 | `data/activities.json` |
 | 软件目录、链接、简介 | `data/software.json` |
 | 软件详细介绍 | `content/software/<slug>.zh.md`、`<slug>.en.md` |
 | 各软件累计访问与合计（Cloudflare D1） | `data/analytics.json`，启用方法见 `MAINTENANCE.md` |
