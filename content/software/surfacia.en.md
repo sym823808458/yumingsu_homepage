@@ -10,7 +10,7 @@ Surfacia converts molecular surface properties into hierarchical descriptors and
 
 ## Run a descriptor table on the server
 
-Use **Online compute demo** above. Approved users can submit Surfacia tasks through the same account as GBLine. The temporary HTTPS address may change. New-user email verification still awaits the owner's QQ SMTP setup; an existing approved account can use the compute service.
+Use **Online compute demo** above. Approved users can submit Surfacia tasks through the same account as GBLine. The compute portal uses a fixed HTTPS address. New users register with an email and password, verify their email and wait for administrator approval before submitting tasks.
 
 - Download the example CSV from the compute page, or prepare your own UTF-8 CSV. Include one continuous numeric `target` column and 1–32 numeric descriptor columns. Use 30–500 samples and a file of at most 2 MiB. Descriptor names begin with an English letter and use letters, digits and underscores; no missing values, infinities or formulas.
 - An optional `Sample Name` column stores unique identifiers (letters, digits, dots, underscores and hyphens, beginning with a letter or digit). If omitted, row numbers are used. Optional `smiles` are accepted as text and ignored by this online calculation; all other columns must be numeric descriptors.

@@ -146,3 +146,9 @@ The public MATLAB repository still contained the overwrite loop on live inspecti
 ### Input scope clarified — 2026-10-20
 
 The owner subsequently requested only fchk + log. The text-upload route, manual dipole fields, route selector and loadable synthetic input were removed. Both the API metadata gate and isolated runner reject text-mode submissions. Historical synthetic numerical-check plots/results remain explicitly archival and are not an online input mode. Existing completed task downloads remain accessible under the original ownership/retention checks.
+
+## Fixed compute portal — 2026-10-21
+
+The operator completed Cloudflare DNS/tunnel setup. A fresh Edge browser verified https://compute.yumingsu.top with a valid certificate and HTTP 200. The encrypted tunnel forwards only to host loopback HTTP port 18080. The runtime canonical origin and all newly generated account email links were changed to this hostname; the old temporary URL is retained privately as a transition alias.
+
+A temporary test applicant completed registration, password-protected email verification, authenticated administrator approval and password login through the fixed domain. Test emails were captured privately, not sent to example.net; the owner separately confirmed receipt of the QQ SMTP configuration email. Real isolated GBLine, Surfacia and wind tasks completed and downloaded; the matching Gaussian fchk/log TPA task returned review_required as expected and downloaded. Temporary applicant and acceptance administrator identities were disabled and their sessions revoked. Anonymous downloads and an unrelated request Origin were rejected. Desktop and mobile layouts passed. No scientific algorithm or limit changed.

@@ -12,13 +12,13 @@ The original MATLAB repository identifies **Terenziani et al. (2008)** as its me
 
 ## Online calculation: upload two files
 
-The [online TPA workspace](https://fragrance-were-swim-round.trycloudflare.com/?tool=tpa) accepts one matching Gaussian **`.fchk` + TD `.log`** pair. After signing in with an approved account, select TPA, upload the two files and submit. The server runs the fixed Multiwfn export and Python SOS calculation; task history provides the spectrum, dipole-reference audit and a downloadable ZIP. You may close the page while it runs.
+The [online TPA workspace](https://compute.yumingsu.top/?tool=tpa) accepts one matching Gaussian **`.fchk` + TD `.log`** pair. After signing in with an approved account, select TPA, upload the two files and submit. The server runs the fixed Multiwfn export and Python SOS calculation; task history provides the spectrum, dipole-reference audit and a downloadable ZIP. You may close the page while it runs.
 
 Prepare a completed all-electron, restricted closed-shell singlet TD calculation with **IOp(9/40=4)** and 2–40 singlet excited states. Convert the checkpoint with Gaussian `formchk` beforehand. Maximum sizes are 64 MiB for fchk and 16 MiB for log; the current service supports up to 300 atoms / 2000 basis functions. It checks atom order, coordinates, axes/origin, state count and energies. Incomplete, unsupported or mismatched inputs are rejected. The server does not run Gaussian or optimize a structure.
 
 The online service accepts **only the fchk + log pair**. Multiwfn extraction and permanent-dipole definition checks are automatic; no text export or manually entered dipole vector is needed.
 
-The temporary HTTPS address can change or stop. New access requires email verification and administrator approval; QQ SMTP configuration remains pending, so new registrations cannot yet complete. Each task uses at most 2 CPU threads / 4 GiB and has a 10-minute total limit. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private downloads expire after 72 hours.
+The compute portal uses a fixed HTTPS address. New access requires email verification and administrator approval. Each task uses at most 2 CPU threads / 4 GiB and has a 10-minute total limit. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private downloads expire after 72 hours.
 
 The plot above is an archived synthetic algebra verification of the numerical core, not an upload option or a molecular benchmark. [Recorded verification outputs](http://yumingsu.top/downloads/tpa-calculation/synthetic-results.zip) remain available for reference.
 

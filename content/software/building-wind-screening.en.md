@@ -15,7 +15,7 @@ The project is intended to support exploratory inspection planning for residenti
 
 ## Calculate directly in the browser
 
-Use **Online compute demo** above, sign in with an approved account and select **Wind pressure**. The form does not require a site image or a JSON upload. The current entry is a temporary HTTPS address; new email registration still awaits the owner's QQ SMTP configuration.
+Use **Online compute demo** above, sign in with an approved account and select **Wind pressure**. The form does not require a site image or a JSON upload. The compute portal uses a fixed HTTPS address. New users must verify their email and obtain administrator approval.
 
 - Click **Load three-building example** for a complete hypothetical scenario, or enter 1–20 rectangular buildings. Each row records a unique name, center X/Y in meters, width, depth, floors, explicit height and clockwise rotation. X is east-positive and Y north-positive; width/depth are east-west/north-south before rotation. The plan preview helps check the geometry.
 - Enter a reference model-speed parameter V (0–100 m/s) and incoming direction (0° north, 90° east, 180° south, 270° west). The model does not calibrate averaging time or terrain normalization to a site wind record: an observed gust or a code-defined design speed cannot be substituted without a justified mapping.

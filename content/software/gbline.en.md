@@ -1,5 +1,11 @@
 ## From a spectrum image to numerical curves
 
+## Online calculation
+
+Use **Online compute demo** above, register with an email and password, verify your email and wait for administrator approval. In GBLine, upload a PNG or JPEG chart (up to 10 MiB), select the curve and point counts and submit. The server runs a fixed extraction workflow without external model calls. Review the calibration preview and diagnostics before downloading the curves. The online version supports one panel with one X/Y axis pair; uncertain extraction is flagged for review.
+
+Each task is limited to 2 CPU threads, 4 GiB RAM and 5 minutes. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private results expire after 72 hours.
+
 GBLine is a local tool for digitizing scientific line charts and chemical spectra. It connects OCR, coordinate calibration and pixel-based curve extraction with an optional vision-language-model review workflow through MCP.
 
 The numerical core performs coordinate conversion and curve tracing. A visual model can inspect visible tick labels and curve colors, propose corrections and respond to the tool's diagnostic feedback.
