@@ -25,6 +25,12 @@ Use **Online compute demo** above, sign in with an approved account and select *
 
 Dimensions are 2–200 m for buildings, heights 3–450 m, floors 1–150 and height/floors 2.2–6 m. Open-area dimensions may reach 500 m. Positions are bounded to ±1000 m from the chosen origin. A run uses at most one CPU, 512 MiB memory and two minutes; it shares the account's one-running/two-queued/ten-daily quota with the other tools.
 
+### Explore a calculated scenario
+
+Select a building on the plan or in the result selector, then zoom to it. Switch between the original wind direction and the 24 computed 15° samples using the selector, slider or sensitivity plot. The building map, peak ranking, difference from the original scenario, and four-facade × four-height-band heatmap update together. Each displayed direction is an actual server calculation; connecting lines are visual guides.
+
+Colors indicate relative pressure magnitudes, not safety thresholds. The largest sampled value is not a continuous-angle maximum. Download the direction plot as SVG, the saved inputs as JSON, or the complete report and CSVs. **Edit this scenario** loads the saved inputs and selected direction into the form; changing geometry or speed requires a new submitted task and preserves the old result. Older reports without per-direction facade data still show peak comparisons and prompt a resubmission for the full view.
+
 ### Method and interpretation
 
 The server uses a headless snapshot of the original desktop calculation functions, with their mathematical definitions preserved. Basic velocity pressure is `q_ref = 0.5 × 1.25 × V² / 1000` kPa. The prototype uses a clipped height/roughness and turbulence expression for `qp(z)`, then multiplies absolute external/internal pressure-coefficient magnitudes by empirical facade, corner, height-band, shielding, shape, open-area and nearby-building factors. Reports retain model factors, representative heights, roughness and source hashes.

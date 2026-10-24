@@ -44,6 +44,9 @@
 <li>下载 ZIP，保存输入与报告 JSON、楼栋／立面／风向 CSV，以及三张 SVG 图。风向扫描在固定风速下每 15° 采样一次，范围为 0–345°；服务器文件保留 72 小时。</li>
 </ul>
 <p>楼栋长宽为 2–200 m，高度 3–450 m，1–150 层，每层平均高度须为 2.2–6 m；空旷区长宽最多 500 m，中心坐标限于自选原点的 ±1000 m。单次最多 1 CPU、512 MiB 内存、2 分钟；与其他工具共用每账户 1 个运行、2 个排队、每日 10 次提交的配额。</p>
+<h3>交互查看已计算情景</h3>
+<p>点击平面图中的楼栋或从下拉框选择，再按需放大到所选楼栋。用风向选择框、滑块或敏感性曲线，在原情景和 24 个间隔 15° 的已计算风向之间切换；建筑图、峰值排序、与原情景的差值、四立面 × 四高度段热图会联动更新。显示的是服务器实际计算的风向样点，连线仅辅助观察。</p>
+<p>颜色表示相对压力幅值，不是安全等级；扫描最大值仅指样点最大值，不是连续角度最大值。可下载风向 SVG、已保存输入 JSON 或完整报告与 CSV。点击<strong>载入表单修改</strong>，会将保存的输入和所选风向载回表单；修改建筑或风速后提交新任务，旧结果保留。旧任务若未保存各风向立面，仍能显示峰值对比，并提示重新提交以获得完整视图。</p>
 <h3>计算方法与结果含义</h3>
 <p>服务器使用原桌面算法的无界面数学快照，保留原有计算定义。参考速度压为 <code>q_ref = 0.5 × 1.25 × V² / 1000</code> kPa；随后用带截断的高度／粗糙度及湍流表达式计算模型 <code>qp(z)</code>，结合内外压系数绝对值，以及立面、角部、高度段、遮挡、形体、空旷和近楼通道的经验修正。报告保留修正系数、代表高度、粗糙度和源码哈希。</p>
 <p>输出是<strong>非负压力幅值</strong>，不表示有正负号的荷载、构件抗力或破坏概率。四个高度分段不是逐层求解，低于四层时楼层标签可能重叠。<a href="https://eurocodes.jrc.ec.europa.eu/sites/default/files/2022-06/Bridge_Design-Eurocodes-Worked_examples.pdf">JRC 风作用背景资料</a>仅提供一般理论背景，不代表这些经验修正已经得到验证或规范认证。</p>
@@ -59,6 +62,6 @@
 <h2>开发状态与获取方式</h2>
 <p>本次检查的工作目录包含 Python/Tkinter 桌面实现、需求与产品说明、示例项目、较早的独立 HTML 原型及导出动画。PNG/GIF 导出使用 Pillow。目前尚未建立这个项目的公开源码发布入口或软件下载包。</p>
 <p>本页介绍在线直接输入流程，并展示已有桌面输出。在线版目前接受矩形楼栋与空旷区；底图标定与任意多边形编辑仍在桌面流程中进行。如需演示、合作或了解后续发布，可通过上方链接联系苏禹铭。</p></article><aside class="project-aside"><h2>项目信息</h2><p>在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。</p><h2>开发阶段</h2><p>开发原型</p><h2>获取方式</h2><p>已提供审批后直接输入的在线演示，也可联系了解桌面软件；公开源码与安装包仍待整理。</p><section class="visit-statistics"><h2>累计访问</h2><p><strong data-visit-count="building-wind-screening">…</strong></p><p class="stats-note">自 2026-10-21 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-24 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-25 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>

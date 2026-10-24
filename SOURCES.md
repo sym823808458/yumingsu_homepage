@@ -196,3 +196,10 @@ Grant record supplied directly by the author: National Natural Science Foundatio
 The author states a contribution to Experiment 33, 机器学习预测有机酸pKa, in 大学化学实验, edited by 任艳萍 (Yanping Ren), Higher Education Press. The supplied CV independently records participation in this book. No edition, ISBN, publication year or whole-book authorship is asserted; the original Chinese book title is retained in both languages. The existing pKa-ML Education page is linked as related teaching software.
 
 The supplied CV explicitly identifies Prof. 汪骋 (Cheng Wang) as the PhD advisor, corroborated at group level by the AI4EC Lab author biography https://ai4ec.ac.cn/zh/post/paper_suyumin2505 . The educational email already configured as yumingsu@xmu.edu.cn is now visible in the hero and remains the sole public mailto target throughout the site. This update does not change calculation-account approval or SMTP settings.
+
+
+## Interactive TPA and wind workspaces (2026-10-25)
+
+Author requested interactive TPA/wind results and combined one-/two-photon theoretical spectra. The private compute adapter now reads Gaussian TD oscillator strengths, generates an area-normalized Gaussian display density in energy (FWHM 0.20 eV), and retains the SOS core unchanged. Numerical same-input candidate comparison confirmed identical original TPA arrays; display-width integration and FWHM tests passed. This validates software behavior, not absolute physical accuracy. General electronic-line broadening background: https://orca-manual.mpi-muelheim.mpg.de/contents/spectroscopyproperties/asageneral.html . The implementation uses its explicitly documented Gaussian envelope, not the complete ORCA vibronic model.
+
+Wind retains the original headless core and saves full pressure details for the existing 24 sampled directions. Browser controls select actual saved results, with no interpolated CFD or continuous-direction claim. Tests compare scan details to independent scenarios. No molecular files, private reports or real site geometry are published with this update.

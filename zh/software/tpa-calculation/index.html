@@ -34,6 +34,11 @@
 <p>在线服务<strong>只接受 fchk + log 配对输入</strong>。Multiwfn 提取与永久偶极矩定义核对由服务器完成，不需要上传导出文本或手填偶极矩向量。</p>
 <p>计算平台使用固定 HTTPS 地址。新用户需验证邮箱并经管理员批准。每项任务最多使用 2 个 CPU 线程、4 GiB 内存，总时限 10 分钟。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额。私人结果保留 72 小时。</p>
 <p>上图仅保留为数值核心的历史合成代数核对，不是可选输入方式，也不是分子精度基准。<a href="http://yumingsu.top/downloads/tpa-calculation/synthetic-results.zip">历史核对结果</a>可供查阅。</p>
+<h2>单、双光子光谱交互查看</h2>
+<p>在线结果现在可以<strong>同时展示单光子与双光子理论谱</strong>：默认上下分面保留各自单位，也可切换为归一化叠加。支持入射光子波长／总跃迁能量切换、激发态标记、范围缩放、采样读数，以及当前视图的 CSV 和 SVG 导出。</p>
+<p>单光子谱使用同一份 Gaussian 日志中打印的激发能与振子强度，在能量坐标上进行面积归一化的高斯展宽，默认 FWHM 为 0.20 eV，可在浏览器调至 0.05–1.00 eV。纵轴是每 eV 的振子强度密度，<strong>不是实验吸光度或摩尔消光系数</strong>；波长视图仅在 E=hc/λ 处评价该函数，纵轴不是每 nm 的密度。离散电子跃迁的展宽属于常用的显示近似，可参考 <a href="https://orca-manual.mpi-muelheim.mpg.de/contents/spectroscopyproperties/asageneral.html">ORCA 光谱模拟说明</a>。</p>
+<p>对同一终态，双光子共振波长约为单光子的两倍；总能量视图分别使用 hν 和 2hν。单光子展宽只影响显示，<strong>不会改变固定 0.05 eV 的 SOS 分母阻尼或原始双光子正负响应</strong>。归一化仅比较谱形，不能用于比较绝对强度；态标记显示能级位置，不保证是光谱峰。</p>
+<p>原始结果包在振子强度有效时新增 <code>one_photon.csv</code> 和 <code>one_photon_states.csv</code>。旧任务没有这些数据时请重新提交 fchk + log；缺少所需振子强度时明确提示，不补造光谱。</p>
 <h2>永久偶极矩参考：先保存，再扣除</h2>
 <p>每个对角元应使用 <strong>Δμᵢ = μᵢᵢ − μ₀₀</strong>，且必须在改变任何对角元之前复制 μ₀₀。否则第一次循环会将基态参考清零，后续激发态就没有扣除原参考。网页版采用已修正的 Python 实现，并检查所有永久偶极矩共同平移时光谱不变。</p>
 <p>这是一个明确的程序错误，影响大小需逐分子评估。四个分子的单变量对照（每个分子 30 个激发态）仅修复这一处，保持激发能、态数、展宽及其余 SOS 公式不变，主峰截面的变化分别约为 <strong>+0.009%、+0.856%、+0.785%、−0.885%</strong>。部分非主峰采样点的相对变化达到 <strong>10.72%</strong>（统计范围为原响应至少达到原主峰 10% 的采样点）。不能由这四个案例主峰影响较小推断所有分子均可忽略，也不能用统一系数修正旧结果；受影响的输入应使用修正版重算，历史结果保留。</p>
@@ -65,6 +70,6 @@
 </ul>
 <h2>相关研究</h2>
 <p>该工具页与双光子吸收机器学习、纳米石墨烯和金属有机层的相关研究相连接；相关应用论文见<a href="https://github.com/sym823808458/calculateTPAbyMATLAB">仓库说明</a>，与上述理论及上游软件文献配合引用。</p></article><aside class="project-aside"><h2>项目信息</h2><p>在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。</p><h2>相关研究</h2><a class="pub-title" lang="en" href="../../../zh/#tpa-ml-2023">Interpretable Machine Learning of Two-Photon Absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#nanographenes-2023">Hexa-branched nanographenes with large two-photon absorption (2023) ↗</a><a class="pub-title" lang="en" href="../../../zh/#mol-tpa-2021">Metal–organic layers with an enhanced two-photon absorption cross-section and up-converted emission (2021) ↗</a><section class="visit-statistics"><h2>累计访问</h2><p><strong data-visit-count="tpa-calculation">…</strong></p><p class="stats-note">自 2026-10-21 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-24 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-25 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>

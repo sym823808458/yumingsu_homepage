@@ -22,6 +22,16 @@ The compute portal uses a fixed HTTPS address. New access requires email verific
 
 The plot above is an archived synthetic algebra verification of the numerical core, not an upload option or a molecular benchmark. [Recorded verification outputs](http://yumingsu.top/downloads/tpa-calculation/synthetic-results.zip) remain available for reference.
 
+## Interactive one- and two-photon spectra
+
+The online result now shows **1PA and 2PA together**, in separate panels with their original units or as a normalized overlay. Switch between incident photon wavelength and total transition energy; select a state, zoom the range, inspect samples, and export the current view as CSV or SVG.
+
+The 1PA envelope uses excitation energies and oscillator strengths printed in the same Gaussian log, with an area-normalized Gaussian in energy (default FWHM 0.20 eV; display control 0.05–1.00 eV). Its ordinate is oscillator-strength density per eV, **not experimental absorbance or molar extinction**. In wavelength view it is evaluated at E=hc/λ; it is not a density per nm. Broadening discrete electronic transitions is a conventional display approximation; see the [ORCA spectral-simulation background](https://orca-manual.mpi-muelheim.mpg.de/contents/spectroscopyproperties/asageneral.html).
+
+For the same final state, the two-photon resonance wavelength is approximately twice the one-photon wavelength. The energy view uses hν for 1PA and 2hν for 2PA. The 1PA width changes only the display; the 0.05 eV SOS denominator damping and all original signed TPA values remain unchanged. Normalization compares shapes, not absolute strengths. State markers locate levels, not necessarily spectral maxima.
+
+The original ZIP includes `one_photon.csv` and `one_photon_states.csv` when valid oscillator strengths are available. Historical reports without these data ask you to resubmit the fchk + log pair. No spectrum is fabricated when the required strengths are missing.
+
 ## Permanent-dipole reference: save before subtracting
 
 Every diagonal must use **Δμᵢ = μᵢᵢ − μ₀₀**, with a copy of μ₀₀ saved before changing any diagonal. Otherwise the first iteration zeros the reference, leaving later excited-state diagonals unchanged. The web runner uses the corrected Python implementation and checks invariance to a common shift of all permanent dipoles.
