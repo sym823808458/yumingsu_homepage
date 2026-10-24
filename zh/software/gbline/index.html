@@ -24,7 +24,16 @@
   <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / GBLine</div><div class="eyebrow">谱图数字化 · 证据引导复核</div><h1>GBLine</h1><p class="project-status">研究原型</p><p class="project-lead">连接 OCR、坐标标定、曲线提取与可选视觉大模型复核，将科研图表和化学谱图转为可检查的数值曲线。</p><div class="tags"><span class="tag">Python</span><span class="tag">OCR</span><span class="tag">MCP</span></div><div class="project-buttons"><a class="button" href="mailto:yumingsu@xmu.edu.cn">联系了解软件 ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=gbline">在线计算演示</a></div><p class="project-status">须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。</p></section>
       <section class="project-showcase"><figure class="project-media"><div class="project-media-image"><picture><source media="(max-width:700px)" srcset="../../../images/software/gbline/workflow-mobile.zh.svg" width="480" height="760"><img src="../../../images/software/gbline/workflow.zh.svg" width="1080" height="330" alt="工作流：图片输入、坐标与曲线提取、可选证据复核、数值输出与诊断。" loading="lazy"></picture></div><figcaption>工作流示意。模型复核为可选环节，输出数值仍需检查。</figcaption></figure></section><div class="project-layout"><article class="prose project-prose"><h2>从谱图图片到数值曲线</h2>
 <h2>在线计算</h2>
-<p>点击上方<strong>在线计算演示</strong>，用邮箱和密码注册，验证邮箱并等待管理员批准。在 GBLine 中上传 PNG 或 JPEG 图表（最多 10 MiB），设置曲线数量和采样点数后提交。服务器执行固定的提取流程，不调用外部大模型。请检查标定预览与诊断，再下载曲线数据。在线版本支持单个面板、一组 X/Y 坐标轴；不确定的提取结果会标记为需要复核。</p>
+<p>点击上方<strong>在线计算演示</strong>，用邮箱和密码注册，验证邮箱并等待管理员批准。在 GBLine 中上传 PNG 或 JPEG 图表（最多 10 MiB），填写可见曲线数及每条曲线的最大点数，提交一次即可。工作区提供可下载的双曲线示例。</p>
+<p>工作区提供<strong>纯软件提取</strong>与 <strong>Qwen 辅助</strong>两种方式。站点模型服务配置完成且可用时，默认选择 Qwen 辅助：将图表图片发送到站点配置的模型服务，每张图最多复核两次，密钥和调用费用由站点统一承担，用户无需填写 API key。提交前会显示当前可用状态；模型服务未就绪时仍可选择纯软件。</p>
+<p>完成后，在任务旁点击<strong>交互审核</strong>，将曲线叠加到原图上检查。可以选择、高亮或隐藏各条曲线，并进行缩放和修正：</p>
+<ul>
+<li>四点校准：X、Y 轴各点选两个刻度，填写实际数值，选择线性或对数尺度；支持反向坐标轴。</li>
+<li>从原始图片拾取曲线颜色，再按校准／拾色结果重新提取。新建任务占用正常任务配额，不调用 Qwen。</li>
+<li>橡皮擦只删除选中曲线的点，支持撤销。CSV 用 <code>segment_id</code> 保留断点，使用时不要跨段连接。</li>
+<li>保存“接受”“仍需修正”或“放弃”的审核版本。可以重新打开已保存的版本，下载曲线 CSV、叠加预览与审核记录。原始提取结果保留为单独下载，不被覆盖。</li>
+</ul>
+<p>在线版本支持单面板、一组 X/Y 坐标轴。需要复核的结果不会冒充经过验证的数值曲线。人工校准与接受会明确记录为人工干预，不当作自动验证；模型复核也不能保证提取正确。</p>
 <p>每项任务限制 2 个 CPU 线程、4 GiB 内存、5 分钟。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额。私人结果保留 72 小时。</p>
 <p>GBLine 是面向科研折线图与化学谱图的本地数字化工具，将 OCR、坐标标定、像素曲线提取与可选的视觉大模型复核连接起来，通过 MCP 提供工具接口。</p>
 <p>数值核心负责坐标换算与曲线追踪；视觉模型观察原图中的刻度和曲线颜色，提出修正，并根据工具返回的诊断继续复核。</p>
@@ -40,8 +49,8 @@
 <p>坐标轴正确、曲线数量符合预期，并不保证整条曲线已经恢复。需要检查横轴覆盖范围、断裂，以及提取结果与原图的重合情况。多面板图应先拆开；双 Y 轴及缺少足够可见标定证据的图不属于当前流程的适用范围。</p>
 <p>当前研究包含开发性试验与回顾性验证，面向未见谱图的独立评价仍在推进。</p>
 <h2>获取方式与研究状态</h2>
-<p>当前本地 MCP 实现的文档版本为 2.0.0。模型辅助需要支持图像与工具调用的 Agent 及所选服务；数值工具不绑定特定大模型平台。</p>
+<p>当前网页适配器采用已选定的 <code>qwen-assist-2</code> 策略和 <code>compact-review-3</code> 证据校验。本地 MCP 实现也可搭配支持图像与工具调用的 Agent；数值核心不绑定某个模型服务。开发示例的表现不代表独立测试集准确率。</p>
 <p>可联系苏禹铭了解当前软件与配置。修订研究论文正在准备中。</p></article><aside class="project-aside"><h2>项目信息</h2><p>在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。</p><h2>开发阶段</h2><p>研究原型</p><h2>获取方式</h2><p>可联系了解当前本地软件与配置。</p><section class="visit-statistics"><h2>累计访问</h2><p><strong data-visit-count="gbline">…</strong></p><p class="stats-note">自 2026-10-21 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-21 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-24 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>

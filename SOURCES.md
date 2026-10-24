@@ -1,5 +1,9 @@
 # Content provenance — 2026-10-19
 
+## GBLine interactive compute workflow — 2026-10-24
+
+The owner requested web integration from the QWEN349 web handoff. The bilingual GBLine pages now describe deployed image overlays, four-point calibration, raw-image color picking, manual re-extraction, point erasing/undo, versioned review and segmented CSV downloads. Pure-software and human workflows were verified through the public compute portal using the synthetic two-curve example; no private chart is published here. Model assistance is described as conditional on service availability: the bounded Qwen bridge passed fixture integration, but the real gateway/key remains to be configured. Users do not provide API keys. No development benchmark or independent-test accuracy claim is added. Scientific core selection remains qwen-assist-2 with compact-review-3 checks.
+
 ## Published research figures — 2026-10-20
 
 At the author's request, the homepage's three research directions now pair the existing bilingual descriptions with published figures. No unpublished figures, instrument photos or new scientific results are used. Sources and exact image hashes are recorded in `images/research/README.md`.
