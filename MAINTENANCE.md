@@ -128,3 +128,8 @@ GBLine、Surfacia、风压筛查及 TPA 的入口统一为 `https://compute.yumi
 ### 作者身份与优先展示（2026-10-21）
 
 作者此次确认七篇优先论文（六篇原有论文与新补充的 19F NMR 共同通讯论文），通过 `author_roles`（first / co_first / corresponding / co_corresponding）、`author_role_source` 和唯一 `display_priority` 维护。旧 `featured` 不是作者身份凭据，不用于排序。按作者提供的顺序排列这七篇，其余按旧引用快照补齐至十篇；新论文未知引用数保存为 null，显示破折号及“未记录”，不填零，也不刷新未重新核对的 Scholar 总量与快照日期。
+
+
+### pKa 教学入口（2026-10-25）
+
+pKa 新增 `?tool=pka`，目前共有五个在线工具入口，六个软件页面的统计口径不变。功能、五组公开数据、教学诊断口径与资源限制见 pKa 中英文内容源。在线计算沿用原有审批与配额；无新增用户密钥或外部 API。后端源码、运维手册、测试账户与服务器配置仍仅保存在私有部署目录。

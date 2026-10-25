@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A graphical decision-tree tool and five teaching datasets introducing feature engineering through organic acid pKa prediction.">
+  <meta name="description" content="An interactive decision-tree classroom: five public datasets, selectable descriptors, prediction paths and local what-if experiments for organic-acid pKa.">
   <meta name="color-scheme" content="light">
   <meta property="og:title" content="pKa-ML Education · Yuming Su">
-  <meta property="og:description" content="A graphical decision-tree tool and five teaching datasets introducing feature engineering through organic acid pKa prediction.">
+  <meta property="og:description" content="An interactive decision-tree classroom: five public datasets, selectable descriptors, prediction paths and local what-if experiments for organic-acid pKa.">
   <meta property="og:type" content="website">
   <title>pKa-ML Education · Yuming Su</title>
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
@@ -21,21 +21,29 @@
     <nav aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#research">Research</a><a href="../../#software">Software</a><a href="../../#publications">Publications</a><a href="../../#activities">Activities</a><a href="../../#contact">Contact</a></nav>
     <a class="language-link" href="../../zh/software/pka-ml-education/" lang="zh-CN" hreflang="zh-CN">中文</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / pKa-ML Education</div><div class="eyebrow">Chemical education · No-code ML</div><h1>pKa-ML Education</h1><p class="project-lead">A graphical decision-tree tool and five teaching datasets introducing feature engineering through organic acid pKa prediction.</p><div class="tags"><span class="tag">Python</span><span class="tag">GUI</span><span class="tag">Teaching</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/pKaMLEducation">Source code ↗</a><a class="button secondary" href="https://doi.org/10.6084/m9.figshare.29755451">Download ↗</a></div></section>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / pKa-ML Education</div><div class="eyebrow">Chemical education · No-code ML</div><h1>pKa-ML Education</h1><p class="project-lead">An interactive decision-tree classroom: five public datasets, selectable descriptors, prediction paths and local what-if experiments for organic-acid pKa.</p><div class="tags"><span class="tag">Python</span><span class="tag">GUI</span><span class="tag">Teaching</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/pKaMLEducation">Source code ↗</a><a class="button secondary" href="https://doi.org/10.6084/m9.figshare.29755451">Download ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=pka">Online compute demo</a></div><p class="project-status">Email verification and administrator approval required. Shared per-user limits: 1 running task, 2 queued tasks and 10 submissions per day; private results are retained for 72 hours. Service availability depends on the research server.</p></section>
       <div class="project-layout"><article class="prose project-prose"><h2>Learning machine learning through a familiar chemical problem</h2>
-<p>pKa-ML Education introduces decision trees, feature engineering and generalization through organic acid pKa prediction. A graphical interface supports the main teaching workflow without programming.</p>
-<h2>Five datasets, progressively refined descriptors</h2>
+<p>pKa-ML Education introduces decision trees, feature engineering and generalization through organic acid pKa prediction. The online teaching workspace runs without installing Python; the original desktop GUI remains available.</p>
+<h2>Try an interactive lesson</h2>
+<p>1. Open the <a href="https://compute.yumingsu.top/?tool=pka">free online workspace</a> and sign in with an approved account. 2. Choose one of five public teaching datasets, select descriptors and set maximum tree depth (1–10; default 3). Preview or download the data before submitting. 3. Compare training and validation MAE, RMSE and R² with the training-mean baseline. The four diagnostic molecules are shown separately. 4. Click a molecule on the parity plot or choose its name. Follow each inequality to its predicted leaf value; expand the complete tree to see the highlighted path. 5. Edit numeric descriptors for an immediate local what-if prediction. Download that prediction as CSV, or download the complete server result ZIP. Reload the lesson settings to submit a different model.</p>
+<p>The depth-comparison plot uses the same split for depths 1–10, helping students discuss overfitting. Feature importance describes this tree’s splits; it does not establish a chemical mechanism or causal effect.</p>
+<h2>Five datasets and visible representations</h2>
 <ul>
-<li>Start with simple carbon and carboxyl counts.</li>
-<li>Introduce halogen counts and more specific substituent descriptors.</li>
-<li>Add electron-withdrawing group positions and strengths.</li>
-<li>Compare training, validation and fixed external test performance.</li>
+<li>Module 1 starts with carbon and carboxyl counts.</li>
+<li>Module 2 adds halogen counts.</li>
+<li>Module 3 uses more detailed atom and group counts.</li>
+<li>Module 4 retains those counts and adds EWG position and flag fields; descriptor selection is explicit.</li>
+<li>Module 5 uses carbon/carboxyl counts, EWG position and EWG rank.</li>
 </ul>
-<h2>Teaching focus</h2>
-<p>Students explore overfitting by changing tree depth, interpret tree splits and feature importance in chemical terms, and examine how chemical knowledge improves feature engineering.</p>
-<h2>Getting started</h2>
-<p>Windows users can obtain an executable from <a href="https://doi.org/10.6084/m9.figshare.29755451">figshare</a>. Python users can run <code>python DTcode/predictpka260324.py</code>; consult the repository for dependencies.</p>
-<p>The repository contains the source and <code>dataset1.csv</code> through <code>dataset5.csv</code>. The associated teaching manuscript is listed as in preparation; consult the repository for updated citation information.</p></article><aside class="project-aside"><h2>Project information</h2><p>Software runs in the user’s own environment. This page provides information, documentation and source links.</p><section class="visit-statistics"><h2>Recorded visits</h2><p><strong data-visit-count="pka-ml-education">…</strong></p><p class="stats-note">Since 2026-10-21; English and Chinese combined, once per software per browser tab within 30 minutes. Software-page visits, not unique people, downloads or computations.</p></section></aside></div></div></main>
+<p>The public CSV values are preserved. EWG rank codes span −1 to 9 and are not a continuous physical constant; use the preview table because the desktop tooltip omits some codes. Modules can differ in both molecules and descriptors, so not every comparison isolates one variable.</p>
+<h2>A teaching diagnostic panel, not a blind test</h2>
+<p>Octanoic acid, 3-chlorobutanoic acid, iodoacetic acid and phenylglyoxylic acid are removed before training/validation splitting. Their labels are repeatedly displayed during teaching, so their results are a diagnostic panel rather than an independent blind external evaluation.</p>
+<p>The web adapter uses all remaining rows in source order, with an integer floor(20%) validation size and split seed 42. A decision-tree regressor uses seed 1 and the selected depth/features. Repeated tuning against the same validation set does not give an unbiased final score. This small teaching model does not infer descriptors from SMILES, estimate uncertainty or establish general pKa accuracy. Manually edited descriptors may not describe a chemically valid molecule.</p>
+<h2>Outputs and limits</h2>
+<p>The ZIP contains source data, predictions and split membership, the depth comparison, tree nodes, metrics, provenance and instructions. Adapter 1.0.0 uses the public repository snapshot <code>f9735619f4e4517bf70a7f4d0ba44a831286827e</code>. A reproducibility example with module 5, all four descriptors and depth 3 has 34 training, 8 validation and 4 diagnostic molecules; validation MAE is approximately 0.469 pKa. This is an example run, not an accuracy benchmark.</p>
+<p>Each server task is limited to 1 CPU, 1 GiB memory and two minutes. The shared approved-account allowance is one running task, two queued tasks and ten submissions per day. Results are retained for 72 hours. Subsequent browser what-if edits do not submit new tasks. No user scripts, models or custom training-data uploads are accepted in this version.</p>
+<h2>Desktop version</h2>
+<p>Windows users can obtain an executable from <a href="https://doi.org/10.6084/m9.figshare.29755451">figshare</a>. Python users can run <code>python DTcode/predictpka260324.py</code>; consult the <a href="https://github.com/sym823808458/pKaMLEducation">public repository</a> for dependencies and citation updates. The desktop GUI also supports row selection; the web version deliberately uses the complete modeling pool.</p></article><aside class="project-aside"><h2>Project information</h2><p>Online tasks run on a separate compute service for approved accounts. This page provides documentation and local workflow links.</p><section class="visit-statistics"><h2>Recorded visits</h2><p><strong data-visit-count="pka-ml-education">…</strong></p><p class="stats-note">Since 2026-10-21; English and Chinese combined, once per software per browser tab within 30 minutes. Software-page visits, not unique people, downloads or computations.</p></section></aside></div></div></main>
   <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>Updated 2026-10-25 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">Website source ↗</a></p></div></footer>
 </body>
 </html>

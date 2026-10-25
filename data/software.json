@@ -162,8 +162,8 @@
       "en": "Chemical education · No-code ML"
     },
     "summary": {
-      "zh": "以有机酸 pKa 预测为例，用图形界面和五组渐进数据集教授特征工程与决策树。",
-      "en": "A graphical decision-tree tool and five teaching datasets introducing feature engineering through organic acid pKa prediction."
+      "en": "An interactive decision-tree classroom: five public datasets, selectable descriptors, prediction paths and local what-if experiments for organic-acid pKa.",
+      "zh": "交互式决策树教学工作台：选择五组公开数据与描述符，查看预测路径，并进行有机酸 pKa 特征试算。"
     },
     "repository": "https://github.com/sym823808458/pKaMLEducation",
     "download": "https://doi.org/10.6084/m9.figshare.29755451",
@@ -179,7 +179,18 @@
       "Python",
       "图形界面",
       "教学"
-    ]
+    ],
+    "online": {
+      "url": "https://compute.yumingsu.top/?tool=pka",
+      "note": {
+        "en": "Email verification and administrator approval required. Shared per-user limits: 1 running task, 2 queued tasks and 10 submissions per day; private results are retained for 72 hours. Service availability depends on the research server.",
+        "zh": "须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。"
+      },
+      "label": {
+        "en": "Free to use · Try online",
+        "zh": "免费使用 · 线上体验"
+      }
+    }
   },
   {
     "slug": "tpa-calculation",
