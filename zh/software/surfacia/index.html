@@ -10,9 +10,9 @@
   <meta property="og:type" content="website">
   <title>Surfacia · Yuming Su</title>
   <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../../assets/site.css?v=0ce8a4fb7a95">
-  <script src="../../../assets/site.js?v=0ce8a4fb7a95" defer></script>
-  <script src="../../../assets/analytics.js?v=0ce8a4fb7a95" defer></script>
+  <link rel="stylesheet" href="../../../assets/site.css?v=4a4109601d4e">
+  <script src="../../../assets/site.js?v=4a4109601d4e" defer></script>
+  <script src="../../../assets/analytics.js?v=4a4109601d4e" defer></script>
 </head>
 <body data-analytics-provider="cloudflare-d1" data-analytics-endpoint="https://stats.yumingsu.top" data-analytics-hosts="yumingsu.top,www.yumingsu.top,sym823808458.github.io" data-analytics-software="surfacia" data-analytics-minutes="30">
   <a class="skip-link" href="#main">跳至正文</a>
@@ -21,7 +21,7 @@
     <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#activities">学术活动</a><a href="../../../zh/#contact">联系</a></nav>
     <a class="language-link" href="../../../software/surfacia/" lang="en" hreflang="en">English</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / Surfacia</div><div class="eyebrow">分子表示 · 可解释建模</div><h1>Surfacia</h1><p class="project-lead">从分子结构与表面性质出发，构建化学可解释的描述符，连接特征筛选、预测建模与模型解释。</p><div class="tags"><span class="tag">Python</span><span class="tag">命令行</span><span class="tag">量子化学</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/Surfacia">源码仓库 ↗</a><a class="button secondary" href="https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html">使用手册 ↗</a><a class="button secondary" href="https://doi.org/10.26434/chemrxiv.15007949/v1">预印本</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=surfacia">在线计算演示</a></div><p class="project-status">须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。</p></section>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / Surfacia</div><div class="eyebrow">分子表示 · 可解释建模</div><h1>Surfacia</h1><p class="project-lead">从分子结构与表面性质出发，构建化学可解释的描述符，连接特征筛选、预测建模与模型解释。</p><div class="tags"><span class="tag">Python</span><span class="tag">命令行</span><span class="tag">量子化学</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/Surfacia">源码仓库 ↗</a><a class="button secondary" href="https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html">使用手册 ↗</a><a class="button secondary" href="https://doi.org/10.26434/chemrxiv.15007949/v1">预印本</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=surfacia">在线计算演示</a><a class="button secondary" href="guide/">图文使用指南</a></div><p class="project-status">须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。</p></section>
       <section class="project-showcase"><figure class="project-media"><div class="project-media-image"><img src="../../../images/software/surfacia/online-shap.png" width="1120" height="560" alt="实际留出样本的平均绝对 SHAP：本次教学运行中 TPSA 与分子量的影响幅度最大。" loading="lazy"></div><figcaption>2026 年 10 月 20 日服务器实跑：36 个公开分子、6 个 RDKit 描述符、计算 Crippen logP。重要性来自 8 个留出样本；正负方向请结合下载结果中的带符号贡献查看。这是操作示例，不是实验验证。</figcaption></figure></section><div class="project-layout"><article class="prose project-prose"><h2>让分子表示保留化学意义</h2>
 <p>Surfacia 将分子表面性质转化为多层级描述符，并连接特征筛选、机器学习与 SHAP 解释。它面向希望将预测结果与化学结构联系起来的研究者。</p>
 <h2>工作流程</h2>
@@ -56,6 +56,6 @@
 <p>这篇归档预印本早于当前 4.0.0 的范围调整及最新可解释性稿件。标题按登记原文保留，不作为当前功能列表，也不表示期刊已经接收。</p>
 <h2>手册与源码</h2>
 <p><a href="https://surfacia.readthedocs.io/zh-cn/latest/zh/index.html">阅读完整中文手册</a>或访问<a href="https://github.com/sym823808458/Surfacia">源码仓库</a>，查看命令、示例、依赖与问题反馈入口。</p></article><aside class="project-aside"><h2>项目信息</h2><p>在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。</p><p class="workflow-label">快速安装</p><p><code>python -m pip install --upgrade &quot;surfacia[viz]&quot;</code></p><h2>相关研究</h2><a class="pub-title" lang="en" href="../../../zh/#tpa-ml-2023">Interpretable Machine Learning of Two-Photon Absorption (2023) ↗</a><section class="visit-statistics"><h2>累计访问</h2><p><strong data-visit-count="surfacia">…</strong></p><p class="stats-note">自 2026-10-21 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-25 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-26 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>

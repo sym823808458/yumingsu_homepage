@@ -1,0 +1,519 @@
+{
+  "pka-ml-education": {
+    "title": {
+      "en": "pKa-ML Education · Classroom guide",
+      "zh": "pKa-ML Education · 六步教学指南"
+    },
+    "intro": {
+      "en": "Follow the original desktop sequence: data, management, splitting, manual training, interpretation, then test-molecule exercises. Core learning stays in the browser.",
+      "zh": "按原桌面 GUI 的教学顺序学习：数据、管理、划分、手动训练、解释，最后进行测试分子预测；核心操作和结果都在浏览器中完成。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Load and inspect the dataset",
+          "zh": "加载并认识数据"
+        },
+        "text": {
+          "en": [
+            "Choose one of five public modules. Inspect the visible descriptor table and reserved test molecules before continuing. Alternatively import a CSV with Molecule Name, SMILES, numeric descriptors and pKa; IsTest is optional.",
+            "Different modules may contain different molecules as well as different descriptors. Do not treat every comparison as a controlled single-variable experiment."
+          ],
+          "zh": [
+            "选择5组公开数据之一，先查看描述符表和预留测试分子，再点下一步。也可导入含 Molecule Name、SMILES、数值描述符及 pKa 的 CSV，可选 IsTest 列。",
+            "不同模块的分子和特征可能同时变化，不能把所有比较都视为严格单变量实验。"
+          ]
+        },
+        "image": "images/guides/pka-01-data.png",
+        "caption": {
+          "en": "Public module 5; data are visible before training.",
+          "zh": "公开第5组数据：训练前直接展示数据集。"
+        }
+      },
+      {
+        "title": {
+          "en": "Manage molecules and features",
+          "zh": "管理分子与特征"
+        },
+        "text": {
+          "en": [
+            "Edit numeric cells, select modeling rows and descriptors, or add/remove a molecule or descriptor. Test molecules remain outside the modeling pool. Save & Continue confirms this lesson.",
+            "Web limits: 100 molecules, 16 numeric descriptor columns, 128 KiB per lesson. Blank cells are allowed; missing-value exclusions are reported after splitting."
+          ],
+          "zh": [
+            "可编辑数值、勾选建模样本和特征，也可增删分子及特征。测试分子独立保留，不能勾入训练。点击“保存并进入数据划分”确认。",
+            "网页版最多100个分子、16列数值特征、每次128 KiB。允许空值，但划分后会检查并报告排除情况。"
+          ]
+        },
+        "image": "images/guides/pka-02-manage.png",
+        "caption": {
+          "en": "Editable public data table and feature selection.",
+          "zh": "公开数据的编辑表格和特征选择。"
+        }
+      },
+      {
+        "title": {
+          "en": "Inspect the split and structures",
+          "zh": "查看结构与训练／验证划分"
+        },
+        "text": {
+          "en": [
+            "The seed-42 split reserves floor(20%) of the selected modeling rows for validation (at least one), before complete-case exclusion. Reserved test molecules are removed first.",
+            "Inspect the structure cards, pKa labels and descriptors in each group. All-empty selected features are removed; remaining missing training/validation rows are excluded and listed in the report. Custom SMILES without a bundled picture appear as text."
+          ],
+          "zh": [
+            "先移除测试分子，再按种子42把所选建模样本的20%向下取整作为验证集（至少1个）；先划分，再排除缺失值，顺序与 GUI 一致。",
+            "在分组卡片中查看结构、已知 pKa 和特征。全空特征被移除，其余缺失训练／验证行会排除并列在结果中。新增 SMILES 没有现成结构图时以文字显示。"
+          ]
+        },
+        "image": "images/guides/pka-03-split.png",
+        "caption": {
+          "en": "Molecule cards before model fitting; no predictions are shown.",
+          "zh": "建模前的结构分组卡片，此时不显示预测。"
+        }
+      },
+      {
+        "title": {
+          "en": "Choose hyperparameters and train",
+          "zh": "手动选择超参数并训练"
+        },
+        "text": {
+          "en": [
+            "Choose maximum depth 1–6 (default 3), then press Train. This fits one DecisionTreeRegressor with seed 1; it does not sweep depths automatically.",
+            "When the server finishes, inspect training/validation MAE, MSE, RMSE, R², parity plot and prediction table. Test-set predictions are not shown here. Change depth and explicitly retrain to explore complexity; repeatedly tuning on validation does not establish unbiased accuracy."
+          ],
+          "zh": [
+            "选择最大树深度1–6（默认3），点击训练。每次只训练你选择的一棵决策树，种子为1，不自动遍历深度。",
+            "完成后在本步骤查看训练／验证 MAE、MSE、RMSE、R²、预测对照图及表格。这里不显示测试集预测。改变深度后需再次点击训练；反复据验证集调参不能获得无偏精度。"
+          ]
+        },
+        "image": "images/guides/pka-04-training.png",
+        "caption": {
+          "en": "Public module 5, depth 3; training and validation results.",
+          "zh": "公开第5组、深度3的训练与验证结果。"
+        }
+      },
+      {
+        "title": {
+          "en": "Interpret the tree",
+          "zh": "解释决策树与特征重要性"
+        },
+        "text": {
+          "en": [
+            "Select a training or validation molecule. Use Previous/Next node to follow its threshold decisions in the graphical tree. Wide trees can be scrolled horizontally.",
+            "A leaf predicts the mean training label in that leaf. Feature importance describes this fitted tree, not a chemical causal mechanism."
+          ],
+          "zh": [
+            "选择训练或验证分子，用“上一步／下一步”逐节点查看图形树中的阈值判断；较宽的树可横向滚动。",
+            "叶节点预测为其中训练标签的均值。特征重要性解释本棵树，不代表化学因果机制。"
+          ]
+        },
+        "image": "images/guides/pka-05-tree.png",
+        "caption": {
+          "en": "Node-by-node traversal and importance for the trained teaching model.",
+          "zh": "教学模型的逐节点路径与特征重要性。"
+        }
+      },
+      {
+        "title": {
+          "en": "Fill descriptors, check, then predict",
+          "zh": "填写测试特征，检查后预测"
+        },
+        "text": {
+          "en": [
+            "Test descriptor inputs start blank. Read each molecular structure, enter descriptors, and press Check & Predict. Values must agree with the lesson reference within 0.01; incorrect fields are highlighted before any prediction is revealed.",
+            "When all inputs pass, the browser applies the trained tree to the entered values and shows predicted pKa, observed pKa and absolute error. Editing an input clears the old prediction. A missing reference is explicitly marked as unverifiable.",
+            "Editing data or selected features invalidates the old model. Return through splitting and training. Downloads are optional; the complete learning workflow is visible online."
+          ],
+          "zh": [
+            "测试分子的特征输入框初始为空。根据结构填写后点击“检查并预测”，数值需与本次数据参考相差小于0.01；错误字段标红，暂不显示预测。",
+            "全部通过后，对你实际输入的数值应用已训练树，显示预测 pKa、已知 pKa 和绝对误差。修改输入会清除旧预测；没有参考值时明确提示无法校验。",
+            "修改数据或选择的特征后旧模型失效，需要重新划分和训练。下载仅供留档，完整教学流程可在线完成。"
+          ]
+        },
+        "image": "images/guides/pka-06-tests.png",
+        "caption": {
+          "en": "Completed public teaching exercise; these are repeatedly exposed classroom molecules, not a blind benchmark.",
+          "zh": "公开教学练习完成后的示例；这些反复展示的分子不是独立盲测基准。"
+        }
+      }
+    ],
+    "troubleshooting": {
+      "en": [
+        "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+        "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep.",
+        "If training fails, inspect the status and excluded cells. At least two complete training rows must remain. This is a teaching model, with no automatic SMILES-to-descriptor conversion or universal pKa accuracy guarantee."
+      ],
+      "zh": [
+        "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+        "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。",
+        "训练失败时查看状态及空值，最终至少保留2个完整训练样本。此工具用于教学，不自动从 SMILES 生成描述符，也不保证通用 pKa 预测精度。"
+      ]
+    }
+  },
+  "gbline": {
+    "title": {
+      "en": "GBLine · Illustrated guide",
+      "zh": "GBLine · 图文使用指南"
+    },
+    "intro": {
+      "en": "Extract a chart, compare the redrawn data beside the original, then review calibration and curves before saving.",
+      "zh": "自动提取后把原图与数据重绘图并排核对，检查校准与曲线，再保存审核结果。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Access and task lifecycle",
+          "zh": "登录与任务状态"
+        },
+        "text": {
+          "en": [
+            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
+          ],
+          "zh": [
+            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
+          ]
+        }
+      },
+      {
+        "title": {
+          "en": "Upload one chart",
+          "zh": "上传单张图表"
+        },
+        "text": {
+          "en": [
+            "Choose a PNG/JPEG of a single chart with one X/Y axis pair. Enter the visible curve count and desired points per curve, then submit. Maximum 10 MiB and 20 million pixels.",
+            "The configured server-side Qwen service is shared by approved users; users do not enter API keys. Model suggestions still need visual review."
+          ],
+          "zh": [
+            "选择单个 X/Y 坐标系的 PNG/JPEG 图表，填写可见曲线数量及每条曲线点数，然后提交。图片最多10 MiB、2000万像素。",
+            "已批准用户共用服务器配置的千问接口，不需要填写 API key；模型输出仍需人工核对。"
+          ]
+        },
+        "image": "images/guides/gbline-input.png",
+        "caption": {
+          "en": "Upload controls, without private files or credentials.",
+          "zh": "上传界面，不含私密文件或凭据。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare original and redrawn curves",
+          "zh": "并排核对原图与重绘曲线"
+        },
+        "text": {
+          "en": [
+            "Open Review curves after processing. The original stays on the left and extracted numeric curves are redrawn on the right. Toggle individual curves, lines or selected-curve sample points; click points to inspect coordinates.",
+            "Inspect/Edit selects the active curve. Calibration, picking colors and erasing operate on the original image. Check both axes, units and linear/log scale before trusting coordinates."
+          ],
+          "zh": [
+            "处理后打开曲线审核，左边是原图，右边是提取数值重绘图。可分别勾选曲线、连线和选中曲线的采样点，点击点查看坐标。",
+            "“Inspect／编辑”选择当前曲线；校准、拾色和橡皮擦在原图操作。使用坐标前核对坐标轴、单位及线性／对数尺度。"
+          ]
+        },
+        "image": "images/guides/gbline-comparison.png",
+        "caption": {
+          "en": "Synthetic two-curve review example; not an accuracy benchmark.",
+          "zh": "合成双曲线的交互审核示例，不是精度基准。"
+        }
+      },
+      {
+        "title": {
+          "en": "Save a reviewed version and export",
+          "zh": "保存审核版本与导出"
+        },
+        "text": {
+          "en": [
+            "After calibration or erasing, save a human-reviewed version and inspect it again before exporting CSV. Original and reviewed versions remain distinguishable.",
+            "Display checkboxes change visibility, not exported CSV. Erased gaps remain gaps; a display-only SVG is not a substitute for saving a reviewed data version."
+          ],
+          "zh": [
+            "校准或擦除后先保存人工审核版本，再检查并导出 CSV。原始提取与人工审核版本明确区分。",
+            "勾选框只控制显示，不会裁剪导出的 CSV；擦除缺口保留为缺口。仅导出显示 SVG 不等于保存了审核数据。"
+          ]
+        }
+      }
+    ],
+    "troubleshooting": {
+      "en": [
+        "review_required means evidence is insufficient for certified numeric curves; do not assume a CSV was lost. Open the evidence and review controls. If no usable curve is detected, use a clearer crop or resubmit rather than inventing points.",
+        "If processing fails, retain the task ID and visible message. The five-minute task limit and shared account quota apply."
+      ],
+      "zh": [
+        "review_required 表示证据不足，不能把数值曲线视为已确认，并不等于 CSV 丢失。先打开证据与审核界面；没有可用曲线时更换清晰裁图或重新提交，不要补造点。",
+        "失败时保留任务编号和提示。每次最多5分钟，并受共享账户配额限制。"
+      ]
+    }
+  },
+  "tpa-calculation": {
+    "title": {
+      "en": "Two-photon absorption · Online guide",
+      "zh": "双光子吸收 · 在线使用指南"
+    },
+    "intro": {
+      "en": "Submit matching fchk + TD log files, then compare one- and two-photon theoretical spectra in the browser.",
+      "zh": "上传配套的 fchk 与 TD log，在浏览器中查看和比较单、双光子理论光谱。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Access and task lifecycle",
+          "zh": "登录与任务状态"
+        },
+        "text": {
+          "en": [
+            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
+          ],
+          "zh": [
+            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
+          ]
+        }
+      },
+      {
+        "title": {
+          "en": "Prepare matching Gaussian outputs",
+          "zh": "准备匹配的 Gaussian 输出"
+        },
+        "text": {
+          "en": [
+            "Upload one formatted checkpoint (.fchk ≤64 MiB) and one completed TD log (.log/.out ≤16 MiB) from the same calculation. The Gaussian route must include IOp(9/40=4).",
+            "Supported: all-electron closed-shell singlet, 2–40 singlet excited states, ≤300 atoms and 2000 basis functions. Geometry, atom order, axes, origin and energies must match. The server does not run Gaussian or accept raw chk."
+          ],
+          "zh": [
+            "上传同次计算的格式化检查点（fchk ≤64 MiB）与已完成的 TD 日志（log/out ≤16 MiB），Gaussian 路由需含 IOp(9/40=4)。",
+            "支持全电子闭壳层单重态、2–40个单重激发态、最多300个原子和2000个基函数。几何、原子顺序、坐标系、原点和能量需匹配。不接受原始 chk，也不补跑 Gaussian。"
+          ]
+        },
+        "image": "images/guides/tpa-input.png",
+        "caption": {
+          "en": "Required two-file input form.",
+          "zh": "必须提供的两个输入文件。"
+        }
+      },
+      {
+        "title": {
+          "en": "Run the fixed SOS workflow",
+          "zh": "运行固定 SOS 工作流"
+        },
+        "text": {
+          "en": [
+            "Submit and wait for the queued task. Multiwfn extracts transition/permanent dipoles, followed by the finite-state sum-over-states postprocessor. The total job limit is ten minutes.",
+            "Permanent dipoles are first put on a consistent electronic basis. The ground-state reference is copied before diagonal subtraction; off-diagonal transition dipoles remain unchanged. The result records the reference audit."
+          ],
+          "zh": [
+            "提交并等待后台任务。Multiwfn 提取跃迁／永久偶极矩，再由有限态 sum-over-states（SOS）程序后处理，整项任务最多10分钟。",
+            "永久偶极矩先统一电子贡献定义，再保存基态参考副本并扣除对角元；非对角跃迁偶极矩保持不变。结果包含参考扣除核对记录。"
+          ]
+        }
+      },
+      {
+        "title": {
+          "en": "Compare 1PA and 2PA",
+          "zh": "比较单、双光子光谱"
+        },
+        "text": {
+          "en": [
+            "Use separate panels for physical units, or normalized overlay for shape comparison. Choose incident wavelength or total transition energy. For the same final state, two-photon resonance uses about twice the one-photon wavelength.",
+            "1PA is broadened oscillator-strength density (per eV), not measured absorbance. 2PA is the signed SOS cross section in GM. Changing 1PA display width does not change the 2PA calculation. State markers denote levels, not guaranteed peaks.",
+            "Inspect plots directly, select states and ranges, and optionally export the current CSV/SVG or original ZIP."
+          ],
+          "zh": [
+            "用分面图保留独立物理单位，或归一化叠加比较形状。横坐标可选入射波长或总跃迁能量；同一终态的双光子共振波长约为单光子的两倍。",
+            "1PA 是每 eV 的展宽振子强度密度，不是实验吸光度；2PA 为有符号 SOS 截面（GM）。调整单光子显示展宽不会重算双光子；态标记是能级位置，不保证是峰位。",
+            "可直接查看图、选择态和坐标范围；CSV、SVG 及原始结果包按需导出。"
+          ]
+        },
+        "image": "images/guides/tpa-spectra.png",
+        "caption": {
+          "en": "Synthetic spectra illustrating the controls, not a real molecular prediction.",
+          "zh": "用于演示控件的合成光谱，不是真实分子计算。"
+        }
+      }
+    ],
+    "troubleshooting": {
+      "en": [
+        "For rejected inputs, check completion, IOp setting and matching atom/geometry information. A missing one-photon spectrum is reported explicitly.",
+        "Negative SOS responses are preserved and flagged. Finite-state convergence, damping and prefactors still require scientific review. See the software overview for original SOS and Multiwfn references."
+      ],
+      "zh": [
+        "输入被拒绝时先检查计算是否完成、IOp 设置及原子／几何是否匹配。单光子数据缺失会明确提示。",
+        "负 SOS 响应会保留并标记。有限态收敛、展宽与前因子仍需科学审查；原始 SOS 与 Multiwfn 文献见软件介绍页。"
+      ]
+    }
+  },
+  "building-wind-screening": {
+    "title": {
+      "en": "Building wind pressure · Online guide",
+      "zh": "建筑风压 · 在线使用指南"
+    },
+    "intro": {
+      "en": "Enter a bounded building scenario, inspect the plan, then compare directional pressure estimates. This is a screening prototype, not CFD or structural certification.",
+      "zh": "输入建筑场景并核对平面图，再比较不同风向的压力估算。这是筛查原型，不是 CFD 或结构设计认证。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Access and task lifecycle",
+          "zh": "登录与任务状态"
+        },
+        "text": {
+          "en": [
+            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
+          ],
+          "zh": [
+            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
+          ]
+        }
+      },
+      {
+        "title": {
+          "en": "Enter the scenario",
+          "zh": "输入场景"
+        },
+        "text": {
+          "en": [
+            "Use the sample scenario to learn the fields, then edit wind speed/direction and building dimensions, positions, floors, height and rotation. Check units in each label.",
+            "Review open-area geometry and the plan before submitting. Avoid uploading private site data when a synthetic classroom layout is sufficient."
+          ],
+          "zh": [
+            "先用示例熟悉字段，再编辑风速、风向，以及建筑尺寸、位置、层数、高度和旋转角；注意每项标注的单位。",
+            "提交前核对开敞区和平面布局。用于教学时优先采用合成场景。"
+          ]
+        },
+        "image": "images/guides/wind-input.png",
+        "caption": {
+          "en": "Scenario entry interface with illustrative values.",
+          "zh": "场景输入界面，图中为演示参数。"
+        }
+      },
+      {
+        "title": {
+          "en": "Inspect directional results",
+          "zh": "查看风向与建筑结果"
+        },
+        "text": {
+          "en": [
+            "After computation, choose a building on the plan or in the selector. Move the direction slider to inspect the stored directional scan and pressure summary.",
+            "The plot, building selection and summary are linked. Return to edit inputs for a genuinely new scenario and submit again; viewing an existing direction does not run a new simulation."
+          ],
+          "zh": [
+            "完成后点击平面图中的建筑或用下拉框选择，拖动风向滑块查看已计算的方向扫描和压力汇总。",
+            "图形、建筑选择和汇总联动。要计算新场景，返回修改输入并重新提交；查看已有风向不是重新进行流场模拟。"
+          ]
+        },
+        "image": "images/guides/wind-results.png",
+        "caption": {
+          "en": "Synthetic three-building example; heuristic estimates are not design loads.",
+          "zh": "合成三建筑示例；经验估算不能直接作为设计荷载。"
+        }
+      }
+    ],
+    "troubleshooting": {
+      "en": [
+        "Check finite positive dimensions and supported scene limits shown in the form. Save the task ID if a run fails.",
+        "These empirical screening factors do not resolve a flow field and have not been certified for engineering design. A favorable ranking is not a safety conclusion."
+      ],
+      "zh": [
+        "检查尺寸是否为有效正数，并遵守表单中的场景限制；失败时保留任务编号。",
+        "经验筛查系数不求解流场，也未获得工程设计认证。排名较优不能推导出建筑安全结论。"
+      ]
+    }
+  },
+  "surfacia": {
+    "title": {
+      "en": "Surfacia · Online modeling guide",
+      "zh": "Surfacia · 在线建模指南"
+    },
+    "intro": {
+      "en": "Submit an existing descriptor table for fixed regression and signed SHAP explanations. The online route does not run quantum chemistry or molecular-surface generation.",
+      "zh": "提交已有描述符表格，进行固定回归建模与有符号 SHAP 解释；在线流程不运行量化计算或分子表面生成。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Access and task lifecycle",
+          "zh": "登录与任务状态"
+        },
+        "text": {
+          "en": [
+            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
+          ],
+          "zh": [
+            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
+          ]
+        }
+      },
+      {
+        "title": {
+          "en": "Prepare the descriptor CSV",
+          "zh": "准备描述符表格"
+        },
+        "text": {
+          "en": [
+            "Use UTF-8 CSV with a continuous target column and 1–32 numeric descriptors, 30–500 samples, ≤2 MiB. No missing values, formulas or model files. Optional Sample Name identifiers must be unique; optional smiles are ignored.",
+            "Start with the downloadable 36-molecule public example. Its labels are calculated Crippen logP, not experimental measurements or a surface-descriptor benchmark."
+          ],
+          "zh": [
+            "使用 UTF-8 CSV，包含连续数值 target 列和1–32列数值描述符；30–500个样本，最多2 MiB。不允许空值、公式或模型文件。可选 Sample Name 必须唯一，smiles 列会忽略。",
+            "可先使用页面提供的36分子公开示例。其标签是计算的 Crippen logP，不是实验数据或分子表面描述符基准。"
+          ]
+        },
+        "image": "images/guides/surfacia-input.png",
+        "caption": {
+          "en": "Fixed descriptor-table upload interface.",
+          "zh": "固定描述符表格的上传界面。"
+        }
+      },
+      {
+        "title": {
+          "en": "Submit and inspect validation",
+          "zh": "提交并检查验证结果"
+        },
+        "text": {
+          "en": [
+            "Submit, retain the task ID, and wait for completion. The fixed XGBoost route uses all descriptors with 350 trees, depth 8, learning rate 0.03. Identical descriptor vectors stay in the same group; 20% of groups are held out, with grouped validation on the modeling pool.",
+            "This tool currently returns a result ZIP. Open README.txt and report.json, compare held-out errors to the training-mean baseline, and inspect parity.png. Poor or negative R² is a result to discuss, not hide."
+          ],
+          "zh": [
+            "提交后保留任务编号并等待。固定 XGBoost 使用全部描述符，350棵树、深度8、学习率0.03。相同描述符向量分在同组，20%的组被留出，建模池进行分组验证。",
+            "本工具目前通过 ZIP 提供结果。打开 README.txt 和 report.json，比较留出误差与训练均值基线，再查看 parity.png。较差或负 R² 需要讨论，不能隐藏。"
+          ]
+        }
+      },
+      {
+        "title": {
+          "en": "Read signed explanations",
+          "zh": "阅读有符号解释"
+        },
+        "text": {
+          "en": [
+            "shap_importance.png summarizes attribution magnitude; shap_dependence.png and shap_values.csv show direction. Positive SHAP raises this model’s prediction relative to its baseline.",
+            "This association is not proof that an intervention is beneficial or a chemical mechanism is established. The web protocol is fixed and differs from the desktop repeated-split workflow; consult the full manual from the software overview for broader workflows."
+          ],
+          "zh": [
+            "shap_importance.png 展示贡献大小，shap_dependence.png 与 shap_values.csv 展示方向。正 SHAP 表示相对模型基线提高预测。",
+            "这种关联不证明干预有益或化学机制成立。网页版是固定流程，与桌面重复划分工作流不同；更完整的方法见软件介绍页链接的手册。"
+          ]
+        }
+      }
+    ],
+    "troubleshooting": {
+      "en": [
+        "If rejected, inspect target spelling, numeric cells, duplicate identifiers and sample count. No API key is required for this fixed modeling route.",
+        "A completed run does not establish dataset quality, transferability or causal interpretation. Save your files before the 72-hour expiry."
+      ],
+      "zh": [
+        "被拒绝时检查 target 列名、数值单元格、重复标识及样本数。固定建模流程不需要提供 API key。",
+        "完成运行不等于数据质量、迁移能力或因果解释已得到证实；72小时内保存需要的结果。"
+      ]
+    }
+  }
+}

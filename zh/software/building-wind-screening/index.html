@@ -10,9 +10,9 @@
   <meta property="og:type" content="website">
   <title>楼栋风压筛查工具 · Yuming Su</title>
   <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../../assets/site.css?v=0ce8a4fb7a95">
-  <script src="../../../assets/site.js?v=0ce8a4fb7a95" defer></script>
-  <script src="../../../assets/analytics.js?v=0ce8a4fb7a95" defer></script>
+  <link rel="stylesheet" href="../../../assets/site.css?v=4a4109601d4e">
+  <script src="../../../assets/site.js?v=4a4109601d4e" defer></script>
+  <script src="../../../assets/analytics.js?v=4a4109601d4e" defer></script>
 </head>
 <body data-analytics-provider="cloudflare-d1" data-analytics-endpoint="https://stats.yumingsu.top" data-analytics-hosts="yumingsu.top,www.yumingsu.top,sym823808458.github.io" data-analytics-software="building-wind-screening" data-analytics-minutes="30">
   <a class="skip-link" href="#main">跳至正文</a>
@@ -21,7 +21,7 @@
     <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#activities">学术活动</a><a href="../../../zh/#contact">联系</a></nav>
     <a class="language-link" href="../../../software/building-wind-screening/" lang="en" hreflang="en">English</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / 楼栋风压筛查工具</div><div class="eyebrow">楼栋风压暴露 · 巡检规划</div><h1>楼栋风压筛查工具</h1><p class="project-status">开发原型</p><p class="project-lead">连接桌面楼栋标注与审批后在线参数计算，比较来风方向、立面和高度分段压力幅值的筛查原型。</p><div class="tags"><span class="tag">Python</span><span class="tag">网页输入</span><span class="tag">风向情景</span></div><div class="project-buttons"><a class="button" href="mailto:yumingsu@xmu.edu.cn">联系了解软件 ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=wind">在线计算演示</a></div><p class="project-status">须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。</p></section>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / 楼栋风压筛查工具</div><div class="eyebrow">楼栋风压暴露 · 巡检规划</div><h1>楼栋风压筛查工具</h1><p class="project-status">开发原型</p><p class="project-lead">连接桌面楼栋标注与审批后在线参数计算，比较来风方向、立面和高度分段压力幅值的筛查原型。</p><div class="tags"><span class="tag">Python</span><span class="tag">网页输入</span><span class="tag">风向情景</span></div><div class="project-buttons"><a class="button" href="mailto:yumingsu@xmu.edu.cn">联系了解软件 ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=wind">在线计算演示</a><a class="button secondary" href="guide/">图文使用指南</a></div><p class="project-status">须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。</p></section>
       <section class="project-showcase"><figure class="project-media"><div class="project-media-image"><picture><source media="(max-width:700px)" srcset="../../../images/software/building-wind-screening/workflow-mobile.zh.svg" width="480" height="1100"><img src="../../../images/software/building-wind-screening/workflow.zh.svg" width="1080" height="450" alt="四步工作流示意：标注楼栋、设置风向情景、比较立面与楼层段暴露、查看并导出结果。" loading="lazy"></picture></div><figcaption>工作流示意图。图中几何为示意，不是真实底图或计算结果。</figcaption></figure><details class="project-animation"><summary>查看原始风向扫描动画</summary><figure class="project-media"><div class="project-media-image"><img src="../../../images/software/building-wind-screening/desktop-floor-band-demo.gif" width="900" height="620" alt="桌面软件已有导出：伪三维楼栋及不同风向下的楼层段风压估计。" loading="lazy"></div><figcaption>桌面软件原始导出。数值展示简化筛查模型的输出，不是经验证的设计荷载或实测破坏概率。</figcaption></figure></details><figure class="project-media"><div class="project-media-image"><img src="../../../images/software/building-wind-screening/online-height-bands.svg" width="900" height="454" alt="在线三栋合成楼示例的实际输出：四个模型高度分段的立面最大压力幅值。" loading="lazy"></div><figcaption>2026 年 10 月 20 日直接输入的在线示例。使用假设的矩形楼栋，展示模型估计的非负压力幅值（kPa）；不是实测荷载或标定的安全阈值。颜色区分高度分段。</figcaption></figure></section><div class="project-layout"><article class="prose project-prose"><h2>从一张底图到楼栋巡检概览</h2>
 <p>楼栋风压筛查工具同时提供本地桌面原型和审批后直接输入的在线演示。桌面版用于标注多栋建筑，并比较不同来风方向下的相对风压暴露。它将图像比例尺标定、楼栋轮廓编辑、层数与高度录入、简化风压估计和可视化导出连接在同一工作流中。</p>
 <p>项目面向小区、校园和园区等多楼栋场景的探索性巡检规划，帮助整理在特定风情景下更值得进一步检查的楼栋、立面和楼层段。</p>
@@ -62,6 +62,6 @@
 <h2>开发状态与获取方式</h2>
 <p>本次检查的工作目录包含 Python/Tkinter 桌面实现、需求与产品说明、示例项目、较早的独立 HTML 原型及导出动画。PNG/GIF 导出使用 Pillow。目前尚未建立这个项目的公开源码发布入口或软件下载包。</p>
 <p>本页介绍在线直接输入流程，并展示已有桌面输出。在线版目前接受矩形楼栋与空旷区；底图标定与任意多边形编辑仍在桌面流程中进行。如需演示、合作或了解后续发布，可通过上方链接联系苏禹铭。</p></article><aside class="project-aside"><h2>项目信息</h2><p>在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。</p><h2>开发阶段</h2><p>开发原型</p><h2>获取方式</h2><p>已提供审批后直接输入的在线演示，也可联系了解桌面软件；公开源码与安装包仍待整理。</p><section class="visit-statistics"><h2>累计访问</h2><p><strong data-visit-count="building-wind-screening">…</strong></p><p class="stats-note">自 2026-10-21 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-25 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-26 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>

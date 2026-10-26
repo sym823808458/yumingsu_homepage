@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="交互式决策树教学工作台：选择五组公开数据与描述符，查看预测路径，并进行有机酸 pKa 特征试算。">
+  <meta name="description" content="六步决策树教学工作台：查看并编辑数据、划分分子、选择树深度并训练、解释模型，最后填写测试特征并预测有机酸 pKa。">
   <meta name="color-scheme" content="light">
   <meta property="og:title" content="pKa 机器学习教学工具 · Yuming Su">
-  <meta property="og:description" content="交互式决策树教学工作台：选择五组公开数据与描述符，查看预测路径，并进行有机酸 pKa 特征试算。">
+  <meta property="og:description" content="六步决策树教学工作台：查看并编辑数据、划分分子、选择树深度并训练、解释模型，最后填写测试特征并预测有机酸 pKa。">
   <meta property="og:type" content="website">
   <title>pKa 机器学习教学工具 · Yuming Su</title>
   <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../../assets/site.css?v=0ce8a4fb7a95">
-  <script src="../../../assets/site.js?v=0ce8a4fb7a95" defer></script>
-  <script src="../../../assets/analytics.js?v=0ce8a4fb7a95" defer></script>
+  <link rel="stylesheet" href="../../../assets/site.css?v=4a4109601d4e">
+  <script src="../../../assets/site.js?v=4a4109601d4e" defer></script>
+  <script src="../../../assets/analytics.js?v=4a4109601d4e" defer></script>
 </head>
 <body data-analytics-provider="cloudflare-d1" data-analytics-endpoint="https://stats.yumingsu.top" data-analytics-hosts="yumingsu.top,www.yumingsu.top,sym823808458.github.io" data-analytics-software="pka-ml-education" data-analytics-minutes="30">
   <a class="skip-link" href="#main">跳至正文</a>
@@ -21,29 +21,35 @@
     <nav aria-label="主导航"><a href="../../../zh/#about">关于我</a><a href="../../../zh/#research">研究</a><a href="../../../zh/#software">软件</a><a href="../../../zh/#publications">论文</a><a href="../../../zh/#activities">学术活动</a><a href="../../../zh/#contact">联系</a></nav>
     <a class="language-link" href="../../../software/pka-ml-education/" lang="en" hreflang="en">English</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / pKa 机器学习教学工具</div><div class="eyebrow">化学教育 · 无代码机器学习</div><h1>pKa 机器学习教学工具</h1><p class="project-lead">交互式决策树教学工作台：选择五组公开数据与描述符，查看预测路径，并进行有机酸 pKa 特征试算。</p><div class="tags"><span class="tag">Python</span><span class="tag">图形界面</span><span class="tag">教学</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/pKaMLEducation">源码仓库 ↗</a><a class="button secondary" href="https://doi.org/10.6084/m9.figshare.29755451">下载软件 ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=pka">在线计算演示</a></div><p class="project-status">须验证邮箱并经管理员批准。各工具共用每用户 1 项运行、2 项排队、每天 10 次提交的配额；私人结果保留 72 小时。服务可用性取决于科研服务器运行状态。</p></section>
-      <div class="project-layout"><article class="prose project-prose"><h2>用熟悉的化学问题学习机器学习</h2>
-<p>pKa-ML Education 面向化学本科教学，以有机酸 pKa 预测介绍决策树、特征工程与模型泛化。在线教学工作台无需安装 Python，原桌面图形界面仍可使用。</p>
-<h2>在线完成一次交互实验</h2>
-<p>1. 打开<a href="https://compute.yumingsu.top/?tool=pka">免费线上工作台</a>，使用已获批准的账户登录。 2. 选择五组公开教学数据之一，勾选描述符，设置最大树深度（1–10，默认 3）。提交前可预览或下载数据。 3. 比较训练与验证集的 MAE、RMSE、R²，以及训练均值基线；四个诊断分子单独显示。 4. 点击预测对照图中的分子，或按名称选择，沿分裂条件追踪至叶节点；展开完整决策树查看高亮路径。 5. 修改数值描述符，即时查看本地试算预测，导出当前 CSV；也可下载服务器完整结果 ZIP，或载入本次设置再次提交不同模型。</p>
-<p>深度对比图在同一划分上展示深度 1–10 的结果，帮助理解过拟合。特征重要性解释本棵树的分裂贡献，不代表化学机理或因果作用。</p>
-<h2>五组数据与可见的特征表示</h2>
-<ul>
-<li>第 1 组：碳原子与羧基计数。</li>
-<li>第 2 组：加入卤素计数。</li>
-<li>第 3 组：更细的原子与基团计数。</li>
-<li>第 4 组：保留原子、基团计数，同时加入 EWG 位置与标记，由使用者明确选择描述符。</li>
-<li>第 5 组：碳原子、羧基、EWG 位置与等级。</li>
-</ul>
-<p>公开 CSV 数值保持原样。EWG 等级编码为 −1 至 9，不是连续物理常数；桌面提示文字未覆盖全部编码，请以预览数据表为准。不同模块可能同时改变样本与特征，因此并非所有比较都属于单变量对照。</p>
-<h2>教学诊断面板，不作为独立盲测</h2>
-<p>Octanoic acid、3-chlorobutanoic acid、iodoacetic acid、phenylglyoxylic acid 在划分前移除，不参与训练或验证。由于这些分子的标签会在教学中反复展示，其结果属于教学诊断面板，不作为独立外部盲测成绩。</p>
-<p>网页版使用原始顺序下的全部剩余样本，以向下取整的 20% 样本数作为验证集，划分种子为 42；决策树种子为 1，使用选定的深度与描述符。在同一验证集上反复调参不能得到无偏的最终成绩。本工具不从 SMILES 自动推断特征，不提供不确定度，也不宣称通用 pKa 预测精度。手动改写的特征不一定对应化学上合理的分子。</p>
-<h2>下载内容与计算限制</h2>
-<p>ZIP 包含源数据、预测及分组、树深度对比、树节点、误差指标、来源与操作说明。网页适配器 1.0.0 使用公开仓库快照 <code>f9735619f4e4517bf70a7f4d0ba44a831286827e</code>。第 5 组、全部四个描述符、深度 3 的复现案例包含 34 个训练、8 个验证和 4 个诊断分子，验证 MAE 约为 0.469 pKa；这是操作与复现案例，不是精度基准。</p>
-<p>每项任务限 1 CPU、1 GiB 内存、两分钟。与其他工具共用已批准账户的配额：1 项运行、2 项排队、每天 10 次提交，结果保留 72 小时。计算完成后在浏览器修改描述符不会新增服务器任务。本版不接受脚本、模型或自定义训练数据上传。</p>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../../zh/">首页</a> / <a href="../../../zh/#software">全部软件</a> / pKa 机器学习教学工具</div><div class="eyebrow">化学教育 · 无代码机器学习</div><h1>pKa 机器学习教学工具</h1><p class="project-lead">六步决策树教学工作台：查看并编辑数据、划分分子、选择树深度并训练、解释模型，最后填写测试特征并预测有机酸 pKa。</p><div class="tags"><span class="tag">Python</span><span class="tag">图形界面</span><span class="tag">教学</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/pKaMLEducation">源码仓库 ↗</a><a class="button secondary" href="https://doi.org/10.6084/m9.figshare.29755451">下载软件 ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=pka">在线计算演示</a><a class="button secondary" href="guide/">图文使用指南</a></div><p class="project-status">六步教学：数据管理、划分、手动训练决策树、模型解释，最后填写测试特征并预测；需已批准账户。</p></section>
+      <div class="project-layout"><article class="prose project-prose"><h2>pKa-ML Education · 六步教学指南</h2>
+<p>按原桌面 GUI 的教学顺序学习：数据、管理、划分、手动训练、解释，最后进行测试分子预测；核心操作和结果都在浏览器中完成。</p>
+<p><a href="https://yumingsu.top/zh/software/pka-ml-education/guide/">查看完整图文指南</a></p>
+<h2>加载并认识数据</h2>
+<p>选择5组公开数据之一，先查看描述符表和预留测试分子，再点下一步。也可导入含 Molecule Name、SMILES、数值描述符及 pKa 的 CSV，可选 IsTest 列。</p>
+<p>不同模块的分子和特征可能同时变化，不能把所有比较都视为严格单变量实验。</p>
+<h2>管理分子与特征</h2>
+<p>可编辑数值、勾选建模样本和特征，也可增删分子及特征。测试分子独立保留，不能勾入训练。点击“保存并进入数据划分”确认。</p>
+<p>网页版最多100个分子、16列数值特征、每次128 KiB。允许空值，但划分后会检查并报告排除情况。</p>
+<h2>查看结构与训练／验证划分</h2>
+<p>先移除测试分子，再按种子42把所选建模样本的20%向下取整作为验证集（至少1个）；先划分，再排除缺失值，顺序与 GUI 一致。</p>
+<p>在分组卡片中查看结构、已知 pKa 和特征。全空特征被移除，其余缺失训练／验证行会排除并列在结果中。新增 SMILES 没有现成结构图时以文字显示。</p>
+<h2>手动选择超参数并训练</h2>
+<p>选择最大树深度1–6（默认3），点击训练。每次只训练你选择的一棵决策树，种子为1，不自动遍历深度。</p>
+<p>完成后在本步骤查看训练／验证 MAE、MSE、RMSE、R²、预测对照图及表格。这里不显示测试集预测。改变深度后需再次点击训练；反复据验证集调参不能获得无偏精度。</p>
+<h2>解释决策树与特征重要性</h2>
+<p>选择训练或验证分子，用“上一步／下一步”逐节点查看图形树中的阈值判断；较宽的树可横向滚动。</p>
+<p>叶节点预测为其中训练标签的均值。特征重要性解释本棵树，不代表化学因果机制。</p>
+<h2>填写测试特征，检查后预测</h2>
+<p>测试分子的特征输入框初始为空。根据结构填写后点击“检查并预测”，数值需与本次数据参考相差小于0.01；错误字段标红，暂不显示预测。</p>
+<p>全部通过后，对你实际输入的数值应用已训练树，显示预测 pKa、已知 pKa 和绝对误差。修改输入会清除旧预测；没有参考值时明确提示无法校验。</p>
+<p>修改数据或选择的特征后旧模型失效，需要重新划分和训练。下载仅供留档，完整教学流程可在线完成。</p>
+<h2>使用限制与解释</h2>
+<p>使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。</p>
+<p>各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。</p>
+<p>训练失败时查看状态及空值，最终至少保留2个完整训练样本。此工具用于教学，不自动从 SMILES 生成描述符，也不保证通用 pKa 预测精度。</p>
 <h2>桌面版本</h2>
-<p>Windows 用户可从 <a href="https://doi.org/10.6084/m9.figshare.29755451">figshare</a> 获取可执行文件；Python 用户可运行 <code>python DTcode/predictpka260324.py</code>，依赖和引用更新见<a href="https://github.com/sym823808458/pKaMLEducation">公开仓库</a>。桌面版还支持选择样本行，网页版固定使用全部建模样本。</p></article><aside class="project-aside"><h2>项目信息</h2><p>在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。</p><section class="visit-statistics"><h2>累计访问</h2><p><strong data-visit-count="pka-ml-education">…</strong></p><p class="stats-note">自 2026-10-21 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-25 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+<p>原 GUI 和数据集见<a href="https://github.com/sym823808458/pKaMLEducation">公开仓库</a>，Windows 可执行程序见 <a href="https://doi.org/10.6084/m9.figshare.29755451">figshare</a>。网页适配器 2.0.0 遵循其六步顺序，训练前可编辑数值 CSV 数据。</p></article><aside class="project-aside"><h2>项目信息</h2><p>在线任务由独立计算服务为已批准账户运行；此页提供说明及本地工作流链接。</p><section class="visit-statistics"><h2>累计访问</h2><p><strong data-visit-count="pka-ml-education">…</strong></p><p class="stats-note">自 2026-10-21 起，中英文合并；同一标签页内 30 分钟合并计次。仅统计软件详情页访问，不是独立人数、下载量或计算次数。</p></section></aside></div></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-26 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
 </body>
 </html>

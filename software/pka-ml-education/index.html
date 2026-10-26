@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="An interactive decision-tree classroom: five public datasets, selectable descriptors, prediction paths and local what-if experiments for organic-acid pKa.">
+  <meta name="description" content="A six-step decision-tree classroom: inspect and edit data, split molecules, choose tree depth, train, interpret, then fill test descriptors and predict organic-acid pKa.">
   <meta name="color-scheme" content="light">
   <meta property="og:title" content="pKa-ML Education · Yuming Su">
-  <meta property="og:description" content="An interactive decision-tree classroom: five public datasets, selectable descriptors, prediction paths and local what-if experiments for organic-acid pKa.">
+  <meta property="og:description" content="A six-step decision-tree classroom: inspect and edit data, split molecules, choose tree depth, train, interpret, then fill test descriptors and predict organic-acid pKa.">
   <meta property="og:type" content="website">
   <title>pKa-ML Education · Yuming Su</title>
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../assets/site.css?v=0ce8a4fb7a95">
-  <script src="../../assets/site.js?v=0ce8a4fb7a95" defer></script>
-  <script src="../../assets/analytics.js?v=0ce8a4fb7a95" defer></script>
+  <link rel="stylesheet" href="../../assets/site.css?v=4a4109601d4e">
+  <script src="../../assets/site.js?v=4a4109601d4e" defer></script>
+  <script src="../../assets/analytics.js?v=4a4109601d4e" defer></script>
 </head>
 <body data-analytics-provider="cloudflare-d1" data-analytics-endpoint="https://stats.yumingsu.top" data-analytics-hosts="yumingsu.top,www.yumingsu.top,sym823808458.github.io" data-analytics-software="pka-ml-education" data-analytics-minutes="30">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -21,29 +21,35 @@
     <nav aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#research">Research</a><a href="../../#software">Software</a><a href="../../#publications">Publications</a><a href="../../#activities">Activities</a><a href="../../#contact">Contact</a></nav>
     <a class="language-link" href="../../zh/software/pka-ml-education/" lang="zh-CN" hreflang="zh-CN">中文</a>
   </div></header>
-  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / pKa-ML Education</div><div class="eyebrow">Chemical education · No-code ML</div><h1>pKa-ML Education</h1><p class="project-lead">An interactive decision-tree classroom: five public datasets, selectable descriptors, prediction paths and local what-if experiments for organic-acid pKa.</p><div class="tags"><span class="tag">Python</span><span class="tag">GUI</span><span class="tag">Teaching</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/pKaMLEducation">Source code ↗</a><a class="button secondary" href="https://doi.org/10.6084/m9.figshare.29755451">Download ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=pka">Online compute demo</a></div><p class="project-status">Email verification and administrator approval required. Shared per-user limits: 1 running task, 2 queued tasks and 10 submissions per day; private results are retained for 72 hours. Service availability depends on the research server.</p></section>
-      <div class="project-layout"><article class="prose project-prose"><h2>Learning machine learning through a familiar chemical problem</h2>
-<p>pKa-ML Education introduces decision trees, feature engineering and generalization through organic acid pKa prediction. The online teaching workspace runs without installing Python; the original desktop GUI remains available.</p>
-<h2>Try an interactive lesson</h2>
-<p>1. Open the <a href="https://compute.yumingsu.top/?tool=pka">free online workspace</a> and sign in with an approved account. 2. Choose one of five public teaching datasets, select descriptors and set maximum tree depth (1–10; default 3). Preview or download the data before submitting. 3. Compare training and validation MAE, RMSE and R² with the training-mean baseline. The four diagnostic molecules are shown separately. 4. Click a molecule on the parity plot or choose its name. Follow each inequality to its predicted leaf value; expand the complete tree to see the highlighted path. 5. Edit numeric descriptors for an immediate local what-if prediction. Download that prediction as CSV, or download the complete server result ZIP. Reload the lesson settings to submit a different model.</p>
-<p>The depth-comparison plot uses the same split for depths 1–10, helping students discuss overfitting. Feature importance describes this tree’s splits; it does not establish a chemical mechanism or causal effect.</p>
-<h2>Five datasets and visible representations</h2>
-<ul>
-<li>Module 1 starts with carbon and carboxyl counts.</li>
-<li>Module 2 adds halogen counts.</li>
-<li>Module 3 uses more detailed atom and group counts.</li>
-<li>Module 4 retains those counts and adds EWG position and flag fields; descriptor selection is explicit.</li>
-<li>Module 5 uses carbon/carboxyl counts, EWG position and EWG rank.</li>
-</ul>
-<p>The public CSV values are preserved. EWG rank codes span −1 to 9 and are not a continuous physical constant; use the preview table because the desktop tooltip omits some codes. Modules can differ in both molecules and descriptors, so not every comparison isolates one variable.</p>
-<h2>A teaching diagnostic panel, not a blind test</h2>
-<p>Octanoic acid, 3-chlorobutanoic acid, iodoacetic acid and phenylglyoxylic acid are removed before training/validation splitting. Their labels are repeatedly displayed during teaching, so their results are a diagnostic panel rather than an independent blind external evaluation.</p>
-<p>The web adapter uses all remaining rows in source order, with an integer floor(20%) validation size and split seed 42. A decision-tree regressor uses seed 1 and the selected depth/features. Repeated tuning against the same validation set does not give an unbiased final score. This small teaching model does not infer descriptors from SMILES, estimate uncertainty or establish general pKa accuracy. Manually edited descriptors may not describe a chemically valid molecule.</p>
-<h2>Outputs and limits</h2>
-<p>The ZIP contains source data, predictions and split membership, the depth comparison, tree nodes, metrics, provenance and instructions. Adapter 1.0.0 uses the public repository snapshot <code>f9735619f4e4517bf70a7f4d0ba44a831286827e</code>. A reproducibility example with module 5, all four descriptors and depth 3 has 34 training, 8 validation and 4 diagnostic molecules; validation MAE is approximately 0.469 pKa. This is an example run, not an accuracy benchmark.</p>
-<p>Each server task is limited to 1 CPU, 1 GiB memory and two minutes. The shared approved-account allowance is one running task, two queued tasks and ten submissions per day. Results are retained for 72 hours. Subsequent browser what-if edits do not submit new tasks. No user scripts, models or custom training-data uploads are accepted in this version.</p>
+  <main id="main"><div class="container"><section class="project-hero"><div class="breadcrumb"><a href="../../">Home</a> / <a href="../../#software">All software</a> / pKa-ML Education</div><div class="eyebrow">Chemical education · No-code ML</div><h1>pKa-ML Education</h1><p class="project-lead">A six-step decision-tree classroom: inspect and edit data, split molecules, choose tree depth, train, interpret, then fill test descriptors and predict organic-acid pKa.</p><div class="tags"><span class="tag">Python</span><span class="tag">GUI</span><span class="tag">Teaching</span></div><div class="project-buttons"><a class="button" href="https://github.com/sym823808458/pKaMLEducation">Source code ↗</a><a class="button secondary" href="https://doi.org/10.6084/m9.figshare.29755451">Download ↗</a><a class="button secondary" href="https://compute.yumingsu.top/?tool=pka">Online compute demo</a><a class="button secondary" href="guide/">Illustrated user guide</a></div><p class="project-status">Six-step classroom: data management, split, manual tree training, interpretation, then test-descriptor exercises. Approved account required.</p></section>
+      <div class="project-layout"><article class="prose project-prose"><h2>pKa-ML Education · Classroom guide</h2>
+<p>Follow the original desktop sequence: data, management, splitting, manual training, interpretation, then test-molecule exercises. Core learning stays in the browser.</p>
+<p><a href="https://yumingsu.top/software/pka-ml-education/guide/">Read the illustrated guide</a></p>
+<h2>Load and inspect the dataset</h2>
+<p>Choose one of five public modules. Inspect the visible descriptor table and reserved test molecules before continuing. Alternatively import a CSV with Molecule Name, SMILES, numeric descriptors and pKa; IsTest is optional.</p>
+<p>Different modules may contain different molecules as well as different descriptors. Do not treat every comparison as a controlled single-variable experiment.</p>
+<h2>Manage molecules and features</h2>
+<p>Edit numeric cells, select modeling rows and descriptors, or add/remove a molecule or descriptor. Test molecules remain outside the modeling pool. Save &amp; Continue confirms this lesson.</p>
+<p>Web limits: 100 molecules, 16 numeric descriptor columns, 128 KiB per lesson. Blank cells are allowed; missing-value exclusions are reported after splitting.</p>
+<h2>Inspect the split and structures</h2>
+<p>The seed-42 split reserves floor(20%) of the selected modeling rows for validation (at least one), before complete-case exclusion. Reserved test molecules are removed first.</p>
+<p>Inspect the structure cards, pKa labels and descriptors in each group. All-empty selected features are removed; remaining missing training/validation rows are excluded and listed in the report. Custom SMILES without a bundled picture appear as text.</p>
+<h2>Choose hyperparameters and train</h2>
+<p>Choose maximum depth 1–6 (default 3), then press Train. This fits one DecisionTreeRegressor with seed 1; it does not sweep depths automatically.</p>
+<p>When the server finishes, inspect training/validation MAE, MSE, RMSE, R², parity plot and prediction table. Test-set predictions are not shown here. Change depth and explicitly retrain to explore complexity; repeatedly tuning on validation does not establish unbiased accuracy.</p>
+<h2>Interpret the tree</h2>
+<p>Select a training or validation molecule. Use Previous/Next node to follow its threshold decisions in the graphical tree. Wide trees can be scrolled horizontally.</p>
+<p>A leaf predicts the mean training label in that leaf. Feature importance describes this fitted tree, not a chemical causal mechanism.</p>
+<h2>Fill descriptors, check, then predict</h2>
+<p>Test descriptor inputs start blank. Read each molecular structure, enter descriptors, and press Check &amp; Predict. Values must agree with the lesson reference within 0.01; incorrect fields are highlighted before any prediction is revealed.</p>
+<p>When all inputs pass, the browser applies the trained tree to the entered values and shows predicted pKa, observed pKa and absolute error. Editing an input clears the old prediction. A missing reference is explicitly marked as unverifiable.</p>
+<p>Editing data or selected features invalidates the old model. Return through splitting and training. Downloads are optional; the complete learning workflow is visible online.</p>
+<h2>Limits and interpretation</h2>
+<p>Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.</p>
+<p>All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep.</p>
+<p>If training fails, inspect the status and excluded cells. At least two complete training rows must remain. This is a teaching model, with no automatic SMILES-to-descriptor conversion or universal pKa accuracy guarantee.</p>
 <h2>Desktop version</h2>
-<p>Windows users can obtain an executable from <a href="https://doi.org/10.6084/m9.figshare.29755451">figshare</a>. Python users can run <code>python DTcode/predictpka260324.py</code>; consult the <a href="https://github.com/sym823808458/pKaMLEducation">public repository</a> for dependencies and citation updates. The desktop GUI also supports row selection; the web version deliberately uses the complete modeling pool.</p></article><aside class="project-aside"><h2>Project information</h2><p>Online tasks run on a separate compute service for approved accounts. This page provides documentation and local workflow links.</p><section class="visit-statistics"><h2>Recorded visits</h2><p><strong data-visit-count="pka-ml-education">…</strong></p><p class="stats-note">Since 2026-10-21; English and Chinese combined, once per software per browser tab within 30 minutes. Software-page visits, not unique people, downloads or computations.</p></section></aside></div></div></main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>Updated 2026-10-25 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">Website source ↗</a></p></div></footer>
+<p>The original GUI and datasets remain available in the <a href="https://github.com/sym823808458/pKaMLEducation">public repository</a>, with Windows executables on <a href="https://doi.org/10.6084/m9.figshare.29755451">figshare</a>. Web adapter 2.0.0 follows its six-step sequence; numeric CSV data can be edited before training.</p></article><aside class="project-aside"><h2>Project information</h2><p>Online tasks run on a separate compute service for approved accounts. This page provides documentation and local workflow links.</p><section class="visit-statistics"><h2>Recorded visits</h2><p><strong data-visit-count="pka-ml-education">…</strong></p><p class="stats-note">Since 2026-10-21; English and Chinese combined, once per software per browser tab within 30 minutes. Software-page visits, not unique people, downloads or computations.</p></section></aside></div></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>Updated 2026-10-26 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">Website source ↗</a></p></div></footer>
 </body>
 </html>

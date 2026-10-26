@@ -173,6 +173,9 @@ def software_row(project, index, lang):
     if online:
         label = E(online['label'][lang])
         badge = f'<a class="software-online" href="{E(online["url"])}" aria-label="{name}: {label}">{label} <span aria-hidden="true">↗</span></a>'
+    if online:
+        guide_label = '使用指南' if lang == 'zh' else 'User guide'
+        badge = '<span class="software-actions">' + badge + f'<a class="software-guide" href="software/{project["slug"]}/guide/">{guide_label}</a></span>'
     return f'<article class="software-row"><span class="software-index">{index:02d}</span><div><div class="software-title"><a class="software-name" href="software/{project["slug"]}/">{name}</a>{badge}</div><div class="software-category">{E(project["category"][lang])}</div></div><p class="software-summary">{E(project["summary"][lang])}</p><a class="text-link" href="software/{project["slug"]}/">{TEXT[lang]["software_view"]}<span class="sr-only"> {name}</span></a></article>'
 
 
@@ -298,6 +301,8 @@ def project_body(project, papers, lang, home, prefix, email):
         online = project['online']
         label = '在线计算演示' if lang == 'zh' else 'Online compute demo'
         buttons += f'<a class="button secondary" href="{E(online["url"])}">{label}</a>'
+        guide_label = '图文使用指南' if lang == 'zh' else 'Illustrated user guide'
+        buttons += f'<a class="button secondary" href="guide/">{guide_label}</a>'
         online_note = f'<p class="project-status">{E(online["note"][lang])}</p>'
     related = ''
     for paper_id in project['related_publications']:
@@ -441,6 +446,8 @@ def build(check=False):
                 description=E(project['summary'][lang] if project else t['description']),prefix=prefix,asset_version=asset_version,skip=t['skip'],navigation=t['navigation'],home=home,nav=nav,
                 language_url=language_url,other_lang='en' if other=='en' else 'zh-CN',language_label='English' if lang=='zh' else '中文',body=body,
                 year=profile['updated'][:4],updated_label=t['updated'],updated=profile['updated'],source_label=t['source'])
+    from guides import build_guides
+    outputs.update(build_guides(ROOT,template,profile,TEXT,software,asset_version))
     # Preserve previously shared /en/ URLs as redirects to the English primary routes.
     for project in [None] + software:
         path = Path('en') / ('software/'+project['slug'] if project else '') / 'index.html'

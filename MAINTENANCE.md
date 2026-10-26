@@ -133,3 +133,9 @@ GBLine、Surfacia、风压筛查及 TPA 的入口统一为 `https://compute.yumi
 ### pKa 教学入口（2026-10-25）
 
 pKa 新增 `?tool=pka`，目前共有五个在线工具入口，六个软件页面的统计口径不变。功能、五组公开数据、教学诊断口径与资源限制见 pKa 中英文内容源。在线计算沿用原有审批与配额；无新增用户密钥或外部 API。后端源码、运维手册、测试账户与服务器配置仍仅保存在私有部署目录。
+
+## Illustrated online guides — 2026-10-26
+
+Five bilingual guides live at /software/<slug>/guide/ and /zh/software/<slug>/guide/. Edit data/guides.json, tools/guides.py and images/guides; regenerate with tools/build.py. Guide links sit next to online buttons on cards and detail pages. Guide pages have no analytics endpoint/software slug, so reading a guide does not create a software-detail visit.
+
+pKa follows public desktop DTcode/predictpka260324.py at f9735619f4e4517bf70a7f4d0ba44a831286827e: visible data, management, structure/split, manual depth 1–6 training, tree/importance, manually checked test descriptors. Core results stay online. Screenshots use unchanged public pKa data, synthetic GBLine curves, synthetic TPA spectra and synthetic wind layout. No private Gaussian files, user accounts, credentials or uploaded research data are published. Surfacia guide accurately describes its existing ZIP-based result workflow.

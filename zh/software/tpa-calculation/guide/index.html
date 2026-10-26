@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="上传配套的 fchk 与 TD log，在浏览器中查看和比较单、双光子理论光谱。">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="双光子吸收 · 在线使用指南 · Yuming Su">
+  <meta property="og:description" content="上传配套的 fchk 与 TD log，在浏览器中查看和比较单、双光子理论光谱。">
+  <meta property="og:type" content="website">
+  <title>双光子吸收 · 在线使用指南 · Yuming Su</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../../assets/site.css?v=4a4109601d4e">
+  <script src="../../../../assets/site.js?v=4a4109601d4e" defer></script>
+  <script src="../../../../assets/analytics.js?v=4a4109601d4e" defer></script>
+</head>
+<body data-analytics-provider="cloudflare-d1" data-analytics-endpoint="" data-analytics-hosts="" data-analytics-software="" data-analytics-minutes="30">
+  <a class="skip-link" href="#main">跳至正文</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="wordmark" href="../../../../zh/"><span class="monogram">YS<span>.</span></span><span>Yuming Su <span class="wordmark-zh">苏禹铭</span></span></a>
+    <nav aria-label="主导航"><a href="../../../../zh/#about">关于我</a><a href="../../../../zh/#research">研究</a><a href="../../../../zh/#software">软件</a><a href="../../../../zh/#publications">论文</a><a href="../../../../zh/#contact">联系</a></nav>
+    <a class="language-link" href="../../../../software/tpa-calculation/guide/" lang="en" hreflang="en">English</a>
+  </div></header>
+  <main id="main"><div class="container guide-page"><div class="breadcrumb"><a href="../">软件介绍</a> / 双光子吸收 · 在线使用指南</div><h1>双光子吸收 · 在线使用指南</h1><p class="project-lead">上传配套的 fchk 与 TD log，在浏览器中查看和比较单、双光子理论光谱。</p><div class="project-buttons"><a class="button" href="https://compute.yumingsu.top/?tool=tpa">免费使用 · 线上体验</a><a class="button secondary" href="../">软件介绍</a></div><p class="guide-note">截图来自公开教学数据或合成示例，不含用户账户、任务令牌或未公开研究数据。点击图片可放大。</p><nav class="guide-toc" aria-label="Guide steps"><a href="#step-1">1. 登录与任务状态</a><a href="#step-2">2. 准备匹配的 Gaussian 输出</a><a href="#step-3">3. 运行固定 SOS 工作流</a><a href="#step-4">4. 比较单、双光子光谱</a></nav><section class="guide-step" id="step-1"><h2>1. 登录与任务状态</h2><p>使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。</p><p>各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。</p></section><section class="guide-step" id="step-2"><h2>2. 准备匹配的 Gaussian 输出</h2><p>上传同次计算的格式化检查点（fchk ≤64 MiB）与已完成的 TD 日志（log/out ≤16 MiB），Gaussian 路由需含 IOp(9/40=4)。</p><p>支持全电子闭壳层单重态、2–40个单重激发态、最多300个原子和2000个基函数。几何、原子顺序、坐标系、原点和能量需匹配。不接受原始 chk，也不补跑 Gaussian。</p><figure><a href="../../../../images/guides/tpa-input.png" target="_blank" rel="noopener"><img src="../../../../images/guides/tpa-input.png" alt="必须提供的两个输入文件。" loading="lazy"></a><figcaption>必须提供的两个输入文件。</figcaption></figure></section><section class="guide-step" id="step-3"><h2>3. 运行固定 SOS 工作流</h2><p>提交并等待后台任务。Multiwfn 提取跃迁／永久偶极矩，再由有限态 sum-over-states（SOS）程序后处理，整项任务最多10分钟。</p><p>永久偶极矩先统一电子贡献定义，再保存基态参考副本并扣除对角元；非对角跃迁偶极矩保持不变。结果包含参考扣除核对记录。</p></section><section class="guide-step" id="step-4"><h2>4. 比较单、双光子光谱</h2><p>用分面图保留独立物理单位，或归一化叠加比较形状。横坐标可选入射波长或总跃迁能量；同一终态的双光子共振波长约为单光子的两倍。</p><p>1PA 是每 eV 的展宽振子强度密度，不是实验吸光度；2PA 为有符号 SOS 截面（GM）。调整单光子显示展宽不会重算双光子；态标记是能级位置，不保证是峰位。</p><p>可直接查看图、选择态和坐标范围；CSV、SVG 及原始结果包按需导出。</p><figure><a href="../../../../images/guides/tpa-spectra.png" target="_blank" rel="noopener"><img src="../../../../images/guides/tpa-spectra.png" alt="用于演示控件的合成光谱，不是真实分子计算。" loading="lazy"></a><figcaption>用于演示控件的合成光谱，不是真实分子计算。</figcaption></figure></section><section class="guide-step"><h2>遇到问题</h2><p>输入被拒绝时先检查计算是否完成、IOp 设置及原子／几何是否匹配。单光子数据缺失会明确提示。</p><p>负 SOS 响应会保留并标记。有限态收敛、展宽与前因子仍需科学审查；原始 SOS 与 Multiwfn 文献见软件介绍页。</p></section></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-26 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+</body>
+</html>

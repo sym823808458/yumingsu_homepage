@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="自动提取后把原图与数据重绘图并排核对，检查校准与曲线，再保存审核结果。">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="GBLine · 图文使用指南 · Yuming Su">
+  <meta property="og:description" content="自动提取后把原图与数据重绘图并排核对，检查校准与曲线，再保存审核结果。">
+  <meta property="og:type" content="website">
+  <title>GBLine · 图文使用指南 · Yuming Su</title>
+  <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../../assets/site.css?v=4a4109601d4e">
+  <script src="../../../../assets/site.js?v=4a4109601d4e" defer></script>
+  <script src="../../../../assets/analytics.js?v=4a4109601d4e" defer></script>
+</head>
+<body data-analytics-provider="cloudflare-d1" data-analytics-endpoint="" data-analytics-hosts="" data-analytics-software="" data-analytics-minutes="30">
+  <a class="skip-link" href="#main">跳至正文</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="wordmark" href="../../../../zh/"><span class="monogram">YS<span>.</span></span><span>Yuming Su <span class="wordmark-zh">苏禹铭</span></span></a>
+    <nav aria-label="主导航"><a href="../../../../zh/#about">关于我</a><a href="../../../../zh/#research">研究</a><a href="../../../../zh/#software">软件</a><a href="../../../../zh/#publications">论文</a><a href="../../../../zh/#contact">联系</a></nav>
+    <a class="language-link" href="../../../../software/gbline/guide/" lang="en" hreflang="en">English</a>
+  </div></header>
+  <main id="main"><div class="container guide-page"><div class="breadcrumb"><a href="../">软件介绍</a> / GBLine · 图文使用指南</div><h1>GBLine · 图文使用指南</h1><p class="project-lead">自动提取后把原图与数据重绘图并排核对，检查校准与曲线，再保存审核结果。</p><div class="project-buttons"><a class="button" href="https://compute.yumingsu.top/?tool=gbline">免费使用 · 线上体验</a><a class="button secondary" href="../">软件介绍</a></div><p class="guide-note">截图来自公开教学数据或合成示例，不含用户账户、任务令牌或未公开研究数据。点击图片可放大。</p><nav class="guide-toc" aria-label="Guide steps"><a href="#step-1">1. 登录与任务状态</a><a href="#step-2">2. 上传单张图表</a><a href="#step-3">3. 并排核对原图与重绘曲线</a><a href="#step-4">4. 保存审核版本与导出</a></nav><section class="guide-step" id="step-1"><h2>1. 登录与任务状态</h2><p>使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。</p><p>各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。</p></section><section class="guide-step" id="step-2"><h2>2. 上传单张图表</h2><p>选择单个 X/Y 坐标系的 PNG/JPEG 图表，填写可见曲线数量及每条曲线点数，然后提交。图片最多10 MiB、2000万像素。</p><p>已批准用户共用服务器配置的千问接口，不需要填写 API key；模型输出仍需人工核对。</p><figure><a href="../../../../images/guides/gbline-input.png" target="_blank" rel="noopener"><img src="../../../../images/guides/gbline-input.png" alt="上传界面，不含私密文件或凭据。" loading="lazy"></a><figcaption>上传界面，不含私密文件或凭据。</figcaption></figure></section><section class="guide-step" id="step-3"><h2>3. 并排核对原图与重绘曲线</h2><p>处理后打开曲线审核，左边是原图，右边是提取数值重绘图。可分别勾选曲线、连线和选中曲线的采样点，点击点查看坐标。</p><p>“Inspect／编辑”选择当前曲线；校准、拾色和橡皮擦在原图操作。使用坐标前核对坐标轴、单位及线性／对数尺度。</p><figure><a href="../../../../images/guides/gbline-comparison.png" target="_blank" rel="noopener"><img src="../../../../images/guides/gbline-comparison.png" alt="合成双曲线的交互审核示例，不是精度基准。" loading="lazy"></a><figcaption>合成双曲线的交互审核示例，不是精度基准。</figcaption></figure></section><section class="guide-step" id="step-4"><h2>4. 保存审核版本与导出</h2><p>校准或擦除后先保存人工审核版本，再检查并导出 CSV。原始提取与人工审核版本明确区分。</p><p>勾选框只控制显示，不会裁剪导出的 CSV；擦除缺口保留为缺口。仅导出显示 SVG 不等于保存了审核数据。</p></section><section class="guide-step"><h2>遇到问题</h2><p>review_required 表示证据不足，不能把数值曲线视为已确认，并不等于 CSV 丢失。先打开证据与审核界面；没有可用曲线时更换清晰裁图或重新提交，不要补造点。</p><p>失败时保留任务编号和提示。每次最多5分钟，并受共享账户配额限制。</p></section></div></main>
+  <footer class="site-footer"><div class="footer-inner"><p>© 2026 Yuming Su · 苏禹铭</p><p>更新于 2026-10-26 <span class="footer-dot">·</span> <a href="https://github.com/sym823808458/yumingsu_homepage">网站源码 ↗</a></p></div></footer>
+</body>
+</html>

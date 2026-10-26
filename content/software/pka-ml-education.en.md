@@ -1,39 +1,55 @@
-## Learning machine learning through a familiar chemical problem
+## pKa-ML Education · Classroom guide
 
-pKa-ML Education introduces decision trees, feature engineering and generalization through organic acid pKa prediction. The online teaching workspace runs without installing Python; the original desktop GUI remains available.
+Follow the original desktop sequence: data, management, splitting, manual training, interpretation, then test-molecule exercises. Core learning stays in the browser.
 
-## Try an interactive lesson
+[Read the illustrated guide](https://yumingsu.top/software/pka-ml-education/guide/)
 
-1. Open the [free online workspace](https://compute.yumingsu.top/?tool=pka) and sign in with an approved account.
-2. Choose one of five public teaching datasets, select descriptors and set maximum tree depth (1–10; default 3). Preview or download the data before submitting.
-3. Compare training and validation MAE, RMSE and R² with the training-mean baseline. The four diagnostic molecules are shown separately.
-4. Click a molecule on the parity plot or choose its name. Follow each inequality to its predicted leaf value; expand the complete tree to see the highlighted path.
-5. Edit numeric descriptors for an immediate local what-if prediction. Download that prediction as CSV, or download the complete server result ZIP. Reload the lesson settings to submit a different model.
+## Load and inspect the dataset
 
-The depth-comparison plot uses the same split for depths 1–10, helping students discuss overfitting. Feature importance describes this tree’s splits; it does not establish a chemical mechanism or causal effect.
+Choose one of five public modules. Inspect the visible descriptor table and reserved test molecules before continuing. Alternatively import a CSV with Molecule Name, SMILES, numeric descriptors and pKa; IsTest is optional.
 
-## Five datasets and visible representations
+Different modules may contain different molecules as well as different descriptors. Do not treat every comparison as a controlled single-variable experiment.
 
-- Module 1 starts with carbon and carboxyl counts.
-- Module 2 adds halogen counts.
-- Module 3 uses more detailed atom and group counts.
-- Module 4 retains those counts and adds EWG position and flag fields; descriptor selection is explicit.
-- Module 5 uses carbon/carboxyl counts, EWG position and EWG rank.
+## Manage molecules and features
 
-The public CSV values are preserved. EWG rank codes span −1 to 9 and are not a continuous physical constant; use the preview table because the desktop tooltip omits some codes. Modules can differ in both molecules and descriptors, so not every comparison isolates one variable.
+Edit numeric cells, select modeling rows and descriptors, or add/remove a molecule or descriptor. Test molecules remain outside the modeling pool. Save & Continue confirms this lesson.
 
-## A teaching diagnostic panel, not a blind test
+Web limits: 100 molecules, 16 numeric descriptor columns, 128 KiB per lesson. Blank cells are allowed; missing-value exclusions are reported after splitting.
 
-Octanoic acid, 3-chlorobutanoic acid, iodoacetic acid and phenylglyoxylic acid are removed before training/validation splitting. Their labels are repeatedly displayed during teaching, so their results are a diagnostic panel rather than an independent blind external evaluation.
+## Inspect the split and structures
 
-The web adapter uses all remaining rows in source order, with an integer floor(20%) validation size and split seed 42. A decision-tree regressor uses seed 1 and the selected depth/features. Repeated tuning against the same validation set does not give an unbiased final score. This small teaching model does not infer descriptors from SMILES, estimate uncertainty or establish general pKa accuracy. Manually edited descriptors may not describe a chemically valid molecule.
+The seed-42 split reserves floor(20%) of the selected modeling rows for validation (at least one), before complete-case exclusion. Reserved test molecules are removed first.
 
-## Outputs and limits
+Inspect the structure cards, pKa labels and descriptors in each group. All-empty selected features are removed; remaining missing training/validation rows are excluded and listed in the report. Custom SMILES without a bundled picture appear as text.
 
-The ZIP contains source data, predictions and split membership, the depth comparison, tree nodes, metrics, provenance and instructions. Adapter 1.0.0 uses the public repository snapshot `f9735619f4e4517bf70a7f4d0ba44a831286827e`. A reproducibility example with module 5, all four descriptors and depth 3 has 34 training, 8 validation and 4 diagnostic molecules; validation MAE is approximately 0.469 pKa. This is an example run, not an accuracy benchmark.
+## Choose hyperparameters and train
 
-Each server task is limited to 1 CPU, 1 GiB memory and two minutes. The shared approved-account allowance is one running task, two queued tasks and ten submissions per day. Results are retained for 72 hours. Subsequent browser what-if edits do not submit new tasks. No user scripts, models or custom training-data uploads are accepted in this version.
+Choose maximum depth 1–6 (default 3), then press Train. This fits one DecisionTreeRegressor with seed 1; it does not sweep depths automatically.
+
+When the server finishes, inspect training/validation MAE, MSE, RMSE, R², parity plot and prediction table. Test-set predictions are not shown here. Change depth and explicitly retrain to explore complexity; repeatedly tuning on validation does not establish unbiased accuracy.
+
+## Interpret the tree
+
+Select a training or validation molecule. Use Previous/Next node to follow its threshold decisions in the graphical tree. Wide trees can be scrolled horizontally.
+
+A leaf predicts the mean training label in that leaf. Feature importance describes this fitted tree, not a chemical causal mechanism.
+
+## Fill descriptors, check, then predict
+
+Test descriptor inputs start blank. Read each molecular structure, enter descriptors, and press Check & Predict. Values must agree with the lesson reference within 0.01; incorrect fields are highlighted before any prediction is revealed.
+
+When all inputs pass, the browser applies the trained tree to the entered values and shows predicted pKa, observed pKa and absolute error. Editing an input clears the old prediction. A missing reference is explicitly marked as unverifiable.
+
+Editing data or selected features invalidates the old model. Return through splitting and training. Downloads are optional; the complete learning workflow is visible online.
+
+## Limits and interpretation
+
+Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.
+
+All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep.
+
+If training fails, inspect the status and excluded cells. At least two complete training rows must remain. This is a teaching model, with no automatic SMILES-to-descriptor conversion or universal pKa accuracy guarantee.
 
 ## Desktop version
 
-Windows users can obtain an executable from [figshare](https://doi.org/10.6084/m9.figshare.29755451). Python users can run `python DTcode/predictpka260324.py`; consult the [public repository](https://github.com/sym823808458/pKaMLEducation) for dependencies and citation updates. The desktop GUI also supports row selection; the web version deliberately uses the complete modeling pool.
+The original GUI and datasets remain available in the [public repository](https://github.com/sym823808458/pKaMLEducation), with Windows executables on [figshare](https://doi.org/10.6084/m9.figshare.29755451). Web adapter 2.0.0 follows its six-step sequence; numeric CSV data can be edited before training.
