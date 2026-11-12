@@ -206,17 +206,17 @@
         "text": {
           "en": [
             "Open Review curves after processing. The original stays on the left and extracted numeric curves are redrawn on the right. Toggle individual curves, lines or selected-curve sample points; click points to inspect coordinates.",
-            "Inspect/Edit selects the active curve. Calibration, picking colors and erasing operate on the original image. Check both axes, units and linear/log scale before trusting coordinates."
+            "Select a curve and use the original-image toolbar. Drag the circular eraser, click to add sample points, or drag a rectangle to exclude an area from color sampling and re-extraction."
           ],
           "zh": [
             "处理后打开曲线审核，左边是原图，右边是提取数值重绘图。可分别勾选曲线、连线和选中曲线的采样点，点击点查看坐标。",
-            "“Inspect／编辑”选择当前曲线；校准、拾色和橡皮擦在原图操作。使用坐标前核对坐标轴、单位及线性／对数尺度。"
+            "选定曲线后，在原图拖动圆形橡皮擦、点击补点，或拖出矩形遮罩。遮罩区不参与拾色或重新提取。"
           ]
         },
         "image": "images/guides/gbline-comparison.png",
         "caption": {
-          "en": "Synthetic two-curve review example; not an accuracy benchmark.",
-          "zh": "合成双曲线的交互审核示例，不是精度基准。"
+          "en": "Synthetic two-curve example with a mask and horizontal readout.",
+          "zh": "合成双曲线示例，展示遮罩和横线读数。"
         }
       },
       {
@@ -226,12 +226,12 @@
         },
         "text": {
           "en": [
-            "After calibration or erasing, save a human-reviewed version and inspect it again before exporting CSV. Original and reviewed versions remain distinguishable.",
-            "Display checkboxes change visibility, not exported CSV. Erased gaps remain gaps; a display-only SVG is not a substitute for saving a reviewed data version."
+            "Start manual calibration and double-click the X1, X2, Y1 and Y2 ticks in order. Enter each tick value in the dialog. On the right, select a vertical or horizontal readout line and double-click to display the curve intersections.",
+            "Save edits to download the reviewed CSV bundle. The segment ID marks gaps from erasing or masking."
           ],
           "zh": [
-            "校准或擦除后先保存人工审核版本，再检查并导出 CSV。原始提取与人工审核版本明确区分。",
-            "勾选框只控制显示，不会裁剪导出的 CSV；擦除缺口保留为缺口。仅导出显示 SVG 不等于保存了审核数据。"
+            "点击开始四点校准，依次双击 X1、X2、Y1、Y2 刻度，每次在弹窗输入数值。在右图选择横线或竖线，双击显示各曲线交点。",
+            "保存修改后可下载人工版本 CSV 压缩包。分段编号保留擦除或遮罩造成的缺口。"
           ]
         }
       }

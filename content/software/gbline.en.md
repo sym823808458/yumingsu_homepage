@@ -6,14 +6,14 @@ Use **Online compute demo** above, register with an email and password and wait 
 
 The workspace offers **pure software extraction** and a **Qwen-assisted** mode. When the site model service is configured and available, Qwen assistance is selected by default. It sends the chart image to the site-configured model provider for at most two reviews; the site supplies the key and covers model requests. Users do not enter an API key. Current availability is shown before submission; pure software remains available when the model service is not ready.
 
-Open **Review curves** beside a completed task to compare the curves with the original image. Select, highlight or hide individual traces, zoom, and correct the result:
+Open **Review curves** beside a completed task to compare the curves with the original image.
 
-- Calibrate with two X ticks and two Y ticks. Enter the actual tick values and select linear or logarithmic axes; reversed axes are supported.
-- Pick curve colors from the original raster, then re-extract with the corrections. This creates a new task under your normal quota and does not call Qwen.
-- Erase unwanted points on the selected curve and undo strokes. Saved CSV files retain gaps using `segment_id`; do not reconnect separate segments.
-- Save an accepted, needs-correction or abandoned review. Reopen saved versions and download their CSVs, overlay preview and review record. The original extraction remains a separate, unchanged download.
+- Use the live eraser, click-to-add brush and rectangular mask on the original. Qwen-assisted extraction identifies legend labels and color swatches for masking.
+- Start manual calibration, double-click X1, X2, Y1 and Y2 and enter the values in the dialogs. Linear, logarithmic and reversed axes are supported.
+- Pick colors outside masks and re-extract with the selected calibration and masks. Double-click a vertical or horizontal line on the redrawn plot to read curve intersections.
+- Save edits and download the reviewed CSV bundle. Segment IDs preserve gaps.
 
-The online version supports one panel with one X/Y axis pair. A review-required result does not include certified numerical curves. Human calibration and acceptance are recorded as human interventions, not automatic validation. Model review cannot guarantee a correct extraction.
+The online version supports one panel with one X/Y axis pair. A review-required result does not include certified numerical curves. Human calibration and editing are recorded as human interventions, not automatic validation. Model review cannot guarantee a correct extraction.
 
 Each task is limited to 2 CPU threads, 4 GiB RAM and 5 minutes. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private results expire after 72 hours.
 
