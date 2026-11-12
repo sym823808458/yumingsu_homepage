@@ -10,11 +10,11 @@ Surfacia converts molecular surface properties into hierarchical descriptors and
 
 ## Run a descriptor table on the server
 
-Use **Online compute demo** above. Approved users can submit Surfacia tasks through the same account as GBLine. The compute portal uses a fixed HTTPS address. New users register with an email and password, verify their email and wait for administrator approval before submitting tasks.
+Use **Online compute demo** above. Approved users can submit Surfacia tasks through the same account as GBLine. The compute portal uses a fixed HTTPS address. New users register with an email and password and wait for administrator approval before submitting tasks.
 
 - Download the example CSV from the compute page, or prepare your own UTF-8 CSV. Include one continuous numeric `target` column and 1–32 numeric descriptor columns. Use 30–500 samples and a file of at most 2 MiB. Descriptor names begin with an English letter and use letters, digits and underscores; no missing values, infinities or formulas.
 - An optional `Sample Name` column stores unique identifiers (letters, digits, dots, underscores and hyphens, beginning with a letter or digit). If omitted, row numbers are used. Optional `smiles` are accepted as text and ignored by this online calculation; all other columns must be numeric descriptors.
-- Register with an email and password, verify the email and wait for administrator approval. Sign in, select **Surfacia**, upload the CSV and submit. Save the task ID; you can close the page and return later.
+- Register with an email and password and wait for administrator approval. Sign in, select **Surfacia**, upload the CSV and submit. Save the task ID; you can close the page and return later.
 - Download the ZIP when the task completes. Start with `README.txt` and `report.json`, then inspect `predictions.csv` and `parity.png`. Compare held-out MAE, RMSE and R² with the training-mean baseline before interpreting features.
 - Read `feature_importance.csv` / `shap_importance.png` for attribution magnitude. `shap_values.csv` preserves descriptor values and signed contributions for held-out samples; `shap_dependence.png` shows the leading descriptor's direction. SHAP describes a fitted model, not a verified mechanism or causal intervention.
 

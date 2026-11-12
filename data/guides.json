@@ -140,12 +140,12 @@
     ],
     "troubleshooting": {
       "en": [
-        "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+        "Sign in with an approved account. For a new account, register with your email and password; the owner must approve the application before computation is enabled.",
         "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep.",
         "If training fails, inspect the status and excluded cells. At least two complete training rows must remain. This is a teaching model, with no automatic SMILES-to-descriptor conversion or universal pKa accuracy guarantee."
       ],
       "zh": [
-        "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+        "使用已批准的账户登录。新用户先注册，管理员批准后才能提交计算。",
         "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。",
         "训练失败时查看状态及空值，最终至少保留2个完整训练样本。此工具用于教学，不自动从 SMILES 生成描述符，也不保证通用 pKa 预测精度。"
       ]
@@ -168,11 +168,11 @@
         },
         "text": {
           "en": [
-            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "Sign in with an approved account. For a new account, register with your email and password; the owner must approve the application before computation is enabled.",
             "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
           ],
           "zh": [
-            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "使用已批准的账户登录。新用户先注册，管理员批准后才能提交计算。",
             "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
           ]
         }
@@ -264,11 +264,11 @@
         },
         "text": {
           "en": [
-            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "Sign in with an approved account. For a new account, register with your email and password; the owner must approve the application before computation is enabled.",
             "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
           ],
           "zh": [
-            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "使用已批准的账户登录。新用户先注册，管理员批准后才能提交计算。",
             "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
           ]
         }
@@ -362,11 +362,11 @@
         },
         "text": {
           "en": [
-            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "Sign in with an approved account. For a new account, register with your email and password; the owner must approve the application before computation is enabled.",
             "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
           ],
           "zh": [
-            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "使用已批准的账户登录。新用户先注册，管理员批准后才能提交计算。",
             "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
           ]
         }
@@ -442,11 +442,11 @@
         },
         "text": {
           "en": [
-            "Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.",
+            "Sign in with an approved account. For a new account, register with your email and password; the owner must approve the application before computation is enabled.",
             "All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep."
           ],
           "zh": [
-            "使用已批准的账户登录。新用户先注册并验证邮箱，管理员批准后才能提交计算。",
+            "使用已批准的账户登录。新用户先注册，管理员批准后才能提交计算。",
             "各工具共用账户配额：同时1个运行任务、2个排队任务，每天最多提交10次；结果保留72小时，需要长期保留时请自行保存。"
           ]
         }

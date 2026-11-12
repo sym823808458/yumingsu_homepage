@@ -44,7 +44,7 @@ Editing data or selected features invalidates the old model. Return through spli
 
 ## Limits and interpretation
 
-Sign in with an approved account. For a new account, register and verify your email; the owner must approve the application before computation is enabled.
+Sign in with an approved account. For a new account, register with your email and password; the owner must approve the application before computation is enabled.
 
 All tools share per-account limits: one running task, two queued tasks and ten submissions per day. Results expire after 72 hours. Save results you need to keep.
 

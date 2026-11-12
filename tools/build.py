@@ -238,7 +238,7 @@ def home_body(profile, papers, software, lang, prefix, activities):
     rows = ''.join(software_row(s,i,lang) for i,s in enumerate(software,1))
     online_note = ''
     if any(s.get('online') for s in software):
-        note = '线上体验免费，须注册、验证邮箱并经管理员批准。' if lang == 'zh' else 'Online trials are free to use; email verification and administrator approval are required.'
+        note = '线上体验免费，须注册并经管理员批准。' if lang == 'zh' else 'Online trials are free to use; administrator approval is required.'
         online_note = f'<p class="software-online-note">{note}</p>'
     # Software-resource records stay in the data archive, not the paper display.
     ordered = sorted((p for p in papers if p['type'] != 'resource'), key=lambda p:(p.get('display_priority', 100000), -(p['citations'] if p['citations'] is not None else -1), -p['year']))

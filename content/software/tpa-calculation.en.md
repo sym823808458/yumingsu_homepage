@@ -18,7 +18,7 @@ Prepare a completed all-electron, restricted closed-shell singlet TD calculation
 
 The online service accepts **only the fchk + log pair**. Multiwfn extraction and permanent-dipole definition checks are automatic; no text export or manually entered dipole vector is needed.
 
-The compute portal uses a fixed HTTPS address. New access requires email verification and administrator approval. Each task uses at most 2 CPU threads / 4 GiB and has a 10-minute total limit. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private downloads expire after 72 hours.
+The compute portal uses a fixed HTTPS address. New access requires administrator approval. Each task uses at most 2 CPU threads / 4 GiB and has a 10-minute total limit. All tools share 1 running task, 2 queued tasks and 10 daily submissions per user. Private downloads expire after 72 hours.
 
 The plot above is an archived synthetic algebra verification of the numerical core, not an upload option or a molecular benchmark. [Recorded verification outputs](http://yumingsu.top/downloads/tpa-calculation/synthetic-results.zip) remain available for reference.
 

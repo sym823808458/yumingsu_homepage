@@ -2,7 +2,7 @@
 
 ## Online calculation
 
-Use **Online compute demo** above, register with an email and password, verify your email and wait for administrator approval. In GBLine, upload a PNG or JPEG chart (up to 10 MiB), enter the visible curve count and maximum point count, and submit once. A downloadable two-curve example is available in the workspace.
+Use **Online compute demo** above, register with an email and password and wait for administrator approval. In GBLine, upload a PNG or JPEG chart (up to 10 MiB), enter the visible curve count and maximum point count, and submit once. A downloadable two-curve example is available in the workspace.
 
 The workspace offers **pure software extraction** and a **Qwen-assisted** mode. When the site model service is configured and available, Qwen assistance is selected by default. It sends the chart image to the site-configured model provider for at most two reviews; the site supplies the key and covers model requests. Users do not enter an API key. Current availability is shown before submission; pure software remains available when the model service is not ready.
 
