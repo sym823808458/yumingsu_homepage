@@ -29,7 +29,7 @@ TEXT = {
         'title': '苏禹铭 Yuming Su · 个人学术主页', 'description': '苏禹铭的个人学术主页：可解释化学机器学习、自动化电化学、双光子吸收，以及科研软件与论文。',
         'hero': '用可解释的模型理解化学，<br>用自动化实验探索材料。', 'eyebrow': '化学 · 机器学习 · 自动化', 'portrait_caption': '化学 × 数据 × 实验',
         'email': '邮件', 'citations': '总引用', 'hindex': 'h 指数', 'i10index': 'i10 指数',
-        'snapshot': 'Google Scholar 快照', 'snapshot_note': '截至 {date} · 非实时统计',
+        'snapshot': 'Google Scholar 统计', 'snapshot_note': '总引用由作者于 {citations_date} 提供；h 指数与 i10 指数截至 {date} · 非实时统计',
         'about_title': '连接化学、数据与实验', 'about_kicker': '关于我 · 学术背景',
         'research_title': '研究方向', 'research_kicker': '研究 · 问题与方法',
         'software_title': '让方法成为可用的工具', 'software_kicker': '软件 · 科研工具', 'software_view': '了解项目 ↗',
@@ -49,7 +49,7 @@ TEXT = {
         'title': 'Yuming Su · Chemistry, Machine Learning & Automation', 'description': 'Yuming Su: interpretable chemical machine learning, automated electrochemistry, two-photon absorption, research software and publications.',
         'hero': 'Understanding chemistry with interpretable models.<br>Exploring materials through automated experiments.', 'eyebrow': 'CHEMISTRY · MACHINE LEARNING · AUTOMATION', 'portrait_caption': 'CHEMISTRY × DATA × EXPERIMENTS',
         'email': 'Email', 'citations': 'Citations', 'hindex': 'h-index', 'i10index': 'i10-index',
-        'snapshot': 'Google Scholar snapshot', 'snapshot_note': 'As of {date} · not a live feed',
+        'snapshot': 'Google Scholar metrics', 'snapshot_note': 'Citations updated {citations_date}; h-index and i10-index as of {date} · not a live feed',
         'about_title': 'Connecting chemistry, data & experiments', 'about_kicker': 'ABOUT / BACKGROUND',
         'research_title': 'Research interests', 'research_kicker': 'RESEARCH / QUESTIONS & METHODS',
         'software_title': 'From methods to usable tools', 'software_kicker': 'SOFTWARE / RESEARCH TOOLS', 'software_view': 'Explore ↗',
@@ -252,7 +252,7 @@ def home_body(profile, papers, software, lang, prefix, activities):
           <p class="hero-description">{t['hero']}</p><div class="contact-links">{contact_links}</div></div>
         <figure class="portrait-wrap"><div class="portrait-frame"><img class="profile-photo" src="{prefix}images/profile.jpg?v={portrait_version}" alt="Yuming Su / 苏禹铭" width="886" height="1067"></div></figure>
       </section>
-      <div class="metrics-band" aria-label="{t['snapshot']}">{metrics}<div class="metrics-note"><a href="{E(links['scholar'])}">{t['snapshot']} ↗</a><br>{E(t['snapshot_note'].format(date=snapshot['date']))}</div></div>
+      <div class="metrics-band" aria-label="{t['snapshot']}">{metrics}<div class="metrics-note"><a href="{E(links['scholar'])}">{t['snapshot']} ↗</a><br>{E(t['snapshot_note'].format(date=snapshot['date'], citations_date=snapshot.get('citations_date', snapshot['date'])))}</div></div>
       <section class="section" id="about">{heading(t['about_kicker'],t['about_title'])}<div class="about-layout"><div class="prose">{markdown(ROOT/'content'/f'about.{lang}.md')}</div><div class="timeline">{timeline}</div></div></section>
       <section class="section" id="research">{heading(t['research_kicker'],t['research_title'])}<div class="research-grid">{research}</div></section>
       <section class="section" id="software">{heading(t['software_kicker'],t['software_title'],f'<a class="section-link" href="{E(links["github"])}">GitHub ↗</a>')}{online_note}<div class="software-list">{rows}</div></section>

@@ -197,6 +197,10 @@ The author states a contribution to Experiment 33, 机器学习预测有机酸pK
 
 The supplied CV explicitly identifies Prof. 汪骋 (Cheng Wang) as the PhD advisor, corroborated at group level by the AI4EC Lab author biography https://ai4ec.ac.cn/zh/post/paper_suyumin2505 . The educational email already configured as yumingsu@xmu.edu.cn is now visible in the hero and remains the sole public mailto target throughout the site. This update does not change calculation-account approval or SMTP settings.
 
+## Google Scholar citation total updated — 2026-11-18
+
+The author supplied an updated total of 805 citations for the personal homepage. The citation total is dated 2026-11-18. The previously supplied h-index (14), i10-index (15), and per-paper citation counts are retained as of 2026-10-19; no newer values were supplied. The homepage labels these dates separately and links to the live Google Scholar profile. These are dated snapshots, not a live API feed.
+
 
 ## Interactive TPA and wind workspaces (2026-10-25)
 

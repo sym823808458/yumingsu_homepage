@@ -1,7 +1,7 @@
 {
   "name": "Yuming Su",
   "name_zh": "苏禹铭",
-  "updated": "2026-10-26",
+  "updated": "2026-11-18",
   "email": "yumingsu@xmu.edu.cn",
   "location": {
     "zh": "中国 · 厦门",
@@ -22,8 +22,9 @@
   },
   "scholar_snapshot": {
     "date": "2026-10-19",
+    "citations_date": "2026-11-18",
     "source": "Profile text supplied by Yuming Su in this conversation; not a live API feed.",
-    "citations": 782,
+    "citations": 805,
     "h_index": 14,
     "i10_index": 15,
     "since_year": 2021,
